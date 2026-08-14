@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Wealth with Wisdom | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .wwh-hero { min-height: 55vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); position: relative; }
+    .wwh-hero::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23EB7A34' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); z-index: 0; }
+    .wwh-hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .wwh-hero .hero-badge { color: var(--accent); }
+    .wwh-hero h1 { font-size: 3.2rem; margin-bottom: 14px; }
+    .wwh-hero h1 em { font-style: italic; color: var(--primary); }
+    .wwh-hero .wwh-collab { font-size: 0.95rem; color: var(--text-light); margin-bottom: 10px; }
+    .wwh-hero p.wwh-sub { font-size: 1.1rem; color: var(--text-light); }
+
+    .wwh-info-section { padding: 80px 40px; background: var(--white); }
+    .wwh-info-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+    .wwh-info-card { background: var(--tint); border-radius: 16px; padding: 26px 24px; border: 1px solid var(--border); }
+    .wwh-info-card .wwh-info-label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+    .wwh-info-card .wwh-info-value { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 600; color: var(--dark); }
+    .wwh-info-card .wwh-info-note { display: block; font-size: 0.82rem; color: var(--text-light); margin-top: 4px; }
+
+    .wwh-invest-banner { max-width: 1100px; margin: 40px auto 0; padding: 32px 40px; border-radius: 16px; background: linear-gradient(135deg, #C15F1F 0%, var(--accent) 100%); color: var(--white); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    .wwh-invest-banner .wwh-invest-amount { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; }
+    .wwh-invest-banner .wwh-invest-note { font-size: 0.9rem; opacity: 0.9; max-width: 480px; }
+
+    .wwh-modules-section { padding: 90px 40px; background: var(--tint); }
+    .wwh-modules-list { max-width: 900px; margin: 40px auto 0; counter-reset: module; }
+    .wwh-module-item { display: flex; align-items: flex-start; gap: 22px; background: var(--white); border-radius: 14px; padding: 22px 26px; margin-bottom: 16px; border: 1px solid var(--border); transition: var(--transition); }
+    .wwh-module-item:hover { transform: translateX(6px); box-shadow: 0 8px 24px var(--shadow); }
+    .wwh-module-number { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-heading); }
+    .wwh-module-item p { margin: 0; padding-top: 6px; font-weight: 500; color: var(--dark); }
+
+    .wwh-two-col-section { padding: 90px 40px; background: var(--white); }
+    .wwh-two-col-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .wwh-col-card { background: var(--tint); border-radius: 20px; padding: 40px; border: 1px solid var(--border); }
+    .wwh-col-card h3 { font-size: 1.4rem; margin-bottom: 16px; color: var(--primary); }
+    .wwh-col-card ul { list-style: none; }
+    .wwh-col-card li { font-size: 0.95rem; color: var(--text-light); padding: 8px 0; padding-left: 26px; position: relative; }
+    .wwh-col-card li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .wwh-col-card p { color: var(--text-light); line-height: 1.8; }
+
+    .wwh-delivery-section { padding: 90px 40px; background: var(--dark); color: var(--white); }
+    .wwh-delivery-section .section-header h2 { color: var(--white); }
+    .wwh-delivery-section .section-header p { color: rgba(255,255,255,0.7); }
+    .wwh-delivery-grid { max-width: 900px; margin: 40px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .wwh-delivery-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 32px; text-align: center; }
+    .wwh-delivery-card .wwh-delivery-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .wwh-delivery-card h3 { color: var(--white); font-size: 1.2rem; margin-bottom: 10px; }
+    .wwh-delivery-card p { color: rgba(255,255,255,0.75); font-size: 0.92rem; }
+
+    .wwh-bursary-section { padding: 70px 40px; background: var(--white); }
+    .wwh-bursary-box { max-width: 800px; margin: 0 auto; text-align: center; padding: 36px; border-radius: 16px; border: 1px dashed var(--border); background: var(--tint); }
+    .wwh-bursary-box p { color: var(--text-light); margin-bottom: 12px; }
+    .wwh-bursary-box p:last-child { margin-bottom: 0; }
+
+    .wwh-grad-strip { padding: 50px 40px; background: var(--primary); color: var(--white); text-align: center; }
+    .wwh-grad-strip strong { display: block; font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 6px; }
+    .wwh-grad-strip span { font-size: 0.95rem; opacity: 0.9; }
+
+    .wwh-cta-section { padding: 100px 40px; text-align: center; background: linear-gradient(135deg, var(--light) 0%, var(--tint) 100%); }
+    .wwh-cta-section .wwh-cta-line { font-family: var(--font-heading); font-size: 1.3rem; color: var(--dark); margin-bottom: 8px; }
+    .wwh-cta-section .wwh-cta-line.accent { color: var(--accent); }
+    .wwh-cta-section .btn { margin-top: 30px; }
+
+    @media (max-width: 768px) {
+      .wwh-two-col-grid, .wwh-delivery-grid { grid-template-columns: 1fr; }
+      .wwh-hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html" class="active">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="wwh-hero">
+    <div class="wwh-hero-content">
+      <span class="hero-badge">New Programme</span>
+      <h1>Building Wealth with <em>Wisdom</em></h1>
+      <p class="wwh-collab">KL Consultants in collaboration with SheRises Collective</p>
+      <p class="wwh-sub">Financial Stewardship & Wealth Creation for Church Leaders</p>
+    </div>
+  </section>
+
+  <section class="wwh-info-section">
+    <div class="container">
+      <div class="wwh-info-grid">
+        <div class="wwh-info-card animate-on-scroll"><span class="wwh-info-label">Duration</span><span class="wwh-info-value">6 Months</span><span class="wwh-info-note">16 Jan – 15 Jun 2027</span></div>
+        <div class="wwh-info-card animate-on-scroll"><span class="wwh-info-label">Session Day</span><span class="wwh-info-value">Saturdays</span><span class="wwh-info-note">Once every two weeks</span></div>
+        <div class="wwh-info-card animate-on-scroll"><span class="wwh-info-label">Time</span><span class="wwh-info-value">08:00 – 12:00</span></div>
+        <div class="wwh-info-card animate-on-scroll"><span class="wwh-info-label">Delivery</span><span class="wwh-info-value">In-Person & Hybrid</span><span class="wwh-info-note">Online option available</span></div>
+        <div class="wwh-info-card animate-on-scroll"><span class="wwh-info-label">Venue</span><span class="wwh-info-value">Manors, Pinetown</span></div>
+        <div class="wwh-info-card animate-on-scroll"><span class="wwh-info-label">Graduation</span><span class="wwh-info-value">17 July 2027</span></div>
+      </div>
+
+      <div class="wwh-invest-banner animate-on-scroll">
+        <div><span class="wwh-invest-amount">R550</span> <span style="opacity:0.9;">per module</span></div>
+        <p class="wwh-invest-note">Participants may register for individual modules or complete the full programme.</p>
+        <a href="contact.html" class="btn" style="background:var(--white);color:var(--accent);">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wwh-modules-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Programme <em>Modules</em></h2>
+        <p>Ten modules combining biblical principles with practical financial and leadership knowledge.</p>
+      </div>
+      <div class="wwh-modules-list">
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">1</span><p>Biblical Foundations of Wealth & Stewardship</p></div>
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">2</span><p>Personal Financial Stewardship</p></div>
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">3</span><p>The Wealth-Building Mindset</p></div>
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">4</span><p>Income, Assets & Wealth Creation</p></div>
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">5</span><p>Entrepreneurship & Kingdom Enterprise</p></div>
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">6</span><p>Sustainable Ministry Finances</p></div>
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">7</span><p>Financial Integrity & Accountability</p></div>
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">8</span><p>Building Assets & Generational Wealth</p></div>
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">9</span><p>Equipping the Church for Financial Empowerment</p></div>
+        <div class="wwh-module-item animate-on-scroll"><span class="wwh-module-number">10</span><p>Personal Wealth-Building & Legacy Plan</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wwh-two-col-section">
+    <div class="container">
+      <div class="wwh-two-col-grid">
+        <div class="wwh-col-card animate-on-scroll">
+          <h3>Facilitators</h3>
+          <p>The programme is facilitated by experienced Christian leaders, entrepreneurs, financial practitioners and subject-matter specialists, combining biblical principles with practical financial and leadership knowledge.</p>
+        </div>
+        <div class="wwh-col-card animate-on-scroll">
+          <h3>What You'll Receive</h3>
+          <ul>
+            <li>Programme workbook</li>
+            <li>Module notes</li>
+            <li>Practical financial planning tools</li>
+            <li>Wealth-building exercises</li>
+            <li>Business and enterprise planning templates</li>
+            <li>Recommended resources</li>
+          </ul>
+        </div>
+        <div class="wwh-col-card animate-on-scroll">
+          <h3>Who Should Attend</h3>
+          <ul>
+            <li>Pastors, church leaders, ministry leaders or recognised emerging leaders</li>
+            <li>Those able to commit to attending sessions</li>
+            <li>Willingness to participate actively in discussions and practical activities</li>
+            <li>Ability to complete required assignments and exercises</li>
+            <li>Commitment to developing a Personal Wealth-Building & Stewardship Plan</li>
+          </ul>
+          <p style="margin-top:16px;font-style:italic;">No formal financial qualification is required.</p>
+        </div>
+        <div class="wwh-col-card animate-on-scroll">
+          <h3>Graduation</h3>
+          <p>The programme concludes with a Graduation Celebration on <strong>17 July 2027</strong>, recognising participants who have completed the programme requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wwh-delivery-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Delivery <em>Options</em></h2>
+        <p>Choose the format that works best for you.</p>
+      </div>
+      <div class="wwh-delivery-grid">
+        <div class="wwh-delivery-card animate-on-scroll">
+          <div class="wwh-delivery-icon">🏛️</div>
+          <h3>In Person</h3>
+          <p>Face-to-face sessions every second Saturday, 08:00–12:00, at Manors, Pinetown.</p>
+        </div>
+        <div class="wwh-delivery-card animate-on-scroll">
+          <div class="wwh-delivery-icon">💻</div>
+          <h3>Hybrid</h3>
+          <p>Join the scheduled sessions online while engaging with the programme remotely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wwh-bursary-section">
+    <div class="container">
+      <div class="wwh-bursary-box animate-on-scroll">
+        <p><strong>Bursaries & Sponsorships:</strong> There are currently no bursaries or sponsorships available for this programme.</p>
+        <p>Church leaders are encouraged to approach local businesses, organisations, individuals and community partners to secure sponsorship for their participation — an opportunity to build relationships with local businesses while investing in the financial development of church leadership.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wwh-cta-section">
+    <div class="container">
+      <p class="wwh-cta-line">Invest in your financial wisdom. Strengthen your stewardship.</p>
+      <p class="wwh-cta-line">Build sustainable wealth. Lead with integrity.</p>
+      <p class="wwh-cta-line accent">Steward well. Create value. Build responsibly. Leave a legacy.</p>
+      <a href="contact.html" class="btn btn-primary">Register Your Interest</a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

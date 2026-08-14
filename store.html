@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .store-hero { min-height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); position: relative; overflow: hidden; }
+    .store-hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); object-fit: cover; opacity: 0.22; z-index: 0; }
+    .store-hero-content { position: relative; z-index: 1; }
+    .store-hero h1 { font-size: 3.5rem; margin-bottom: 16px; }
+    .store-hero h1 em { font-style: italic; color: var(--primary); }
+    .store-hero p { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+
+    .store-tabs { display: flex; justify-content: center; gap: 16px; padding: 40px 40px 0; background: var(--white); }
+    .store-tab { padding: 14px 32px; font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-radius: 50px; border: 2px solid var(--border); background: var(--white); color: var(--text); cursor: pointer; transition: var(--transition); }
+    .store-tab:hover { border-color: var(--accent); color: var(--primary); }
+    .store-tab.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+    .store-tab.active:hover { background: var(--dark); border-color: var(--dark); }
+
+    .store-section { padding: 60px 40px 80px; background: var(--white); display: none; }
+    .store-section.active { display: block; }
+    .store-section-header { text-align: center; margin-bottom: 50px; }
+    .store-section-header h2 { font-size: 2.2rem; margin-bottom: 12px; }
+    .store-section-header h2 em { font-style: italic; color: var(--primary); }
+    .store-section-header p { color: var(--text-light); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    .store-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .product-card { background: var(--light); border-radius: 20px; overflow: hidden; transition: var(--transition); border: 1px solid var(--border); }
+    .product-card:hover { transform: translateY(-8px); box-shadow: 0 16px 50px var(--shadow-lg); }
+    .product-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--light) 0%, var(--accent-light) 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 20px; }
+    .product-image img { max-height: 90%; max-width: 55%; object-fit: contain; filter: drop-shadow(0 10px 25px rgba(44,52,56,0.25)); transition: var(--transition); }
+    .product-card:hover .product-image img { transform: scale(1.05) translateY(-4px); }
+    .product-tag { position: absolute; top: 16px; left: 16px; padding: 6px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .product-tag.faith { background: var(--primary); color: var(--white); }
+    .product-tag.zulu { background: #2E7D32; color: var(--white); }
+    .product-tag.exercise { background: #1565C0; color: var(--white); }
+    .product-body { padding: 28px; }
+    .product-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .product-body p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; line-height: 1.6; }
+    .product-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .product-price { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+    .product-lang { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .product-btn { width: 100%; }
+    .view-btn { position: absolute; bottom: 12px; right: 12px; padding: 8px 16px; background: var(--white); border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: var(--primary); cursor: pointer; border: 1px solid var(--border); transition: var(--transition); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .view-btn:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
+
+    .isizulu-accent { background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); }
+    .isizulu-accent .store-section-header h2 em { color: #2E7D32; }
+    .isizulu-accent .product-image { background: linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%); }
+    .isizulu-accent .product-price { color: #2E7D32; }
+    .isizulu-accent .product-card:hover { box-shadow: 0 16px 50px rgba(46, 125, 50, 0.15); }
+
+    /* Book Modal */
+    .book-modal { position: fixed; inset: 0; background: rgba(44,52,56,0.88); backdrop-filter: blur(10px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 24px; }
+    .book-modal.active { display: flex; }
+    .book-modal-content { background: var(--white); border-radius: 24px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; padding: 48px; position: relative; animation: fadeInUp 0.4s ease; box-shadow: 0 40px 100px rgba(0,0,0,0.4); }
+    .book-modal-close { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; border-radius: 50%; background: var(--light); border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); z-index: 10; }
+    .book-modal-close:hover { background: var(--primary); color: var(--white); transform: rotate(90deg); }
+    .book-modal-img { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--light) 0%, var(--accent-light) 100%); border-radius: 16px; padding: 30px; min-height: 300px; }
+    .book-modal-img img { max-width: 100%; max-height: 340px; object-fit: contain; filter: drop-shadow(0 16px 40px rgba(44,52,56,0.25)); border-radius: 8px; }
+    .book-modal-info h3 { font-size: 1.8rem; margin-bottom: 4px; color: var(--primary); }
+    .book-modal-info .author { font-family: var(--font-heading); font-size: 1.2rem; color: var(--accent); font-style: italic; margin-bottom: 20px; display: block; }
+    .book-modal-info .modal-price { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--primary); margin-bottom: 20px; display: block; }
+    .book-modal-info .modal-desc { font-size: 0.95rem; color: var(--text-light); line-height: 1.9; margin-bottom: 28px; }
+    .book-modal-info .modal-meta { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+    .modal-meta-tag { padding: 8px 16px; background: var(--light); border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); }
+    .modal-actions { display: flex; gap: 12px; }
+    .modal-actions .btn { flex: 1; }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 1024px) { .store-grid { grid-template-columns: repeat(2, 1fr); } .book-modal-content { grid-template-columns: 1fr; gap: 30px; padding: 32px; } .book-modal-img { min-height: 200px; } }
+    @media (max-width: 768px) { .store-grid { grid-template-columns: 1fr; } .store-hero h1 { font-size: 2.5rem; } .store-tabs { flex-wrap: wrap; gap: 10px; } .store-tab { padding: 10px 20px; font-size: 0.75rem; } .book-modal-content { padding: 24px; } .modal-actions { flex-direction: column; } }
+  </style>
+</head>
+<body class="page-transition">
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html" class="active">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="store-hero">
+    <video class="store-hero-video" autoplay muted loop playsinline aria-hidden="true">
+      <source src="videos/books-on-table.mp4" type="video/mp4">
+    </video>
+    <div class="store-hero-content">
+      <span class="hero-badge">Resources & Merch</span>
+      <h1>The <em>Store</em></h1>
+      <p>Faith-inspired books, isiZulu literature, and exercise materials to support your journey of growth and empowerment.</p>
+    </div>
+  </section>
+
+  <div class="store-tabs">
+    <button class="store-tab active" onclick="showStoreSection('faith')">Faith & Spiritual</button>
+    <button class="store-tab" onclick="showStoreSection('isizulu')">IsiZulu Literature & Exercise</button>
+  </div>
+
+  <!-- FAITH & SPIRITUAL SECTION -->
+  <section class="store-section active" id="faith-section">
+    <div class="store-section-header animate-on-scroll">
+      <h2>Faith & <em>Spiritual Content</em></h2>
+      <p>Books, devotionals, and resources rooted in Scripture to deepen your walk with God and strengthen your leadership.</p>
+    </div>
+    <div class="store-grid">
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag faith">Faith</span>
+          <img src="images/touched-by-grace-outlined.png" alt="Touched by Grace by Fikile Mnguni">
+          <button class="view-btn" onclick="openBookModal('touched-by-grace')">Quick View</button>
+        </div>
+        <div class="product-body">
+          <h3>Touched by Grace</h3>
+          <p>A powerful testimony of divine favour and restoration. Discover how grace transforms brokenness into beauty.</p>
+          <div class="product-meta">
+            <span class="product-price">R 250</span>
+            <span class="product-lang">English</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('touched-by-grace')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag faith">Faith</span>
+          <img src="images/covenant-alignment-outlined.png" alt="Covenant Alignment by Fikile Mnguni">
+          <button class="view-btn" onclick="openBookModal('covenant-alignment')">Quick View</button>
+        </div>
+        <div class="product-body">
+          <h3>Covenant Alignment</h3>
+          <p>Discover the power of divine covenant and learn to align your life with God's eternal promises for breakthrough and destiny.</p>
+          <div class="product-meta">
+            <span class="product-price">R 280</span>
+            <span class="product-lang">English</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('covenant-alignment')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag faith">Faith</span>
+          <img src="images/breaking-the-cycle-outlined.png" alt="Breaking the Cycle by Fikile Mnguni">
+          <button class="view-btn" onclick="openBookModal('breaking-the-cycle')">Quick View</button>
+        </div>
+        <div class="product-body">
+          <h3>Breaking the Cycle</h3>
+          <p>A roadmap to heal childhood wounds and break generational patterns. Step into freedom and rewrite your family's story.</p>
+          <div class="product-meta">
+            <span class="product-price">R 250</span>
+            <span class="product-lang">English</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('breaking-the-cycle')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag faith">Faith</span>
+          <img src="images/healing-of-memories-outlined.png" alt="Healing of Memories by Fikile Mnguni">
+          <button class="view-btn" onclick="openBookModal('healing-of-memories')">Quick View</button>
+        </div>
+        <div class="product-body">
+          <h3>Healing of Memories</h3>
+          <p>A journey through past pain toward wholeness. Biblical wisdom for emotional healing and spiritual freedom.</p>
+          <div class="product-meta">
+            <span class="product-price">R 120</span>
+            <span class="product-lang">English</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('healing-of-memories')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag faith">Faith</span>
+          <img src="images/before-you-say-i-do-outlined.png" alt="Before You Say &quot;I Do&quot; by Fikile Mnguni">
+          <button class="view-btn" onclick="openBookModal('before-you-say-i-do')">Quick View</button>
+        </div>
+        <div class="product-body">
+          <h3>Before You Say "I Do"</h3>
+          <p>A biblical discipleship journey for called men and women preparing for marriage, rooted in Scripture and spiritual readiness.</p>
+          <div class="product-meta">
+            <span class="product-price">R 380</span>
+            <span class="product-lang">English</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('before-you-say-i-do')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag faith">Faith</span>
+          <img src="images/weight-of-leadership-outlined.png" alt="The Weight of Leadership by Fikile Mnguni">
+          <button class="view-btn" onclick="openBookModal('weight-of-leadership')">Quick View</button>
+        </div>
+        <div class="product-body">
+          <h3>The Weight of Leadership</h3>
+          <p>A call to lead with humility and grace, grounded in Matthew 11:29-30 — for those carrying the weight of Kingdom leadership.</p>
+          <div class="product-meta">
+            <span class="product-price">R 350</span>
+            <span class="product-lang">English</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('weight-of-leadership')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag faith">Faith</span>
+          <img src="images/fingerprints-of-god-outlined.png" alt="The Fingerprints of God by Fikile Mnguni">
+          <button class="view-btn" onclick="openBookModal('fingerprints-of-god')">Quick View</button>
+        </div>
+        <div class="product-body">
+          <h3>The Fingerprints of God</h3>
+          <p>A tender reminder that God's hand is woven through every season of life — a testimony of His unmistakable, loving presence.</p>
+          <div class="product-meta">
+            <span class="product-price">R 220</span>
+            <span class="product-lang">English</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('fingerprints-of-god')">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ISIZULU LITERATURE & EXERCISE SECTION -->
+  <section class="store-section isizulu-accent" id="isizulu-section">
+    <div class="store-section-header animate-on-scroll">
+      <h2>IsiZulu <em>Literature & Exercise</em></h2>
+      <p>isiZulu books, educational materials, and exercise resources celebrating our language, culture, and heritage.</p>
+    </div>
+    <div class="store-grid">
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag zulu">IsiZulu</span>
+          📖
+        </div>
+        <div class="product-body">
+          <h3>Izinkondlo Zothando</h3>
+          <p>A collection of isiZulu love poems and praise songs celebrating relationships, faith, and community bonds. Perfect for poetry circles.</p>
+          <div class="product-meta">
+            <span class="product-price">R 220</span>
+            <span class="product-lang">IsiZulu</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('izinkondlo-zothando')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag zulu">IsiZulu</span>
+          📚
+        </div>
+        <div class="product-body">
+          <h3>Amagama Amathathu</h3>
+          <p>A beginner's guide to isiZulu proverbs and idioms. Learn the wisdom of our ancestors through everyday expressions and storytelling.</p>
+          <div class="product-meta">
+            <span class="product-price">R 180</span>
+            <span class="product-lang">IsiZulu / English</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('amagama-amathathu')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag zulu">IsiZulu</span>
+          🎭
+        </div>
+        <div class="product-body">
+          <h3>Indaba KaNandi</h3>
+          <p>A children's storybook in isiZulu about courage and kindness. Illustrated and ideal for family reading and school libraries.</p>
+          <div class="product-meta">
+            <span class="product-price">R 150</span>
+            <span class="product-lang">IsiZulu</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('indaba-kanandi')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag exercise">Exercise</span>
+          ✏️
+        </div>
+        <div class="product-body">
+          <h3>IsiZulu Workbook: Grade 4–6</h3>
+          <p>Comprehensive language exercises covering grammar, comprehension, and creative writing for primary school learners.</p>
+          <div class="product-meta">
+            <span class="product-price">R 200</span>
+            <span class="product-lang">IsiZulu</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('workbook-grade-4-6')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag exercise">Exercise</span>
+          📝
+        </div>
+        <div class="product-body">
+          <h3>IsiZulu Workbook: Grade 7–9</h3>
+          <p>Advanced isiZulu exercises including essay writing, literature analysis, and oral presentation skills for high school learners.</p>
+          <div class="product-meta">
+            <span class="product-price">R 240</span>
+            <span class="product-lang">IsiZulu</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('workbook-grade-7-9')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card animate-on-scroll">
+        <div class="product-image">
+          <span class="product-tag exercise">Exercise</span>
+          🧩
+        </div>
+        <div class="product-body">
+          <h3>IsiZulu Crossword & Puzzle Book</h3>
+          <p>Fun and educational word puzzles, crosswords, and matching games to build isiZulu vocabulary for all ages.</p>
+          <div class="product-meta">
+            <span class="product-price">R 120</span>
+            <span class="product-lang">IsiZulu</span>
+          </div>
+          <button type="button" class="btn btn-primary product-btn" onclick="addToCart('crossword-puzzle')">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK MODAL -->
+  <div class="book-modal" id="bookModal">
+    <div class="book-modal-content">
+      <button class="book-modal-close" onclick="closeBookModal()">✕</button>
+      <div class="book-modal-img">
+        <img id="modalImg" src="" alt="">
+      </div>
+      <div class="book-modal-info">
+        <h3 id="modalTitle"></h3>
+        <span class="author" id="modalAuthor"></span>
+        <span class="modal-price" id="modalPrice"></span>
+        <div class="modal-meta">
+          <span class="modal-meta-tag" id="modalLang"></span>
+          <span class="modal-meta-tag">Paperback</span>
+          <span class="modal-meta-tag">In Stock</span>
+        </div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-primary" onclick="addToCart(currentBookId)">Add to Cart</button>
+          <button class="btn btn-outline" onclick="closeBookModal()">Continue Browsing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+  <script>
+    function showStoreSection(section) {
+      document.querySelectorAll('.store-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.store-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(section + '-section').classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Full product catalog — price is numeric (Rands) so order.html can total it up.
+    // Add a new entry here whenever a product is added to the store grids above,
+    // and give its card's "Add to Cart" button onclick="addToCart('the-id')".
+    const productData = {
+      'touched-by-grace': {
+        title: 'Touched by Grace',
+        author: 'by Fikile Mnguni',
+        price: 250,
+        lang: 'English',
+        img: 'images/touched-by-grace-original.jpg',
+        desc: 'A powerful testimony of divine favour and restoration. In "Touched by Grace," Fikile Mnguni shares her personal journey of encountering God\'s grace in the most unexpected seasons of life. From moments of deep despair to seasons of overwhelming favour, this book reveals how grace transforms brokenness into beauty and ashes into crowns. Each chapter is woven with Scripture, personal stories, and practical reflections that will challenge you to see your own circumstances through the lens of God\'s unmerited favour. Perfect for personal devotion, small group study, or gifting to someone walking through a difficult season who needs to be reminded that they too are touched by grace.'
+      },
+      'healing-of-memories': {
+        title: 'Healing of Memories',
+        author: 'by Fikile Mnguni',
+        price: 120,
+        lang: 'English',
+        img: 'images/healing-of-memories-original.jpg',
+        desc: 'A journey through past pain toward wholeness. "Healing of Memories" offers biblical wisdom and practical steps for emotional healing and spiritual freedom. Fikile Mnguni draws from Scripture, personal experience, and years of ministry to guide readers through the process of surrendering painful memories to God. Learn how to identify emotional wounds, break free from destructive patterns, and invite the Holy Spirit into places of hidden hurt. This book includes guided prayers, reflection exercises, and testimonies of transformed lives. A must-read for anyone seeking inner healing, restoration, and the courage to face yesterday with the hope of tomorrow. Ideal for counsellors, pastors, and anyone on a journey toward emotional wholeness.'
+      },
+      'before-you-say-i-do': {
+        title: 'Before You Say "I Do"',
+        author: 'by Fikile Mnguni',
+        price: 380,
+        lang: 'English',
+        img: 'images/before-you-say-i-do-original.jpg',
+        desc: 'A biblical discipleship journey for called men and women preparing for marriage. "Before You Say \'I Do\'" walks engaged and courting couples through the spiritual, emotional, and practical foundations of a Christ-centred marriage. Fikile Mnguni draws on Scripture and years of discipleship experience to help readers examine their readiness, heal what needs healing, and build a covenant relationship rooted in faith rather than feeling alone. Includes reflection questions and discipleship exercises for individuals or couples working through the material together. A vital resource for anyone serious about entering marriage with wisdom, clarity, and godly counsel.'
+      },
+      'weight-of-leadership': {
+        title: 'The Weight of Leadership',
+        author: 'by Fikile Mnguni',
+        price: 350,
+        lang: 'English',
+        img: 'images/weight-of-leadership-original.jpg',
+        desc: 'A call to lead with humility and grace, grounded in Matthew 11:29-30: "Take My yoke upon you and learn from Me, for I am gentle and lowly in heart, and you will find rest for your souls. For My yoke is easy and My burden is light." "The Weight of Leadership" speaks directly to pastors, ministry leaders, and emerging leaders carrying the true cost of Kingdom leadership. Fikile Mnguni addresses the pressure, isolation, and responsibility that come with leading others, and points readers back to Christ\'s model of gentle, sustainable leadership. A companion resource for anyone feeling the weight of their calling and needing to be reminded that the burden was never meant to be carried alone.'
+      },
+      'fingerprints-of-god': {
+        title: 'The Fingerprints of God',
+        author: 'by Fikile Mnguni',
+        price: 220,
+        lang: 'English',
+        img: 'images/fingerprints-of-god-original.jpg',
+        desc: 'A tender reminder that God\'s hand is woven through every season of life. "The Fingerprints of God" invites readers to look back over their own story and recognise the quiet, faithful presence of God in moments they may have overlooked at the time. Through Scripture and personal reflection, Fikile Mnguni helps readers trace His fingerprints through both the mountaintops and the valleys, building a deeper trust in His character for whatever lies ahead. A gentle, encouraging read for anyone wanting to reconnect with the evidence of God\'s love already present in their life.'
+      },
+      'covenant-alignment': {
+        title: 'Covenant Alignment',
+        author: 'by Fikile Mnguni',
+        price: 280,
+        lang: 'English',
+        img: 'images/covenant-alignment-original.jpg',
+        desc: 'Discover the power of divine covenant and learn to align your life with God\'s eternal promises. In "Covenant Alignment," Fikile Mnguni unpacks the biblical foundation of covenant relationship — from Abraham to the New Covenant in Christ — and shows how understanding your place in God\'s covenant plan unlocks breakthrough, protection, and purpose. This book explores how misalignment with God\'s covenant principles creates frustration in relationships, finances, and destiny, while alignment brings supernatural favour and open doors. Each chapter includes covenant declarations, Scripture meditations, and practical steps to realign every area of your life. A powerful resource for believers ready to move from struggle to sovereign purpose.'
+      },
+      'breaking-the-cycle': {
+        title: 'Breaking the Cycle',
+        author: 'by Fikile Mnguni',
+        price: 250,
+        lang: 'English',
+        img: 'images/breaking-the-cycle-original.jpg',
+        desc: 'A roadmap to heal childhood wounds and break generational patterns. "Breaking the Cycle" is a compassionate yet bold guide for anyone trapped in repeating destructive behaviours, toxic relationships, or limiting beliefs inherited from family lines. Fikile Mnguni combines biblical truth with practical psychology to help readers identify root causes, forgive past hurts, and establish new patterns of health and wholeness. This book addresses trauma, abandonment, rejection, and fear with grace and authority. Includes personal assessment tools, prayer strategies for breaking generational curses, and a 21-day renewal plan. Essential reading for parents, leaders, and anyone determined that the pain stops with them and a new legacy begins.'
+      },
+      'izinkondlo-zothando': { title: 'Izinkondlo Zothando', price: 220, lang: 'IsiZulu' },
+      'amagama-amathathu': { title: 'Amagama Amathathu', price: 180, lang: 'IsiZulu / English' },
+      'indaba-kanandi': { title: 'Indaba KaNandi', price: 150, lang: 'IsiZulu' },
+      'workbook-grade-4-6': { title: 'IsiZulu Workbook: Grade 4–6', price: 200, lang: 'IsiZulu' },
+      'workbook-grade-7-9': { title: 'IsiZulu Workbook: Grade 7–9', price: 240, lang: 'IsiZulu' },
+      'crossword-puzzle': { title: 'IsiZulu Crossword & Puzzle Book', price: 120, lang: 'IsiZulu' }
+    };
+
+    let currentBookId = null;
+
+    function openBookModal(bookId) {
+      const book = productData[bookId];
+      if (!book) return;
+      currentBookId = bookId;
+      document.getElementById('modalImg').src = book.img || '';
+      document.getElementById('modalImg').alt = book.title;
+      document.getElementById('modalTitle').textContent = book.title;
+      document.getElementById('modalAuthor').textContent = book.author || '';
+      document.getElementById('modalPrice').textContent = 'R ' + book.price;
+      document.getElementById('modalLang').textContent = book.lang;
+      document.getElementById('modalDesc').textContent = book.desc || '';
+      document.getElementById('bookModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Stores the chosen item so order.html can show the real product + price.
+    // This is a single-item "buy now" flow, not a multi-item cart — adding a
+    // second product replaces the first. Good enough for a small catalogue;
+    // say the word if multi-item cart support is ever needed.
+    function addToCart(productId) {
+      const product = productData[productId];
+      if (!product) return;
+      const item = { id: productId, title: product.title, price: product.price, img: product.img || '' };
+      try {
+        localStorage.setItem('sherisesCartItem', JSON.stringify(item));
+      } catch (e) {
+        console.error('Could not save selection:', e);
+      }
+      window.location.href = 'order.html';
+    }
+
+    function closeBookModal() {
+      document.getElementById('bookModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('bookModal').addEventListener('click', function(e) {
+      if (e.target === this) closeBookModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeBookModal();
+    });
+  </script>
+</body>
+</html>

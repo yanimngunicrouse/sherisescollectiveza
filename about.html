@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+/* ============================================
+   ABOUT PAGE
+   ============================================ */
+
+.about-hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 40px 80px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 50%, var(--accent-light) 100%);
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23EB7A34' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.about-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+}
+
+.about-hero p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+.about-tagline {
+  display: block;
+  margin-top: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* Vision & Mission */
+.vm-section {
+  padding: 100px 40px;
+  background: var(--tint);
+}
+
+.vm-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.vm-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 44px 40px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.vm-card .vm-icon {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.vm-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+  color: var(--primary);
+}
+
+.vm-card p {
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* Focus Areas */
+.focus-section {
+  padding: 100px 40px;
+  background: var(--white);
+}
+
+.focus-grid {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+}
+
+.focus-card {
+  padding: 32px 28px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.focus-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px var(--shadow);
+}
+
+.focus-card .focus-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+  background: var(--tint);
+  color: var(--primary);
+}
+
+.focus-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.focus-card p {
+  font-size: 0.92rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Who We Serve */
+.serve-section {
+  padding: 90px 40px;
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+}
+
+.serve-section .section-header h2 { color: var(--white); }
+.serve-section .section-header p { color: rgba(255,255,255,0.7); }
+
+.serve-tags {
+  max-width: 900px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.serve-tag {
+  padding: 12px 24px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.9rem;
+}
+
+/* Story Section */
+.story-section {
+  padding: 100px 40px;
+  background: var(--white);
+}
+
+.story-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.story-visual {
+  position: relative;
+}
+
+.story-visual-frame {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 60px;
+}
+
+.story-visual-frame img {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+}
+
+.story-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 24px;
+}
+
+.story-text p {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.story-text blockquote {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--primary);
+  border-left: 3px solid var(--accent);
+  padding-left: 24px;
+  margin: 30px 0;
+  line-height: 1.6;
+}
+
+/* Values Section */
+.values-section {
+  padding: 100px 40px;
+  background: var(--tint);
+}
+
+.values-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.value-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 40px;
+  transition: var(--transition);
+  border: 1px solid var(--border);
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+.value-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.value-card h3 span {
+  font-size: 1.5rem;
+}
+
+.value-card p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* Impact Section */
+.impact-section {
+  padding: 100px 40px;
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+}
+
+.impact-section .section-header h2 {
+  color: var(--white);
+}
+
+.impact-section .section-header p {
+  color: var(--muted);
+}
+
+.impact-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.impact-item {
+  padding: 30px;
+}
+
+.impact-number {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.impact-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Team CTA */
+.team-cta {
+  padding: 100px 40px;
+  background: var(--white);
+  text-align: center;
+}
+
+.team-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.team-cta p {
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+@media (max-width: 1024px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+</head>
+<body class="page-transition">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="">Home</a></li>
+        <li class="dropdown">
+          <a href="about.html" class="active">About <span style="font-size:0.7em;">▼</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="founder.html">The Founder</a></li>
+          </ul>
+        </li>
+        <li><a href="programs.html" class="">Programs</a></li>
+        <li><a href="store.html" class="">Store</a></li>
+        <li><a href="events.html" class="">Events</a></li>
+        <li><a href="contact.html" class="">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <span class="hero-badge">Our Story</span>
+      <h1>About <em>SheRises</em></h1>
+      <p>A movement born from faith, built on purpose, and committed to seeing every individual rise into their God-given potential.</p>
+      <span class="about-tagline">Leadership Development • Empowerment • Capacity Building</span>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <div class="story-grid">
+      <div class="story-visual animate-on-scroll">
+        <div class="story-visual-frame"><img src="images/sherises-logo.png" alt="SheRises Collective"></div>
+      </div>
+      <div class="story-text animate-on-scroll">
+        <h2>Our <em>Story</em></h2>
+        <p>SheRises Collective was founded with a simple yet profound conviction: that every person carries within them a divine purpose waiting to be unlocked. What began as a small gathering of women seeking deeper connection with God and each other has grown into a movement touching lives across communities.</p>
+        <p>Rooted in the belief that leadership is a calling, not merely a position, we create spaces where faith and practical development intersect. Our programmes are designed to meet people exactly where they are — whether at the beginning of their journey or ready to step into new levels of influence.</p>
+        <blockquote>"We don't just teach leadership. We cultivate leaders who lead from a place of wholeness, authenticity, and spiritual depth."</blockquote>
+        <p>Based in Pinetown, KwaZulu-Natal, SheRises Collective serves communities throughout the greater Durban area and beyond, partnering with churches, schools, and organisations to bring empowerment where it's needed most.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vm-section">
+    <div class="container">
+      <div class="vm-grid">
+        <div class="vm-card animate-on-scroll">
+          <span class="vm-icon">🔭</span>
+          <h3>Our Vision</h3>
+          <p>To raise empowered, healed, and purpose-driven individuals who can lead effectively, tell their stories with confidence, and positively transform their communities.</p>
+        </div>
+        <div class="vm-card animate-on-scroll">
+          <span class="vm-icon">🎯</span>
+          <h3>Our Mission</h3>
+          <p>To develop people through structured programmes, mentorship, creative expression, and spiritual formation that strengthen leadership capacity, emotional resilience, and personal growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="focus-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>What We <em>Focus On</em></h2>
+        <p>Five interconnected areas through which we develop leaders and transform communities.</p>
+      </div>
+      <div class="focus-grid">
+        <div class="focus-card animate-on-scroll">
+          <span class="focus-icon">🎓</span>
+          <h3>Leadership & Capacity Building</h3>
+          <p>Leadership development programmes, emerging leader training, team-building, and public speaking coaching.</p>
+        </div>
+        <div class="focus-card animate-on-scroll">
+          <span class="focus-icon">✍️</span>
+          <h3>Writing & Story Development</h3>
+          <p>Writing workshops and retreats, life story and memoir development, editing support, and reflective journaling.</p>
+        </div>
+        <div class="focus-card animate-on-scroll">
+          <span class="focus-icon">🧭</span>
+          <h3>Mentorship & Coaching</h3>
+          <p>Individual and group mentorship, personal development coaching, purpose discovery, and emotional healing sessions.</p>
+        </div>
+        <div class="focus-card animate-on-scroll">
+          <span class="focus-icon">🌿</span>
+          <h3>Retreats & Transformation</h3>
+          <p>Healing and restoration retreats, spiritual growth weekends, and community reflection and wellness gatherings.</p>
+        </div>
+        <div class="focus-card animate-on-scroll">
+          <span class="focus-icon">🤲</span>
+          <h3>Community Empowerment</h3>
+          <p>Women and youth development, family and children's engagement, and community leadership initiatives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Our Core <em>Values</em></h2>
+        <p>These principles guide every decision, programme, and interaction at SheRises Collective.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card animate-on-scroll">
+          <h3><span>⚡</span> Excellence</h3>
+          <p>We do all things with care, integrity, and professionalism — good enough is never our standard.</p>
+        </div>
+        <div class="value-card animate-on-scroll">
+          <h3><span>💗</span> Compassion</h3>
+          <p>We create safe, respectful, and healing-centred spaces where every person is met with dignity.</p>
+        </div>
+        <div class="value-card animate-on-scroll">
+          <h3><span>🤝</span> Collaboration</h3>
+          <p>We build together and honour every contribution. No one is meant to walk this journey alone.</p>
+        </div>
+        <div class="value-card animate-on-scroll">
+          <h3><span>🙏</span> Spiritual Maturity & Integrity</h3>
+          <p>We lead with character and accountability, seeking God's guidance in all we do.</p>
+        </div>
+        <div class="value-card animate-on-scroll">
+          <h3><span>🌱</span> Servant Leadership</h3>
+          <p>We prioritise people and their growth, believing true leadership is a calling to serve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="serve-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Who We <em>Serve</em></h2>
+        <p>SheRises Collective serves individuals, families, women, youth, and emerging leaders who desire:</p>
+      </div>
+      <div class="serve-tags">
+        <span class="serve-tag">Healing from past experiences</span>
+        <span class="serve-tag">Clarity of purpose</span>
+        <span class="serve-tag">Leadership growth</span>
+        <span class="serve-tag">Confidence in storytelling and expression</span>
+        <span class="serve-tag">Stronger personal and spiritual identity</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Our <em>Impact</em></h2>
+        <p>Numbers that tell the story of lives transformed.</p>
+      </div>
+      <div class="impact-grid">
+        <div class="impact-item animate-on-scroll">
+          <span class="impact-number">500+</span>
+          <span class="impact-label">Lives Impacted</span>
+        </div>
+        <div class="impact-item animate-on-scroll">
+          <span class="impact-number">50+</span>
+          <span class="impact-label">Events Hosted</span>
+        </div>
+        <div class="impact-item animate-on-scroll">
+          <span class="impact-number">12</span>
+          <span class="impact-label">Communities Reached</span>
+        </div>
+        <div class="impact-item animate-on-scroll">
+          <span class="impact-number">5+</span>
+          <span class="impact-label">Years of Service</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-cta">
+    <div class="container">
+      <h2 class="animate-on-scroll">Meet the Visionary</h2>
+      <p class="animate-on-scroll">Discover the heart and story behind SheRises Collective — our founder's journey of faith, resilience, and purpose.</p>
+      <a href="founder.html" class="btn btn-primary animate-on-scroll">Meet the Founder</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>She<span>Rises</span> Collective</h3>
+        <p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="store.html">Store</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="founder.html">The Founder</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Partner With Us</a></li>
+          <li><a href="#">Volunteer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Get In Touch</h4>
+        <p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p>
+        <p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p>
+        <p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram">📷</a>
+          <a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a>
+          <a href="tel:+27622993966" title="Phone">📞</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+
+  </script>
+</body>
+</html>

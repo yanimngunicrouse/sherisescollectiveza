@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom Leadership Institute | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .kli-hero { min-height: 55vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--dark) 0%, #445059 100%); color: var(--white); position: relative; overflow: hidden; }
+    .kli-hero::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23EB7A34' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); z-index: 0; }
+    .kli-hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .kli-hero .hero-badge { color: var(--accent); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+    .kli-hero h1 { font-size: 2.8rem; margin-bottom: 10px; color: var(--white); line-height: 1.2; }
+    .kli-hero h1 em { font-style: italic; color: var(--accent); }
+    .kli-hero .kli-qualification { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 18px; }
+    .kli-hero .kli-motto { font-family: var(--font-heading); font-size: 1.2rem; font-style: italic; color: rgba(255,255,255,0.85); }
+
+    .kli-welcome-section { padding: 80px 40px; background: var(--white); }
+    .kli-welcome-text { max-width: 800px; margin: 0 auto; text-align: center; }
+    .kli-welcome-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.9; margin-bottom: 20px; }
+
+    .kli-info-section { padding: 20px 40px 80px; background: var(--white); }
+    .kli-info-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+    .kli-info-card { background: var(--tint); border-radius: 16px; padding: 26px 24px; border: 1px solid var(--border); text-align: center; }
+    .kli-info-card .kli-info-label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+    .kli-info-card .kli-info-value { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 600; color: var(--dark); }
+
+    .kli-invest-banner { max-width: 1000px; margin: 40px auto 0; padding: 32px 40px; border-radius: 16px; background: linear-gradient(135deg, #2C3438 0%, #4A555B 100%); color: var(--white); text-align: center; }
+    .kli-invest-banner .kli-invest-amount { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .kli-invest-banner p { margin: 10px 0 20px; opacity: 0.85; font-size: 0.95rem; }
+
+    .kli-includes-section { padding: 90px 40px; background: var(--tint); }
+    .kli-includes-grid { max-width: 900px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .kli-includes-grid div { background: var(--white); border-radius: 12px; padding: 16px 20px; border: 1px solid var(--border); font-size: 0.92rem; color: var(--dark); display: flex; align-items: center; gap: 10px; }
+    .kli-includes-grid div::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    .kli-audience-section { padding: 90px 40px; background: var(--white); }
+    .kli-audience-tags { max-width: 900px; margin: 40px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .kli-audience-tags span { padding: 10px 20px; border-radius: 30px; background: var(--tint); border: 1px solid var(--border); font-size: 0.88rem; color: var(--dark); }
+
+    .kli-modules-section { padding: 90px 40px; background: var(--tint); }
+    .kli-modules-list { max-width: 900px; margin: 40px auto 0; }
+    .kli-module-item { background: var(--white); border-radius: 16px; padding: 28px 30px; margin-bottom: 18px; border: 1px solid var(--border); }
+    .kli-module-item .kli-module-num { display: inline-block; padding: 4px 14px; background: var(--primary); color: var(--white); border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .kli-module-item h4 { font-size: 1.2rem; margin-bottom: 12px; color: var(--dark); }
+    .kli-module-item .kli-topics { font-size: 0.88rem; color: var(--text-light); line-height: 1.8; margin-bottom: 10px; }
+    .kli-module-item .kli-assignment { font-size: 0.85rem; color: var(--accent); font-style: italic; }
+
+    .kli-outcomes-section { padding: 90px 40px; background: var(--white); }
+    .kli-outcomes-grid { max-width: 900px; margin: 40px auto 0; columns: 2; column-gap: 30px; }
+    .kli-outcomes-grid div { break-inside: avoid; padding: 10px 0 10px 26px; position: relative; font-size: 0.92rem; color: var(--text-light); }
+    .kli-outcomes-grid div::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+    .kli-assessment-section { padding: 90px 40px; background: var(--tint); }
+    .kli-assessment-table { max-width: 700px; margin: 40px auto 0; background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+    .kli-assessment-row { display: flex; justify-content: space-between; padding: 16px 26px; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+    .kli-assessment-row:last-child { border-bottom: none; background: var(--tint); font-weight: 700; }
+    .kli-assessment-row span:last-child { color: var(--primary); font-weight: 600; }
+
+    .kli-grad-section { padding: 90px 40px; background: var(--white); }
+    .kli-grad-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .kli-grad-col h3 { font-size: 1.3rem; margin-bottom: 16px; color: var(--primary); }
+    .kli-grad-col ul { list-style: none; }
+    .kli-grad-col li { font-size: 0.92rem; color: var(--text-light); padding: 8px 0 8px 26px; position: relative; }
+    .kli-grad-col li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+    .kli-pathway-section { padding: 90px 40px; background: var(--dark); color: var(--white); }
+    .kli-pathway-section .section-header h2 { color: var(--white); }
+    .kli-pathway-section .section-header p { color: rgba(255,255,255,0.7); }
+    .kli-pathway-grid { max-width: 1000px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .kli-pathway-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 26px; }
+    .kli-pathway-card.current { border-color: var(--accent); background: rgba(235,122,52,0.12); }
+    .kli-pathway-card .kli-level-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; display: block; }
+    .kli-pathway-card h4 { color: var(--white); font-size: 1rem; margin-bottom: 6px; }
+    .kli-pathway-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+
+    .kli-cta-section { padding: 100px 40px; text-align: center; background: linear-gradient(135deg, var(--light) 0%, var(--tint) 100%); }
+    .kli-cta-section .btn { margin: 10px; }
+
+    @media (max-width: 768px) {
+      .kli-hero h1 { font-size: 2rem; }
+      .kli-grad-grid { grid-template-columns: 1fr; }
+      .kli-outcomes-grid { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html" class="active">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="kli-hero">
+    <div class="kli-hero-content">
+      <span class="hero-badge">Kingdom Leadership Institute</span>
+      <h1>Certificate in Kingdom Leadership — <em>Level 1</em></h1>
+      <p class="kli-qualification">Foundations of Kingdom Leadership</p>
+      <p class="kli-motto">"Equipping Leaders. Strengthening Churches. Transforming Communities."</p>
+    </div>
+  </section>
+
+  <section class="kli-welcome-section">
+    <div class="container">
+      <div class="kli-welcome-text animate-on-scroll">
+        <p>The Kingdom Leadership Institute exists to equip pastors, church leaders, Christian professionals and emerging leaders with biblical, strategic and practical leadership skills to lead healthy churches, develop effective leaders and transform communities for the Kingdom of God.</p>
+        <p>This six-month leadership journey combines biblical teaching, practical leadership development, mentoring and strategic ministry planning to prepare leaders for greater Kingdom impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-info-section">
+    <div class="container">
+      <div class="kli-info-grid">
+        <div class="kli-info-card animate-on-scroll"><span class="kli-info-label">Duration</span><span class="kli-info-value">6 Months</span></div>
+        <div class="kli-info-card animate-on-scroll"><span class="kli-info-label">Format</span><span class="kli-info-value">One Full-Day Session Monthly</span></div>
+        <div class="kli-info-card animate-on-scroll"><span class="kli-info-label">Qualification</span><span class="kli-info-value">Certificate in Kingdom Leadership</span></div>
+      </div>
+      <div class="kli-invest-banner animate-on-scroll">
+        <div class="kli-invest-amount">R658 / month</div>
+        <p>for six months</p>
+        <a href="contact.html" class="btn btn-primary">Enquire About Enrolment</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-includes-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Your Course Fee <em>Includes</em></h2>
+      </div>
+      <div class="kli-includes-grid">
+        <div class="animate-on-scroll">Six months of Kingdom leadership training</div>
+        <div class="animate-on-scroll">Six facilitated leadership development workshops</div>
+        <div class="animate-on-scroll">Comprehensive participant manual</div>
+        <div class="animate-on-scroll">Leadership journal</div>
+        <div class="animate-on-scroll">Practical ministry assignments</div>
+        <div class="animate-on-scroll">Monthly mentoring and facilitated discussions</div>
+        <div class="animate-on-scroll">Networking with experienced Kingdom leaders</div>
+        <div class="animate-on-scroll">Admission to the annual Kingdom Leadership Summit</div>
+        <div class="animate-on-scroll">Graduation ceremony</div>
+        <div class="animate-on-scroll">Certificate in Kingdom Leadership</div>
+        <div class="animate-on-scroll">Light refreshments during contact sessions</div>
+        <div class="animate-on-scroll">Membership of the Kingdom Leadership Institute Alumni Network</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-audience-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Who Should <em>Attend?</em></h2>
+      </div>
+      <div class="kli-audience-tags">
+        <span>Senior Pastors</span>
+        <span>Associate Pastors</span>
+        <span>Youth Pastors</span>
+        <span>Church Elders</span>
+        <span>Ministry Leaders</span>
+        <span>Church Administrators</span>
+        <span>Christian Entrepreneurs</span>
+        <span>Marketplace Leaders</span>
+        <span>Emerging Leaders</span>
+        <span>Seminary Graduates</span>
+        <span>Ministry Coordinators</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-modules-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Programme <em>Structure</em></h2>
+        <p>Six modules, one per month, each with a practical assignment.</p>
+      </div>
+      <div class="kli-modules-list">
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Module 1</span>
+          <h4>Biblical Foundations of Kingdom Leadership</h4>
+          <p class="kli-topics">Jesus the Servant King • Leadership versus position • Calling and purpose • Kingdom values • Spiritual authority • Character before competence</p>
+          <p class="kli-assignment">Assignment: Develop your personal Kingdom Leadership Philosophy.</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Module 2</span>
+          <h4>Vision, Mission and Strategic Thinking</h4>
+          <p class="kli-topics">Vision • Mission • Values • Strategic planning • Decision-making • Ministry priorities</p>
+          <p class="kli-assignment">Assignment: Develop a three-year Strategic Ministry Framework.</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Module 3</span>
+          <h4>Building Healthy Churches</h4>
+          <p class="kli-topics">Governance • Organisational culture • Policies • Accountability • Team development • Succession planning</p>
+          <p class="kli-assignment">Assignment: Conduct a Church Health Assessment.</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Module 4</span>
+          <h4>Leadership Development and Discipleship</h4>
+          <p class="kli-topics">Mentoring • Coaching • Internship programmes • Fellowship programmes • Leadership pipelines • Volunteer development</p>
+          <p class="kli-assignment">Assignment: Develop a Leadership Development Plan.</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Module 5</span>
+          <h4>Kingdom Partnerships and Community Transformation</h4>
+          <p class="kli-topics">Stakeholder engagement • Government partnerships • Schools • Business partnerships • Faith networks • Social impact</p>
+          <p class="kli-assignment">Assignment: Develop a Community Partnership Strategy.</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Module 6</span>
+          <h4>Sustainable Ministry</h4>
+          <p class="kli-topics">Stewardship • Resource mobilisation • Ministry planning • Conferences and events • Innovation • Organisational sustainability</p>
+          <p class="kli-assignment">Final Project: Develop a comprehensive Strategic Ministry Development Plan for your church or ministry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-outcomes-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Learning <em>Outcomes</em></h2>
+        <p>By the end of this programme, participants will be able to:</p>
+      </div>
+      <div class="kli-outcomes-grid">
+        <div class="animate-on-scroll">Understand the biblical foundations of Kingdom leadership</div>
+        <div class="animate-on-scroll">Lead with Christ-like character, humility and integrity</div>
+        <div class="animate-on-scroll">Steward Kingdom leadership faithfully</div>
+        <div class="animate-on-scroll">Apply biblical governance and accountability principles</div>
+        <div class="animate-on-scroll">Develop strategic ministry vision and plans</div>
+        <div class="animate-on-scroll">Build healthy leadership teams</div>
+        <div class="animate-on-scroll">Develop emerging leaders</div>
+        <div class="animate-on-scroll">Strengthen church governance</div>
+        <div class="animate-on-scroll">Build strategic partnerships</div>
+        <div class="animate-on-scroll">Engage communities effectively</div>
+        <div class="animate-on-scroll">Improve ministry sustainability</div>
+        <div class="animate-on-scroll">Lead with wisdom, excellence and integrity</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-assessment-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Assessment</h2>
+      </div>
+      <div class="kli-assessment-table animate-on-scroll">
+        <div class="kli-assessment-row"><span>Leadership Journal</span><span>15%</span></div>
+        <div class="kli-assessment-row"><span>Practical Assignments</span><span>25%</span></div>
+        <div class="kli-assessment-row"><span>Ministry Audit</span><span>15%</span></div>
+        <div class="kli-assessment-row"><span>Strategic Ministry Development Plan</span><span>30%</span></div>
+        <div class="kli-assessment-row"><span>Participation</span><span>15%</span></div>
+        <div class="kli-assessment-row"><span>Total</span><span>100%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-grad-section">
+    <div class="container">
+      <div class="kli-grad-grid">
+        <div class="kli-grad-col animate-on-scroll">
+          <h3>Graduation Requirements</h3>
+          <ul>
+            <li>Attend at least 80% of sessions</li>
+            <li>Complete all assignments</li>
+            <li>Submit a satisfactory Strategic Ministry Development Plan</li>
+            <li>Demonstrate Christian character and professional conduct throughout the programme</li>
+          </ul>
+        </div>
+        <div class="kli-grad-col animate-on-scroll">
+          <h3>Graduation</h3>
+          <p style="color:var(--text-light);font-size:0.95rem;line-height:1.8;">Successful graduates receive the Certificate in Kingdom Leadership – Level 1 during the annual <a href="kingdom-leadership-summit.html" style="color:var(--primary);font-weight:600;">Kingdom Leadership Summit</a>, alongside membership in the Kingdom Leadership Institute Alumni Network.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-pathway-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Leadership <em>Pathway</em></h2>
+        <p>A progressive leadership journey — each level builds on the last, preparing leaders for greater responsibility, deeper spiritual formation, and broader Kingdom impact.</p>
+      </div>
+      <div class="kli-pathway-grid">
+        <div class="kli-pathway-card current animate-on-scroll">
+          <span class="kli-level-num">Level 1</span>
+          <h4>Certificate in Kingdom Leadership</h4>
+          <p>Foundations of Kingdom Leadership</p>
+        </div>
+        <div class="kli-pathway-card animate-on-scroll">
+          <span class="kli-level-num">Level 2</span>
+          <h4>Advanced Certificate in Kingdom Leadership</h4>
+          <p>Developing Kingdom Leaders</p>
+        </div>
+        <div class="kli-pathway-card animate-on-scroll">
+          <span class="kli-level-num">Level 3 · Planned</span>
+          <h4>Diploma in Kingdom Leadership</h4>
+          <p>Leading Healthy Churches</p>
+        </div>
+        <div class="kli-pathway-card animate-on-scroll">
+          <span class="kli-level-num">Level 4 · By Application</span>
+          <h4>Kingdom Leadership Fellowship</h4>
+          <p>Strategic Development Fellowship Programme</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-cta-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Begin Your <em>Leadership Journey</em></h2>
+        <p>Bookings & enquiries: <a href="tel:+27622993966" style="color:var(--primary);">062 299 3966</a> or <a href="mailto:info@sherisescollectiveza.com" style="color:var(--primary);">info@sherisescollectiveza.com</a></p>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+      <a href="kingdom-leadership-summit.html" class="btn btn-outline">See the Kingdom Leadership Summit</a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

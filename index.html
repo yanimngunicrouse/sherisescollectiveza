@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .home-hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 100px; position: relative; overflow: hidden; }
+    .home-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 40%, var(--accent-light) 100%); z-index: -2; }
+    .home-hero-pattern { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23EB7A34' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); z-index: -1; }
+    .hero-content { max-width: 800px; animation: fadeInUp 1s ease-out; position: relative; z-index: 2; }
+    .hero-logo { max-width: 200px; width: 100%; height: auto; margin: 0 auto 8px; display: block; }
+    .hero-logo-tagline { display: block; text-align: center; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 28px; }
+    .hero-badge { display: inline-block; padding: 8px 24px; background: var(--white); border: 1px solid var(--border); border-radius: 30px; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 30px; }
+    .hero-content h1 { font-size: 4.5rem; font-weight: 300; margin-bottom: 24px; line-height: 1.1; }
+    .hero-content h1 em { font-style: italic; color: var(--primary); font-weight: 500; }
+    .hero-subtitle { font-size: 1.2rem; color: var(--text-light); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* Hero Slideshow */
+    .hero-slideshow { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .hero-slideshow .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
+    .hero-slideshow .hero-slide.active { opacity: 1; }
+    .hero-slideshow .hero-slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55) saturate(0.7); opacity: 0.82; }
+    .home-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(244,249,249,0.75) 0%, rgba(244,249,249,0.5) 40%, rgba(244,249,249,0.3) 100%); z-index: 1; }
+
+    /* Mission Section */
+    .mission-section { background: var(--white); padding: 120px 40px; }
+    .mission-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .mission-text h2 { font-size: 2.8rem; margin-bottom: 24px; }
+    .mission-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.9; margin-bottom: 20px; }
+    .mission-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; }
+    .stat-item { text-align: center; padding: 24px; background: var(--light); border-radius: 12px; }
+    .stat-number { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--primary); display: block; }
+    .stat-label { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Mission Slideshow */
+    .mission-slideshow { position: relative; width: 100%; aspect-ratio: 4/5; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px var(--shadow-lg); }
+    .mission-slideshow .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease-in-out; }
+    .mission-slideshow .slide.active { opacity: 1; }
+    .mission-slideshow .slide img { width: 100%; height: 100%; object-fit: cover; }
+    .mission-slideshow .slide-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(44,52,56,0.7) 0%, rgba(44,52,56,0.2) 50%, transparent 100%); }
+    .mission-slideshow .slide-quote { position: absolute; bottom: 40px; left: 40px; right: 40px; font-family: var(--font-heading); font-size: 1.3rem; font-style: italic; color: var(--white); line-height: 1.6; z-index: 2; }
+    .mission-slideshow .slide-dots { position: absolute; bottom: 20px; right: 24px; display: flex; gap: 8px; z-index: 10; }
+    .mission-slideshow .slide-dots .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: var(--transition); }
+    .mission-slideshow .slide-dots .dot.active { background: var(--accent); transform: scale(1.2); }
+
+    /* Pillars Section */
+    .pillars-section { padding: 100px 40px; background: var(--tint); }
+    .pillars-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .pillar-card { background: var(--white); border-radius: 20px; padding: 50px 35px; text-align: center; transition: var(--transition); border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .pillar-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent); transform: scaleX(0); transition: var(--transition); }
+    .pillar-card:hover::before { transform: scaleX(1); }
+    .pillar-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px var(--shadow-lg); }
+    .pillar-icon { width: 70px; height: 70px; background: var(--light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 1.8rem; transition: var(--transition); }
+    .pillar-card:hover .pillar-icon { background: var(--accent); transform: scale(1.1); }
+    .pillar-card h3 { font-size: 1.4rem; margin-bottom: 14px; }
+    .pillar-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.8; }
+
+    /* Quote Section */
+    .quote-section { padding: 120px 40px; background: var(--dark); text-align: center; position: relative; overflow: hidden; }
+    .quote-section::before { content: '"'; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); font-family: var(--font-heading); font-size: 20rem; color: var(--accent); opacity: 0.08; line-height: 1; }
+    .quote-text { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+    .quote-text blockquote { font-family: var(--font-heading); font-size: 2.2rem; font-style: italic; color: var(--white); line-height: 1.5; margin-bottom: 30px; }
+    .quote-text cite { font-family: var(--font-body); font-size: 0.9rem; font-style: normal; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+
+    /* Events Preview */
+    .events-preview-section { padding: 100px 40px; background: var(--white); }
+    .events-preview-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .event-preview-card { background: var(--light); border-radius: 16px; overflow: hidden; transition: var(--transition); border: 1px solid var(--border); }
+    .event-preview-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px var(--shadow); }
+    .event-preview-date { background: var(--primary); color: var(--white); padding: 16px 24px; text-align: center; }
+    .event-preview-date .day { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; display: block; line-height: 1; }
+    .event-preview-date .month { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+    .event-preview-body { padding: 24px; }
+    .event-preview-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .event-preview-body p { font-size: 0.85rem; color: var(--muted); }
+
+    /* CTA Banner */
+    .cta-banner { padding: 80px 40px; background: linear-gradient(135deg, var(--accent-light) 0%, var(--secondary) 100%); text-align: center; }
+    .cta-banner h2 { font-size: 2.2rem; margin-bottom: 16px; }
+    .cta-banner p { color: var(--text-light); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 1024px) { .mission-grid { grid-template-columns: 1fr; gap: 50px; } .pillars-grid, .events-preview-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .hero-content h1 { font-size: 2.8rem; } .mission-text h2 { font-size: 2.2rem; } .quote-text blockquote { font-size: 1.6rem; } .mission-slideshow { aspect-ratio: 1; } }
+  </style>
+</head>
+<body class="page-transition">
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html" class="active">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="home-hero">
+    <div class="home-hero-bg"></div>
+    <div class="home-hero-pattern"></div>
+    <!-- Hero Slideshow -->
+    <div class="hero-slideshow" id="heroSlideshow">
+      <div class="hero-slide active"><img src="images/founder-1.jpg" alt="SheRises founder speaking"></div>
+    </div>
+    <div class="hero-content">
+      <img src="images/sherises-logo.png" alt="SheRises Collective" class="hero-logo">
+      <span class="hero-logo-tagline">Leading Change, Inspiring Impact</span>
+      <span class="hero-badge">Faith • Leadership • Empowerment</span>
+      <h1>Rise Into Your <em>God-Given</em> Purpose</h1>
+      <p class="hero-subtitle">SheRises Collective is a faith-inspired leadership development and empowerment organisation helping individuals and communities grow through healing, storytelling, mentorship, and leadership training.</p>
+      <div class="hero-cta">
+        <a href="programs.html" class="btn btn-primary">Explore Programs</a>
+        <a href="about.html" class="btn btn-outline">Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission-section">
+    <div class="mission-grid">
+      <div class="mission-text animate-on-scroll">
+        <h2>Empowering Leaders, <em>Transforming Lives</em></h2>
+        <p>At SheRises Collective, we believe every person carries a unique purpose placed within them by God. Our mission is to create safe, empowering spaces where individuals can rise above limitations, develop authentic leadership, and walk boldly in their calling.</p>
+        <p>Through workshops, conferences, mentorship, and community gatherings, we equip people with the spiritual, emotional, and practical tools needed to thrive in every sphere of life.</p>
+        <div class="mission-stats">
+          <div class="stat-item"><span class="stat-number">500+</span><span class="stat-label">Lives Impacted</span></div>
+          <div class="stat-item"><span class="stat-number">50+</span><span class="stat-label">Events Hosted</span></div>
+          <div class="stat-item"><span class="stat-number">12</span><span class="stat-label">Communities</span></div>
+          <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Years of Service</span></div>
+        </div>
+      </div>
+      <!-- MISSION SLIDESHOW -->
+      <div class="mission-slideshow animate-on-scroll" id="missionSlideshow">
+        <div class="slide active">
+          <img src="images/workshop-1.jpg" alt="SheRises group empowerment session">
+          <div class="slide-overlay"></div>
+          <div class="slide-quote">"When women gather with purpose, miracles happen in the room."</div>
+        </div>
+        <div class="slide">
+          <img src="images/workshop-2.jpg" alt="SheRises hands-on learning">
+          <div class="slide-overlay"></div>
+          <div class="slide-quote">"Equipping hands that heal, minds that lead, and hearts that love."</div>
+        </div>
+        <div class="slide">
+          <img src="images/community-1.jpg" alt="SheRises community gathering">
+          <div class="slide-overlay"></div>
+          <div class="slide-quote">"Community is where healing takes root and purpose finds its voice."</div>
+        </div>
+        <div class="slide">
+          <img src="images/community-2.jpg" alt="SheRises community workshop">
+          <div class="slide-overlay"></div>
+          <div class="slide-quote">"Every gathering is a seed planted for someone's breakthrough."</div>
+        </div>
+        <div class="slide">
+          <img src="images/community-3.jpg" alt="SheRises community workshop">
+          <div class="slide-overlay"></div>
+          <div class="slide-quote">"We rise best when we rise together."</div>
+        </div>
+        <div class="slide">
+          <img src="images/community-4.jpg" alt="SheRises community workshop">
+          <div class="slide-overlay"></div>
+          <div class="slide-quote">"Faith in action looks like a room full of women showing up for each other."</div>
+        </div>
+        <div class="slide-dots">
+          <span class="dot active" onclick="goToMissionSlide(0)"></span>
+          <span class="dot" onclick="goToMissionSlide(1)"></span>
+          <span class="dot" onclick="goToMissionSlide(2)"></span>
+          <span class="dot" onclick="goToMissionSlide(3)"></span>
+          <span class="dot" onclick="goToMissionSlide(4)"></span>
+          <span class="dot" onclick="goToMissionSlide(5)"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll"><h2>Our Three <em>Pillars</em></h2><p>Every programme, event, and resource we create flows from these foundational commitments.</p></div>
+      <div class="pillars-grid">
+        <div class="pillar-card animate-on-scroll" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img src="images/spiritual-formation.jpg" alt="Spiritual Formation - Prayer and worship" style="width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(244,249,249,0.88) 0%, rgba(244,249,249,0.75) 40%, rgba(244,249,249,0.6) 100%);"></div>
+  </div>
+  <div style="position:relative;z-index:1;">
+    <div class="pillar-icon" style="background:var(--primary);box-shadow:0 4px 20px rgba(31,189,190,0.3);color:var(--white);font-size:1.6rem;">🙏</div>
+    <h3>Spiritual Formation</h3>
+    <p>Grounding every endeavour in prayer, worship, and the Word. We believe true leadership begins on our knees and is sustained by an intimate relationship with God.</p>
+  </div>
+</div>
+        <div class="pillar-card animate-on-scroll" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img src="images/workshop-2.jpg" alt="Hands-on capacity building workshop" style="width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(244,249,249,0.88) 0%, rgba(244,249,249,0.75) 40%, rgba(244,249,249,0.6) 100%);"></div>
+  </div>
+  <div style="position:relative;z-index:1;">
+    <div class="pillar-icon" style="background:var(--accent);box-shadow:0 4px 20px rgba(235,122,52,0.3);color:var(--white);font-size:1.6rem;">📖</div>
+    <h3>Capacity Building</h3>
+    <p>Equipping individuals with practical skills, knowledge, and tools for personal and professional growth. From writing workshops to leadership intensives.</p>
+  </div>
+</div>
+        <div class="pillar-card animate-on-scroll" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img src="images/conference-bg.jpg" alt="Community gathering" style="width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(244,249,249,0.88) 0%, rgba(244,249,249,0.75) 40%, rgba(244,249,249,0.6) 100%);"></div>
+  </div>
+  <div style="position:relative;z-index:1;">
+    <div class="pillar-icon" style="background:var(--dark);box-shadow:0 4px 20px rgba(44,52,56,0.3);color:var(--white);font-size:1.6rem;">🤝</div>
+    <h3>Community & Connection</h3>
+    <p>Creating spaces of belonging where people are seen, heard, and valued. We rise higher when we rise together.</p>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="quote-text animate-on-scroll">
+      <blockquote>When she rises, she does not rise alone. She pulls others up with her, and together they become a force that shifts generations.</blockquote>
+      <cite>— SheRises Collective</cite>
+    </div>
+  </section>
+
+  <section class="events-preview-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll"><h2>Upcoming <em>Events</em></h2><p>Join us at these transformative gatherings happening soon.</p></div>
+      <div class="events-preview-grid">
+        <div class="event-preview-card animate-on-scroll"><div class="event-preview-date"><span class="day">24–25</span><span class="month">July 2026</span></div><div class="event-preview-body"><h3>His Church Conference</h3><p>His Church, Cowies Hill, Pinetown</p></div></div>
+        <div class="event-preview-card animate-on-scroll"><div class="event-preview-date"><span class="day">6–10</span><span class="month">August 2026</span></div><div class="event-preview-body"><h3>Durban International Book Fair</h3><p>Apart-Hotel Umhlanga</p></div></div>
+        <div class="event-preview-card animate-on-scroll"><div class="event-preview-date"><span class="day">19–22</span><span class="month">August 2026</span></div><div class="event-preview-body"><h3>Flourish Expo</h3><p>City Hill Church, Hillcrest</p></div></div>
+      </div>
+      <div style="text-align:center;margin-top:50px;"><a href="events.html" class="btn btn-outline">View Full Calendar</a></div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container">
+      <h2 class="animate-on-scroll">Ready to Rise?</h2>
+      <p class="animate-on-scroll">Take the first step toward discovering your purpose and unlocking your potential.</p>
+      <a href="contact.html" class="btn btn-primary animate-on-scroll">Connect With Us</a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Mission Section Slideshow — auto-rotates every 3 seconds
+    (function() {
+      const slides = document.querySelectorAll('#missionSlideshow .slide');
+      const dots = document.querySelectorAll('#missionSlideshow .dot');
+      let currentSlide = 0;
+      let interval;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % slides.length);
+      }
+
+      window.goToMissionSlide = function(index) {
+        showSlide(index);
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 3000);
+      };
+
+      interval = setInterval(nextSlide, 3000);
+    })();
+  </script>
+</body>
+</html>

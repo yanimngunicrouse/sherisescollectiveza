@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altars of Hope | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .aoh-hero { min-height: 55vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); position: relative; overflow: hidden; }
+    .aoh-hero::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231FBDBE' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); z-index: 0; }
+    .aoh-hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .aoh-hero .hero-badge { color: var(--primary); }
+    .aoh-hero h1 { font-size: 3.2rem; margin-bottom: 10px; }
+    .aoh-hero h1 em { font-style: italic; color: var(--primary); }
+    .aoh-hero .aoh-subtitle { font-size: 1.2rem; color: var(--text-light); font-family: var(--font-heading); font-style: italic; margin-bottom: 14px; }
+    .aoh-hero .aoh-series { font-size: 0.9rem; color: var(--text-light); }
+    .aoh-hero .aoh-duration { display: inline-block; margin-top: 20px; padding: 8px 22px; background: var(--white); border: 1px solid var(--border); border-radius: 30px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--dark); }
+
+    .aoh-scripture-section { padding: 100px 40px; background: var(--dark); color: var(--white); text-align: center; position: relative; overflow: hidden; }
+    .aoh-scripture-section::before { content: '"'; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); font-family: var(--font-heading); font-size: 16rem; color: var(--primary); opacity: 0.12; line-height: 1; }
+    .aoh-scripture-content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .aoh-scripture-content blockquote { font-family: var(--font-heading); font-size: 2rem; font-style: italic; line-height: 1.5; margin-bottom: 20px; }
+    .aoh-scripture-content cite { display: block; font-style: normal; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; color: var(--primary-light); }
+
+    .aoh-thought-section { padding: 90px 40px; background: var(--white); text-align: center; }
+    .aoh-thought-box { max-width: 700px; margin: 0 auto; }
+    .aoh-thought-box span.aoh-label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+    .aoh-thought-box p { font-family: var(--font-heading); font-size: 1.6rem; font-style: italic; color: var(--dark); line-height: 1.6; }
+
+    .aoh-purpose-section { padding: 90px 40px; background: var(--tint); }
+    .aoh-purpose-grid { max-width: 900px; margin: 0 auto; }
+    .aoh-purpose-grid p { font-size: 1.05rem; color: var(--text-light); line-height: 1.9; margin-bottom: 22px; }
+    .aoh-purpose-grid p:last-child { margin-bottom: 0; }
+
+    .aoh-elements-section { padding: 90px 40px; background: var(--white); }
+    .aoh-elements-grid { max-width: 900px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; text-align: center; }
+    .aoh-element { padding: 24px 16px; }
+    .aoh-element .aoh-element-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .aoh-element h4 { font-size: 0.95rem; color: var(--dark); }
+
+    .aoh-cta-section { padding: 100px 40px; text-align: center; background: linear-gradient(135deg, var(--light) 0%, var(--tint) 100%); }
+    .aoh-cta-section .btn { margin-top: 20px; }
+
+    @media (max-width: 768px) {
+      .aoh-hero h1 { font-size: 2.2rem; }
+      .aoh-scripture-content blockquote { font-size: 1.4rem; }
+      .aoh-thought-box p { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html" class="active">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="aoh-hero">
+    <div class="aoh-hero-content">
+      <span class="hero-badge">Writing Workshop</span>
+      <h1>Altars of <em>Hope</em></h1>
+      <p class="aoh-subtitle">Come Write Your Story</p>
+      <p class="aoh-series">Part of <em>Turning Point: A Journey of Grace, Healing & Renewal</em></p>
+      <span class="aoh-duration">Duration: 3 Hours</span>
+    </div>
+  </section>
+
+  <section class="aoh-scripture-section">
+    <div class="aoh-scripture-content animate-on-scroll">
+      <blockquote>"Arise, shine, for your light has come, and the glory of the Lord rises upon you."</blockquote>
+      <cite>Isaiah 60:1</cite>
+    </div>
+  </section>
+
+  <section class="aoh-thought-section">
+    <div class="aoh-thought-box animate-on-scroll">
+      <span class="aoh-label">Theme Thought</span>
+      <p>"Along the way, I discovered that God's grace was already at work in my story."</p>
+    </div>
+  </section>
+
+  <section class="aoh-purpose-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Our <em>Purpose</em></h2>
+      </div>
+      <div class="aoh-purpose-grid animate-on-scroll">
+        <p>Altars of Hope is a creative storytelling and reflection experience designed to help participants pause, remember, and celebrate God's faithfulness throughout their journey.</p>
+        <p>Through guided reflection, storytelling, creativity, prayer, and connection, participants will create a personal Altar of Hope — a visual reminder of God's grace in their lives and the hope that lies ahead.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="aoh-elements-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>What the Workshop <em>Includes</em></h2>
+      </div>
+      <div class="aoh-elements-grid">
+        <div class="aoh-element animate-on-scroll"><div class="aoh-element-icon">🪞</div><h4>Guided Reflection</h4></div>
+        <div class="aoh-element animate-on-scroll"><div class="aoh-element-icon">📖</div><h4>Storytelling</h4></div>
+        <div class="aoh-element animate-on-scroll"><div class="aoh-element-icon">🎨</div><h4>Creativity</h4></div>
+        <div class="aoh-element animate-on-scroll"><div class="aoh-element-icon">🙏</div><h4>Prayer</h4></div>
+        <div class="aoh-element animate-on-scroll"><div class="aoh-element-icon">🤝</div><h4>Connection</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aoh-cta-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Come Write <em>Your Story</em></h2>
+        <p>Join us for this 3-hour experience and leave with a personal Altar of Hope of your own.</p>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

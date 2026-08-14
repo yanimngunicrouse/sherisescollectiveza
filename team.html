@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet the Team | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .team-hero { min-height: 55vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); position: relative; }
+    .team-hero::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23EB7A34' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); z-index: 0; }
+    .team-hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .team-hero h1 { font-size: 3.5rem; margin-bottom: 16px; }
+    .team-hero h1 em { font-style: italic; color: var(--primary); }
+    .team-hero p { font-size: 1.1rem; color: var(--text-light); }
+
+    .team-section { padding: 100px 40px; background: var(--white); }
+    .team-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .team-card { background: var(--light); border-radius: 24px; overflow: hidden; transition: var(--transition); border: 1px solid var(--border); text-align: center; }
+    .team-card:hover { transform: translateY(-10px); box-shadow: 0 24px 60px var(--shadow-lg); }
+    .team-photo { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg, var(--accent-light) 0%, var(--secondary) 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+    .team-card:hover .team-photo img { transform: scale(1.05); }
+    .team-photo-placeholder { font-size: 4rem; opacity: 0.3; }
+    .team-body { padding: 36px 28px 40px; }
+    .team-name { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 600; color: var(--primary); margin-bottom: 6px; }
+    .team-role { display: inline-block; padding: 6px 18px; background: var(--accent); color: var(--white); border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
+    .team-bio { font-size: 0.9rem; color: var(--text-light); line-height: 1.8; }
+    .team-social { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+    .team-social a { width: 40px; height: 40px; border-radius: 50%; background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: var(--transition); border: 1px solid var(--border); }
+    .team-social a:hover { background: var(--primary); color: var(--white); transform: translateY(-3px); }
+
+    .team-values-section { padding: 100px 40px; background: var(--tint); }
+    .team-values-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; }
+    .team-value { padding: 40px 24px; background: var(--white); border-radius: 20px; border: 1px solid var(--border); transition: var(--transition); }
+    .team-value:hover { transform: translateY(-6px); box-shadow: 0 12px 40px var(--shadow); }
+    .team-value-icon { width: 60px; height: 60px; background: var(--accent-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; }
+    .team-value h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .team-value p { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; }
+
+    @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .team-values-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr; } .team-hero h1 { font-size: 2.5rem; } }
+  </style>
+</head>
+<body class="page-transition">
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html" class="active">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="team-hero">
+    <div class="team-hero-content">
+      <span class="hero-badge">The People Behind the Mission</span>
+      <h1>Meet the <em>Team</em></h1>
+      <p>Dedicated leaders, dreamers, and doers committed to seeing others rise into their God-given purpose.</p>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Our <em>Leadership</em></h2>
+        <p>Each member brings unique gifts, passion, and commitment to the SheRises vision.</p>
+      </div>
+      <div class="team-grid">
+
+        <!-- TEAM MEMBER - WESLEIGH COUCH -->
+        <div class="team-card animate-on-scroll">
+          <div class="team-photo">
+            <img src="images/team-wesleigh.jpg" alt="Wesleigh Couch" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'team-photo-placeholder\'>👤</span>';">
+          </div>
+          <div class="team-body">
+            <h3 class="team-name">Wesleigh Couch</h3>
+            <span class="team-role">Social Media & Marketing Intern</span>
+            <p class="team-bio">I am a creative driven by a passion for photography, visual storytelling, and purposeful design. I strive to create compelling work that captures authentic moments, conveys meaningful messages, and inspires audiences through both art and faith. At SheRises Collective, I serve as Social Media & Marketing Intern, planning and scheduling content, designing and coordinating promotional materials, and writing the newsletters, blogs, and media releases that carry our story. Through strategic communication and impactful creative content, I help advance the organisation's mission, strengthen connections with its community, and expand its reach and influence.</p>
+            <div class="team-social">
+              <a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:18px;height:18px;"></a>
+              <a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:18px;height:18px;"></a>
+              <a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a>
+            </div>
+          </div>
+        </div>
+        <!-- TEAM MEMBER 4 - YANI MNGUNI -->
+        <div class="team-card animate-on-scroll">
+          <div class="team-photo">
+            <img src="images/team-yani.jpg" alt="Yani Mnguni" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'team-photo-placeholder\'>👤</span>';">
+          </div>
+          <div class="team-body">
+            <h3 class="team-name">Yani Mnguni</h3>
+            <span class="team-role">Head of Operations & Community Coordinator</span>
+            <p class="team-bio">Yani keeps SheRises Collective running behind the scenes and connected out front. He trains new interns, oversees their work, and reviews their progress reports, while also attending and helping facilitate the organisation's functions and events. He manages sales, the company website, and the internal database, ensuring the systems that support the team stay dependable and up to date. His steady hand across operations and community makes him a vital bridge between SheRises and the people it serves.</p>
+            <div class="team-social">
+              <a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:18px;height:18px;"></a>
+              <a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:18px;height:18px;"></a>
+              <a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-values-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>How We <em>Work</em></h2>
+        <p>The principles that guide our team culture and collaboration.</p>
+      </div>
+      <div class="team-values-grid">
+        <div class="team-value animate-on-scroll">
+          <div class="team-value-icon">🤝</div>
+          <h3>Collaboration</h3>
+          <p>We believe the best ideas emerge when diverse voices come together in unity and mutual respect.</p>
+        </div>
+        <div class="team-value animate-on-scroll">
+          <div class="team-value-icon">🙏</div>
+          <h3>Faith-First</h3>
+          <p>Every decision is bathed in prayer. We seek God's direction before we move in any direction.</p>
+        </div>
+        <div class="team-value animate-on-scroll">
+          <div class="team-value-icon">🌱</div>
+          <h3>Growth</h3>
+          <p>We are lifelong learners — committed to growing ourselves so we can better grow others.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 80px 40px; background: var(--white); text-align: center;">
+    <div class="container">
+      <h2 class="animate-on-scroll" style="font-size: 2rem; margin-bottom: 16px;">Want to Join the Team?</h2>
+      <p class="animate-on-scroll" style="color: var(--text-light); max-width: 500px; margin: 0 auto 28px;">We're always looking for passionate individuals who want to make a difference. Reach out and tell us how you'd like to contribute.</p>
+      <a href="contact.html" class="btn btn-primary animate-on-scroll">Get in Touch</a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="contact.html">Contact</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
