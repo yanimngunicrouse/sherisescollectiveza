@@ -90,18 +90,14 @@
       <div class="kls-slideshow animate-on-scroll" id="kingdomSlideshow">
         <div class="kls-slide active"><img src="images/speaker-fikile-mnguni.jpg" alt="Apostle Fikile Mnguni"></div>
         <div class="kls-slide"><img src="images/speaker-felicite-lucas.jpg" alt="Pastor Felicite Lucas"></div>
-        <div class="kls-slide"><img src="images/speaker-shiya-mhlongo.jpg" alt="Prophet Shiya Mhlongo"></div>
         <div class="kls-slide"><img src="images/speaker-gn-mbuli.jpg" alt="Apostle G. N. Mbuli"></div>
         <div class="kls-slide"><img src="images/speaker-simphiwe-majola.jpg" alt="Pastor Simphiwe Majola"></div>
-        <div class="kls-slide"><img src="images/speaker-makhanya.jpg" alt="Mrs. Makhanya"></div>
         <div class="kls-slide-caption"><span id="kingdomSlideCaption">Apostle Fikile Mnguni</span></div>
         <div class="kls-slideshow-dots">
           <span class="dot active" onclick="goToKingdomSlide(0)"></span>
           <span class="dot" onclick="goToKingdomSlide(1)"></span>
           <span class="dot" onclick="goToKingdomSlide(2)"></span>
           <span class="dot" onclick="goToKingdomSlide(3)"></span>
-          <span class="dot" onclick="goToKingdomSlide(4)"></span>
-          <span class="dot" onclick="goToKingdomSlide(5)"></span>
         </div>
       </div>
 
@@ -117,11 +113,6 @@
           <p>Founder of Fruitful Women Ministries. Holds a Postgraduate Diploma in Business Management, combining theological conviction with decades of ministry and senior corporate leadership experience.</p>
         </div>
         <div class="kls-speaker-card animate-on-scroll">
-          <h4>Prophet Shiya Mhlongo</h4>
-          <span class="kls-speaker-title">Leader & Mentor</span>
-          <p>Founder of Africa Invocation, an organisation dedicated to forging unity in the body of Christ throughout the African continent.</p>
-        </div>
-        <div class="kls-speaker-card animate-on-scroll">
           <h4>Apostle G. N. Mbuli</h4>
           <span class="kls-speaker-title">Jesus Worship Centre, Ulundi</span>
           <p>Committed his life to following Christ in 1984. Since 1996, has planted churches and raised ministers through apostolic and prophetic-teaching grace.</p>
@@ -130,11 +121,6 @@
           <h4>Pastor Simphiwe Majola</h4>
           <span class="kls-speaker-title">Founder & Senior Pastor, Light of Life</span>
           <p>Over 20 years of ministry experience as a youth leader, pastor, mentor, and teacher, complemented by more than a decade of corporate management experience.</p>
-        </div>
-        <div class="kls-speaker-card animate-on-scroll">
-          <h4>Mrs. Makhanya</h4>
-          <span class="kls-speaker-title">Pastor's Wife, Farmer & Soul-Winner</span>
-          <p>Holds a Diploma in Agricultural Science and previously served as an agronomist before establishing her own farming business in uMbumbulu. Faithfully serves alongside her husband in ministry.</p>
         </div>
       </div>
     </div>
@@ -166,7 +152,7 @@
       const slides = document.querySelectorAll('#kingdomSlideshow .kls-slide');
       const dots = document.querySelectorAll('#kingdomSlideshow .dot');
       const caption = document.getElementById('kingdomSlideCaption');
-      const names = ['Apostle Fikile Mnguni', 'Pastor Felicite Lucas', 'Prophet Shiya Mhlongo', 'Apostle G. N. Mbuli', 'Pastor Simphiwe Majola', 'Mrs. Makhanya'];
+      const names = ['Apostle Fikile Mnguni', 'Pastor Felicite Lucas', 'Apostle G. N. Mbuli', 'Pastor Simphiwe Majola'];
       let currentSlide = 0;
       let interval;
 

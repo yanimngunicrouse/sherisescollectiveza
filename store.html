@@ -72,7 +72,20 @@
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 1024px) { .store-grid { grid-template-columns: repeat(2, 1fr); } .book-modal-content { grid-template-columns: 1fr; gap: 30px; padding: 32px; } .book-modal-img { min-height: 200px; } }
-    @media (max-width: 768px) { .store-grid { grid-template-columns: 1fr; } .store-hero h1 { font-size: 2.5rem; } .store-tabs { flex-wrap: wrap; gap: 10px; } .store-tab { padding: 10px 20px; font-size: 0.75rem; } .book-modal-content { padding: 24px; } .modal-actions { flex-direction: column; } }
+    @media (max-width: 768px) {
+      .store-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .product-image { padding: 10px; }
+      .product-tag { font-size: 0.55rem; padding: 4px 8px; top: 8px; left: 8px; }
+      .product-body { padding: 14px; }
+      .product-body h3 { font-size: 0.85rem; margin-bottom: 4px; line-height: 1.25; }
+      .product-body p { font-size: 0.68rem; line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      .product-meta { margin-bottom: 10px; }
+      .product-price { font-size: 1.05rem; }
+      .product-lang { font-size: 0.58rem; }
+      .view-btn { font-size: 0.58rem; padding: 5px 10px; bottom: 6px; right: 6px; }
+      .product-btn { padding: 9px 12px; font-size: 0.68rem; }
+      .store-hero h1 { font-size: 2.5rem; } .store-tabs { flex-wrap: wrap; gap: 10px; } .store-tab { padding: 10px 20px; font-size: 0.75rem; } .book-modal-content { padding: 24px; } .modal-actions { flex-direction: column; }
+    }
   </style>
 </head>
 <body class="page-transition">
@@ -143,7 +156,7 @@
           <h3>Breaking the Cycle</h3>
           <p>A roadmap to heal childhood wounds and break generational patterns. Step into freedom and rewrite your family's story.</p>
           <div class="product-meta">
-            <span class="product-price">R 250</span>
+            <span class="product-price">R 110</span>
             <span class="product-lang">English</span>
           </div>
           <button type="button" class="btn btn-primary product-btn" onclick="addToCart('breaking-the-cycle')">Add to Cart</button>
@@ -407,7 +420,7 @@
       'breaking-the-cycle': {
         title: 'Breaking the Cycle',
         author: 'by Fikile Mnguni',
-        price: 250,
+        price: 110,
         lang: 'English',
         img: 'images/breaking-the-cycle-original.jpg',
         desc: 'A roadmap to heal childhood wounds and break generational patterns. "Breaking the Cycle" is a compassionate yet bold guide for anyone trapped in repeating destructive behaviours, toxic relationships, or limiting beliefs inherited from family lines. Fikile Mnguni combines biblical truth with practical psychology to help readers identify root causes, forgive past hurts, and establish new patterns of health and wholeness. This book addresses trauma, abandonment, rejection, and fear with grace and authority. Includes personal assessment tools, prayer strategies for breaking generational curses, and a 21-day renewal plan. Essential reading for parents, leaders, and anyone determined that the pain stops with them and a new legacy begins.'
