@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom Leadership Summit | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .kls-hero { min-height: 55vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--dark) 0%, #445059 100%); color: var(--white); position: relative; overflow: hidden; }
+    .kls-hero::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23EB7A34' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); z-index: 0; }
+    .kls-hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .kls-hero .hero-badge { color: var(--accent); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+    .kls-hero h1 { font-size: 3.2rem; margin-bottom: 10px; color: var(--white); }
+    .kls-hero h1 em { font-style: italic; color: var(--accent); }
+    .kls-hero .kls-sub { font-size: 1.15rem; color: rgba(255,255,255,0.75); font-family: var(--font-heading); font-style: italic; margin-bottom: 24px; }
+
+    .kls-info-section { padding: 70px 40px; background: var(--white); }
+    .kls-info-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .kls-info-card { background: var(--tint); border-radius: 16px; padding: 26px 24px; border: 1px solid var(--border); text-align: center; }
+    .kls-info-card .kls-info-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .kls-info-card .kls-info-label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary); margin-bottom: 6px; }
+    .kls-info-card .kls-info-value { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; color: var(--dark); }
+
+    .kls-register-banner { max-width: 1000px; margin: 40px auto 0; padding: 28px 36px; border-radius: 16px; background: linear-gradient(135deg, #C15F1F 0%, var(--accent) 100%); color: var(--white); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
+    .kls-register-banner p { margin: 0; font-size: 0.95rem; max-width: 500px; }
+    .kls-register-banner strong { display: block; font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 4px; }
+
+    .kls-speakers-section { padding: 100px 40px; background: var(--tint); }
+    .kls-slideshow { max-width: 420px; margin: 40px auto 0; position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px var(--shadow-lg); aspect-ratio: 2/3; background: var(--dark); }
+    .kls-slideshow .kls-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; }
+    .kls-slideshow .kls-slide.active { opacity: 1; }
+    .kls-slideshow .kls-slide img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .kls-slideshow-dots { position: absolute; bottom: 18px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 5; }
+    .kls-slideshow-dots .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: var(--transition); }
+    .kls-slideshow-dots .dot.active { background: var(--accent); transform: scale(1.3); }
+    .kls-slide-caption { position: absolute; bottom: 40px; left: 0; right: 0; text-align: center; z-index: 4; }
+    .kls-slide-caption span { display: inline-block; padding: 6px 18px; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); border-radius: 20px; color: var(--white); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; }
+
+    .kls-speakers-list { max-width: 1100px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .kls-speaker-card { background: var(--white); border-radius: 16px; padding: 26px; border: 1px solid var(--border); }
+    .kls-speaker-card h4 { font-size: 1.05rem; margin-bottom: 4px; color: var(--dark); }
+    .kls-speaker-card .kls-speaker-title { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .kls-speaker-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+
+    .kls-scripture-section { padding: 90px 40px; background: var(--dark); color: var(--white); text-align: center; }
+    .kls-scripture-section blockquote { font-family: var(--font-heading); font-size: 1.5rem; font-style: italic; max-width: 700px; margin: 0 auto 14px; }
+    .kls-scripture-section cite { font-style: normal; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
+
+    .kls-cta-section { padding: 100px 40px; text-align: center; background: linear-gradient(135deg, var(--light) 0%, var(--tint) 100%); }
+    .kls-cta-section .btn { margin-top: 24px; }
+
+    @media (max-width: 768px) {
+      .kls-hero h1 { font-size: 2.2rem; }
+      .kls-slideshow { max-width: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html" class="active">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="kls-hero">
+    <div class="kls-hero-content">
+      <span class="hero-badge">Kingdom Leadership Summit</span>
+      <h1>The Weight of <em>Leadership</em></h1>
+      <p class="kls-sub">Called to lead, anointed to serve.</p>
+    </div>
+  </section>
+
+  <section class="kls-info-section">
+    <div class="container">
+      <div class="kls-info-grid">
+        <div class="kls-info-card animate-on-scroll"><div class="kls-info-icon">📅</div><span class="kls-info-label">Date</span><span class="kls-info-value">10 October 2026</span></div>
+        <div class="kls-info-card animate-on-scroll"><div class="kls-info-icon">🕐</div><span class="kls-info-label">Time</span><span class="kls-info-value">10:00 AM – 2:00 PM</span></div>
+        <div class="kls-info-card animate-on-scroll"><div class="kls-info-icon">📍</div><span class="kls-info-label">Venue</span><span class="kls-info-value">44 KE Masinga Rd, North Beach, Durban, 4056</span></div>
+      </div>
+      <div class="kls-register-banner animate-on-scroll">
+        <div><strong>Register Now</strong><p>Receive a signed copy of "The Weight of Leadership" when you register.</p></div>
+        <a href="https://www.quicket.co.za/events/387439-kingdom-leadership-summit/#/" target="_blank" rel="noopener" class="btn" style="background:var(--white);color:var(--accent);">Book Your Ticket</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="kls-speakers-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Meet Our <em>Speakers</em></h2>
+        <p>Called to lead, anointed to serve.</p>
+      </div>
+
+      <div class="kls-slideshow animate-on-scroll" id="kingdomSlideshow">
+        <div class="kls-slide active"><img src="images/speaker-fikile-mnguni.jpg" alt="Apostle Fikile Mnguni"></div>
+        <div class="kls-slide"><img src="images/speaker-felicite-lucas.jpg" alt="Pastor Felicite Lucas"></div>
+        <div class="kls-slide"><img src="images/speaker-gn-mbuli.jpg" alt="Apostle G. N. Mbuli"></div>
+        <div class="kls-slide"><img src="images/speaker-simphiwe-majola.jpg" alt="Pastor Simphiwe Majola"></div>
+        <div class="kls-slide-caption"><span id="kingdomSlideCaption">Apostle Fikile Mnguni</span></div>
+        <div class="kls-slideshow-dots">
+          <span class="dot active" onclick="goToKingdomSlide(0)"></span>
+          <span class="dot" onclick="goToKingdomSlide(1)"></span>
+          <span class="dot" onclick="goToKingdomSlide(2)"></span>
+          <span class="dot" onclick="goToKingdomSlide(3)"></span>
+        </div>
+      </div>
+
+      <div class="kls-speakers-list">
+        <div class="kls-speaker-card animate-on-scroll">
+          <h4>Apostle Fikile Mnguni</h4>
+          <span class="kls-speaker-title">Host & Keynote Speaker</span>
+          <p>Founder and Executive Director of SheRises Collective (Pty) Ltd, serving in leadership at House of Harvest Family Church. Author of 15 books on Christian living, Kingdom leadership, and literacy.</p>
+        </div>
+        <div class="kls-speaker-card animate-on-scroll">
+          <h4>Pastor Felicite Lucas</h4>
+          <span class="kls-speaker-title">Ordained Minister</span>
+          <p>Founder of Fruitful Women Ministries. Holds a Postgraduate Diploma in Business Management, combining theological conviction with decades of ministry and senior corporate leadership experience.</p>
+        </div>
+        <div class="kls-speaker-card animate-on-scroll">
+          <h4>Apostle G. N. Mbuli</h4>
+          <span class="kls-speaker-title">Jesus Worship Centre, Ulundi</span>
+          <p>Committed his life to following Christ in 1984. Since 1996, has planted churches and raised ministers through apostolic and prophetic-teaching grace.</p>
+        </div>
+        <div class="kls-speaker-card animate-on-scroll">
+          <h4>Pastor Simphiwe Majola</h4>
+          <span class="kls-speaker-title">Founder & Senior Pastor, Light of Life</span>
+          <p>Over 20 years of ministry experience as a youth leader, pastor, mentor, and teacher, complemented by more than a decade of corporate management experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kls-scripture-section">
+    <div class="animate-on-scroll">
+      <blockquote>"We are therefore Christ's ambassadors, as though God were making his appeal through us."</blockquote>
+      <cite>2 Corinthians 5:20</cite>
+    </div>
+  </section>
+
+  <section class="kls-cta-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Leading With <em>Purpose</em></h2>
+        <p>Building His Kingdom. Join us for a morning of impartation, wisdom, and Kingdom leadership.</p>
+      </div>
+      <a href="https://www.quicket.co.za/events/387439-kingdom-leadership-summit/#/" target="_blank" rel="noopener" class="btn btn-primary">Book Your Ticket</a>
+      <a href="kingdom-leadership-institute.html" class="btn btn-outline">Explore the Kingdom Leadership Institute</a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('#kingdomSlideshow .kls-slide');
+      const dots = document.querySelectorAll('#kingdomSlideshow .dot');
+      const caption = document.getElementById('kingdomSlideCaption');
+      const names = ['Apostle Fikile Mnguni', 'Pastor Felicite Lucas', 'Apostle G. N. Mbuli', 'Pastor Simphiwe Majola'];
+      let currentSlide = 0;
+      let interval;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        caption.textContent = names[index];
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        showSlide((currentSlide + 1) % slides.length);
+      }
+
+      window.goToKingdomSlide = function(index) {
+        showSlide(index);
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 3500);
+      };
+
+      interval = setInterval(nextSlide, 3500);
+    })();
+  </script>
+</body>
+</html>

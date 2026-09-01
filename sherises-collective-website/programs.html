@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .programs-hero { min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); position: relative; }
+    .programs-hero::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23EB7A34' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); z-index: 0; }
+    .programs-hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .programs-hero h1 { font-size: 3.5rem; margin-bottom: 16px; }
+    .programs-hero h1 em { font-style: italic; color: var(--primary); }
+    .programs-hero p { font-size: 1.1rem; color: var(--text-light); }
+    .programs-section { padding: 100px 40px; background: var(--white); }
+    .programs-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .program-card { background: var(--light); border-radius: 20px; padding: 50px 40px; transition: var(--transition); border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .program-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent); transform: scaleX(0); transition: var(--transition); }
+    .program-card:hover::before { transform: scaleX(1); }
+    .program-card:hover { transform: translateY(-8px); box-shadow: 0 16px 50px var(--shadow-lg); }
+    .program-icon { width: 70px; height: 70px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 1.8rem; box-shadow: 0 4px 15px var(--shadow); }
+    .program-card h3 { font-size: 1.5rem; margin-bottom: 14px; }
+    .program-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; margin-bottom: 20px; }
+    .program-features { list-style: none; margin-bottom: 28px; }
+    .program-features li { font-size: 0.9rem; color: var(--text-light); padding: 6px 0; padding-left: 24px; position: relative; }
+    .program-features li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .program-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+    .program-cta:hover { gap: 14px; color: var(--accent); }
+    .workshops-section { padding: 100px 40px; background: var(--tint); }
+    .workshop-list { max-width: 1000px; margin: 0 auto; }
+    .workshop-item { background: var(--white); border-radius: 16px; padding: 40px; margin-bottom: 24px; display: grid; grid-template-columns: 80px 1fr auto; gap: 30px; align-items: center; transition: var(--transition); border: 1px solid var(--border); }
+    .workshop-item:hover { transform: translateX(8px); box-shadow: 0 8px 30px var(--shadow); }
+    .workshop-number { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; color: var(--accent); opacity: 0.4; line-height: 1; }
+    .workshop-info h3 { font-size: 1.3rem; margin-bottom: 8px; }
+    .workshop-info p { font-size: 0.9rem; color: var(--text-light); }
+
+    /* === WORKSHOP SLIDESHOW (original 2 images) === */
+    .workshop-slideshow { position: relative; width: 100%; max-width: 600px; height: 380px; border-radius: 20px; overflow: hidden; margin: 0 auto 50px; box-shadow: 0 20px 60px rgba(44,52,56,0.15); }
+    .workshop-slideshow .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; }
+    .workshop-slideshow .slide.active { opacity: 1; }
+    .workshop-slideshow .slide img { width: 100%; height: 100%; object-fit: cover; }
+    .workshop-slideshow .slide-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px 24px 24px; background: linear-gradient(to top, rgba(44,52,56,0.85) 0%, rgba(44,52,56,0.4) 60%, transparent 100%); color: var(--white); }
+    .workshop-slideshow .slide-caption h4 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 4px; color: var(--white); }
+    .workshop-slideshow .slide-caption p { font-size: 0.85rem; opacity: 0.85; margin: 0; }
+    .slideshow-dots { position: absolute; bottom: 16px; right: 20px; display: flex; gap: 8px; z-index: 10; }
+    .slideshow-dots .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.3s ease; }
+    .slideshow-dots .dot.active { background: var(--accent); transform: scale(1.2); }
+
+    /* === COMMUNITY WORKSHOPS SECTION === */
+    .community-section { padding: 100px 40px; background: linear-gradient(135deg, var(--dark) 0%, #445059 100%); color: var(--white); }
+    .community-section .section-header h2 { color: var(--white); }
+    .community-section .section-header h2::after { background: var(--accent); }
+    .community-section .section-header p { color: var(--muted); }
+    .community-slideshow { position: relative; width: 100%; max-width: 900px; height: 500px; border-radius: 20px; overflow: hidden; margin: 0 auto 40px; box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+    .community-slideshow .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; }
+    .community-slideshow .slide.active { opacity: 1; }
+    .community-slideshow .slide img { width: 100%; height: 100%; object-fit: cover; }
+    .community-slideshow .slide-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 30px 30px; background: linear-gradient(to top, rgba(44,52,56,0.9) 0%, rgba(44,52,56,0.5) 60%, transparent 100%); color: var(--white); }
+    .community-slideshow .slide-caption h4 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 6px; color: var(--white); }
+    .community-slideshow .slide-caption p { font-size: 0.9rem; opacity: 0.85; margin: 0; }
+    .community-dots { position: absolute; bottom: 20px; right: 24px; display: flex; gap: 10px; z-index: 10; }
+    .community-dots .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
+    .community-dots .dot.active { background: var(--accent); border-color: var(--white); transform: scale(1.2); }
+    .community-dots .dot:hover { background: rgba(255,255,255,0.7); }
+    .community-stats { max-width: 800px; margin: 50px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+    .community-stat { padding: 24px; background: rgba(255,255,255,0.05); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
+    .community-stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--accent); display: block; }
+    .community-stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    @media (max-width: 768px) {
+      .programs-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .program-card { padding: 18px 14px; border-radius: 14px; }
+      .program-icon { width: 42px; height: 42px; font-size: 1.1rem; margin-bottom: 12px; }
+      .program-card h3 { font-size: 0.95rem; margin-bottom: 8px; line-height: 1.25; }
+      .program-card p { font-size: 0.72rem; line-height: 1.45; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      .program-features { display: none; }
+      .program-cta { font-size: 0.68rem; }
+      .workshop-item { grid-template-columns: 1fr; text-align: center; } .workshop-slideshow { height: 280px; max-width: 100%; } .community-slideshow { height: 320px; } .community-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) { .community-stats { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="page-transition">
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html" class="active">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="programs-hero"><div class="programs-hero-content"><span class="hero-badge">What We Offer</span><h1>Our <em>Programs</em></h1><p>Transformational experiences designed to equip, empower, and elevate every area of your life.</p></div></section>
+
+  <section class="programs-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Core <em>Programmes</em></h2>
+        <p>Each programme is carefully crafted to meet you where you are and take you where you're meant to be.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card animate-on-scroll" style="background-image:linear-gradient(135deg, rgba(20,153,154,0.85) 0%, rgba(31,189,190,0.85) 100%), url('images/program-bg-pilgrimage.jpg');background-size:cover;background-position:center;border-color:rgba(255,255,255,0.1);">
+  <div class="program-icon" style="background:rgba(255,255,255,0.15);color:#D9F5F4;box-shadow:0 4px 15px rgba(0,0,0,0.2);">💫</div>
+  <h3 style="color:#D9F5F4;">Hearts on Pilgrimage</h3>
+  <p style="color:rgba(217,245,244,0.85);">A spiritual journey of self-discovery and divine alignment. Walk through seasons of transformation with guided reflection, prayer, and community support.</p>
+  <ul class="program-features" style="color:rgba(217,245,244,0.8);">
+    <li style="color:rgba(217,245,244,0.85);">12-week guided journey</li>
+    <li style="color:rgba(217,245,244,0.85);">Weekly group sessions</li>
+    <li style="color:rgba(217,245,244,0.85);">Personal reflection workbook</li>
+    <li style="color:rgba(217,245,244,0.85);">Mentorship pairing</li>
+  </ul>
+  <a href="contact.html" class="program-cta" style="color:#D9F5F4;">Enquire Now →</a>
+</div>
+        <div class="program-card animate-on-scroll" style="background-image:linear-gradient(135deg, rgba(44,52,56,0.85) 0%, rgba(74,85,91,0.85) 100%), url('images/program-bg-altars.jpg');background-size:cover;background-position:center;border-color:rgba(255,255,255,0.1);">
+  <div class="program-icon" style="background:rgba(255,255,255,0.15);color:#DDE6E8;box-shadow:0 4px 15px rgba(0,0,0,0.2);">🕯️</div>
+  <h3 style="color:#DDE6E8;">Altars of Hope</h3>
+  <p style="color:rgba(221,230,232,0.85);">"Come Write Your Story" — a 3-hour creative storytelling and reflection workshop, part of Turning Point: A Journey of Grace, Healing & Renewal. Create a personal Altar of Hope — a visual reminder of God's grace and the hope ahead.</p>
+  <ul class="program-features" style="color:rgba(221,230,232,0.8);">
+    <li style="color:rgba(221,230,232,0.85);">Guided reflection & storytelling</li>
+    <li style="color:rgba(221,230,232,0.85);">Creativity, prayer & connection</li>
+    <li style="color:rgba(221,230,232,0.85);">Duration: 3 hours</li>
+    <li style="color:rgba(221,230,232,0.85);">Part of the Turning Point series</li>
+  </ul>
+  <a href="altars-of-hope.html" class="program-cta" style="color:#DDE6E8;">Learn More →</a>
+</div>
+        <div class="program-card animate-on-scroll" style="background:linear-gradient(135deg, #2C3438 0%, #3E6B6C 100%);border-color:rgba(255,255,255,0.1);">
+  <div class="program-icon" style="background:rgba(255,255,255,0.15);color:#F7D9B0;box-shadow:0 4px 15px rgba(0,0,0,0.2);">👑</div>
+  <h3 style="color:#F7D9B0;">Kingdom Leadership</h3>
+  <p style="color:rgba(247,217,176,0.85);">Certificate in Kingdom Leadership — Level 1. A 6-month journey equipping pastors, church leaders, and emerging leaders with biblical, strategic, and practical leadership skills.</p>
+  <ul class="program-features" style="color:rgba(247,217,176,0.8);">
+    <li style="color:rgba(247,217,176,0.85);">6 modules over 6 months</li>
+    <li style="color:rgba(247,217,176,0.85);">One full-day session monthly</li>
+    <li style="color:rgba(247,217,176,0.85);">R658 per month</li>
+    <li style="color:rgba(247,217,176,0.85);">Includes Kingdom Leadership Summit admission</li>
+  </ul>
+  <a href="kingdom-leadership-institute.html" class="program-cta" style="color:#F7D9B0;">Learn More →</a>
+</div>
+        <div class="program-card animate-on-scroll" style="background-image:linear-gradient(135deg, rgba(27,122,61,0.85) 0%, rgba(47,168,90,0.85) 100%), url('images/program-bg-wealth.jpg');background-size:cover;background-position:center;border-color:rgba(255,255,255,0.1);">
+  <div class="program-icon" style="background:rgba(255,255,255,0.15);color:#DFF5E6;box-shadow:0 4px 15px rgba(0,0,0,0.2);">💰</div>
+  <h3 style="color:#DFF5E6;">Building Wealth with Wisdom</h3>
+  <p style="color:rgba(223,245,230,0.85);">Financial stewardship and wealth creation for church leaders — a 6-month programme with KL Consultants, blending biblical principles with practical financial and leadership knowledge.</p>
+  <ul class="program-features" style="color:rgba(223,245,230,0.8);">
+    <li style="color:rgba(223,245,230,0.85);">10 modules over 6 months</li>
+    <li style="color:rgba(223,245,230,0.85);">In-person & hybrid delivery</li>
+    <li style="color:rgba(223,245,230,0.85);">R550 per module</li>
+    <li style="color:rgba(223,245,230,0.85);">Starts 16 January 2027</li>
+  </ul>
+  <a href="wealth-with-wisdom.html" class="program-cta" style="color:#DFF5E6;">Learn More →</a>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY WORKSHOPS SECTION -->
+  <section class="community-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Community <em>Workshops</em></h2>
+        <p>Equipping communities through skills training, leadership development, and capacity building. Every certificate represents a life transformed.</p>
+      </div>
+      <div class="community-slideshow animate-on-scroll" id="communitySlideshow">
+        <div class="slide active">
+          <img src="images/community-1.jpg" alt="Community workshop graduates with certificates">
+          <div class="slide-caption">
+            <h4>Graduation Day — Skills for Life</h4>
+            <p>Women receive their certificates after completing a leadership and capacity-building workshop.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="images/community-2.jpg" alt="Youth empowerment workshop celebration">
+          <div class="slide-caption">
+            <h4>Youth Rising Together</h4>
+            <p>Young leaders celebrate their completion of the GBV awareness and empowerment programme.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="images/community-3.jpg" alt="Community leaders with certificates">
+          <div class="slide-caption">
+            <h4>Leaders Equipped, Communities Transformed</h4>
+            <p>Graduates of the advanced leadership certification programme ready to serve their communities.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="images/community-4.jpg" alt="Large community workshop group">
+          <div class="slide-caption">
+            <h4>When Women Gather, Nations Shift</h4>
+            <p>A community-wide capacity-building workshop reaching dozens of women across Pinetown and surrounding areas.</p>
+          </div>
+        </div>
+        <div class="community-dots">
+          <span class="dot active" onclick="goToCommunitySlide(0)"></span>
+          <span class="dot" onclick="goToCommunitySlide(1)"></span>
+          <span class="dot" onclick="goToCommunitySlide(2)"></span>
+          <span class="dot" onclick="goToCommunitySlide(3)"></span>
+        </div>
+      </div>
+      <div class="community-stats">
+        <div class="community-stat animate-on-scroll">
+          <span class="community-stat-number">200+</span>
+          <span class="community-stat-label">Certificates Awarded</span>
+        </div>
+        <div class="community-stat animate-on-scroll">
+          <span class="community-stat-number">15+</span>
+          <span class="community-stat-label">Workshops Hosted</span>
+        </div>
+        <div class="community-stat animate-on-scroll">
+          <span class="community-stat-number">8</span>
+          <span class="community-stat-label">Communities Served</span>
+        </div>
+        <div class="community-stat animate-on-scroll">
+          <span class="community-stat-number">95%</span>
+          <span class="community-stat-label">Completion Rate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="workshops-section"><div class="container"><div class="section-header animate-on-scroll"><h2>Specialised <em>Workshops</em></h2><p>Focused sessions for specific skills and seasons.</p></div><div class="workshop-list"><div class="workshop-item animate-on-scroll"><div class="workshop-number">01</div><div class="workshop-info"><h3>Financial Literacy for Leaders</h3><p><em>Building Wealth with Wisdom</em> — a 6-month, 10-module programme with KL Consultants. Learn to steward resources wisely and build generational wealth from a place of faith and wisdom. Starts 16 Jan 2027 • R550 per module.</p></div><a href="wealth-with-wisdom.html" class="btn btn-outline">Learn More</a></div><div class="workshop-item animate-on-scroll"><div class="workshop-number">02</div><div class="workshop-info"><h3>Time Management & Productivity</h3><p>Master the art of balancing family, business, and ministry without burning out.</p></div><a href="contact.html" class="btn btn-outline">Book</a></div><div class="workshop-item animate-on-scroll"><div class="workshop-number">03</div><div class="workshop-info"><h3>Public Speaking & Communication</h3><p>Develop confidence and clarity to share your message with any audience, anywhere.</p></div><a href="contact.html" class="btn btn-outline">Book</a></div><div class="workshop-item animate-on-scroll"><div class="workshop-number">04</div><div class="workshop-info"><h3>Emotional Intelligence in Leadership</h3><p>Lead with empathy, navigate conflict with grace, and build teams that thrive.</p></div><a href="contact.html" class="btn btn-outline">Book</a></div></div></div></section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Community Workshops Slideshow — auto-rotates every 3 seconds
+    (function() {
+      const slides = document.querySelectorAll('#communitySlideshow .slide');
+      const dots = document.querySelectorAll('#communitySlideshow .dot');
+      let currentSlide = 0;
+      let interval;
+      function showSlide(index) {
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        currentSlide = index;
+      }
+      function nextSlide() { showSlide((currentSlide + 1) % slides.length); }
+      window.goToCommunitySlide = function(index) {
+        showSlide(index);
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 3000);
+      };
+      interval = setInterval(nextSlide, 3000);
+    })();
+  </script>
+</body>
+</html>

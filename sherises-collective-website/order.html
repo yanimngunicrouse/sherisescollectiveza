@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .order-hero { min-height: 40vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 40px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); }
+    .order-hero h1 { font-size: 3rem; margin-bottom: 12px; }
+    .order-section { padding: 60px 40px 100px; background: var(--white); }
+    .order-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .order-form { background: var(--light); border-radius: 20px; padding: 40px; border: 1px solid var(--border); }
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text); margin-bottom: 8px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; border: 2px solid var(--border); border-radius: 12px; font-family: var(--font-body); font-size: 0.95rem; color: var(--text); background: var(--white); transition: var(--transition); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.2); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .order-summary { background: var(--dark); border-radius: 20px; padding: 40px; color: var(--white); height: fit-content; position: sticky; top: 100px; }
+    .order-summary h3 { color: var(--white); font-size: 1.4rem; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .summary-item { display: flex; justify-content: space-between; padding: 12px 0; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .summary-item.total { font-weight: 700; font-size: 1.1rem; padding-top: 20px; margin-top: 10px; border-top: 2px solid var(--accent); border-bottom: none; color: var(--accent); }
+    .payment-methods { margin: 24px 0; }
+    .payment-method { display: flex; align-items: center; gap: 12px; padding: 14px; background: rgba(255,255,255,0.05); border-radius: 10px; margin-bottom: 10px; cursor: pointer; transition: var(--transition); border: 2px solid transparent; }
+    .payment-method:hover { background: rgba(255,255,255,0.1); }
+    .payment-method.selected { border-color: var(--accent); background: rgba(201, 169, 110, 0.1); }
+    .payment-method input { width: 18px; height: 18px; accent-color: var(--accent); }
+    .secure-badge { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); margin-top: 20px; justify-content: center; }
+    @media (max-width: 768px) { .order-grid { grid-template-columns: 1fr; gap: 40px; } .order-summary { position: static; } .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="page-transition">
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="order-hero"><div class="order-hero-content"><span class="hero-badge">Secure Checkout</span><h1>Complete Your <em>Order</em></h1></div></section>
+
+  <section class="order-section"><div class="order-grid"><div class="order-form animate-on-scroll"><h2 style="font-size:1.8rem;margin-bottom:28px;">Shipping Details</h2><form id="orderForm" name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="order"><p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p><input type="hidden" name="Product" id="productField"><input type="hidden" name="Amount" id="amountField"><div class="form-row"><div class="form-group"><label>First Name</label><input type="text" name="First Name" placeholder="Your first name" required></div><div class="form-group"><label>Last Name</label><input type="text" name="Last Name" placeholder="Your last name" required></div></div><div class="form-group"><label>Email Address</label><input type="email" name="Email" placeholder="you@example.com" required></div><div class="form-group"><label>Phone Number</label><input type="tel" name="Phone" placeholder="062 299 3966" required></div><div class="form-group"><label>Street Address</label><input type="text" name="Address" placeholder="50 Manors Road" required></div><div class="form-row"><div class="form-group"><label>City</label><input type="text" name="City" placeholder="Pinetown" required></div><div class="form-group"><label>Postal Code</label><input type="text" name="Postal Code" placeholder="3610" required></div></div><div class="form-group"><label>Province</label><select name="Province" required><option value="">Select province</option><option>KwaZulu-Natal</option><option>Gauteng</option><option>Western Cape</option><option>Eastern Cape</option><option>Free State</option><option>Limpopo</option><option>Mpumalanga</option><option>North West</option><option>Northern Cape</option></select></div><div class="form-group"><label>Order Notes (Optional)</label><textarea name="Notes" rows="3" placeholder="Any special instructions..."></textarea></div><div class="payment-methods"><label style="display:block;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;">Payment Method</label><div class="payment-method selected" onclick="selectPayment(this)"><input type="radio" name="Payment Method" value="Credit/Debit Card" checked><span>💳 Credit / Debit Card</span></div><div class="payment-method" onclick="selectPayment(this)"><input type="radio" name="Payment Method" value="EFT"><span>🏦 Bank Transfer (EFT)</span></div><div class="payment-method" onclick="selectPayment(this)"><input type="radio" name="Payment Method" value="SnapScan"><span>📱 SnapScan</span></div></div><div id="bankDetails" style="display:none;padding:16px;background:var(--white);border-radius:12px;border:1px solid var(--border);font-size:0.85rem;color:var(--text-light);margin-bottom:20px;">Bank transfer details will be emailed to you once your order is received.</div><button type="submit" class="btn btn-primary" style="width:100%;">Place Order</button><p id="orderStatus" style="margin-top:16px;text-align:center;font-size:0.9rem;"></p></form></div>
+
+  <div class="order-summary animate-on-scroll"><h3>Order Summary</h3><div class="summary-item"><span id="summaryTitle">No item selected</span><span id="summaryPrice">R 0</span></div><div class="summary-item"><span>Shipping</span><span id="summaryShipping">R 80</span></div><div class="summary-item total"><span>Total</span><span id="summaryTotal">R 0</span></div><p id="emptyCartNote" style="display:none;font-size:0.85rem;color:var(--muted);margin-top:-8px;margin-bottom:16px;">Head back to the <a href="store.html" style="color:var(--accent);">Store</a> to choose a product first.</p><div class="secure-badge">🔒 SSL Secure Checkout — Your data is protected</div></div></div></section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+  <script src="script.js"></script>
+  <script>
+    const SHIPPING_FEE = 80; // flat-rate placeholder — adjust once real shipping costs are known
+
+    function selectPayment(el) {
+      document.querySelectorAll('.payment-method').forEach(p => {
+        p.classList.remove('selected');
+        p.querySelector('input').checked = false;
+      });
+      el.classList.add('selected');
+      el.querySelector('input').checked = true;
+
+      const bankDetails = document.getElementById('bankDetails');
+      bankDetails.style.display = (el.querySelector('input').value === 'EFT') ? 'block' : 'none';
+    }
+
+    // Pull in whatever the visitor picked on the Store page and fill in the summary.
+    (function loadCartItem() {
+      let item = null;
+      try {
+        item = JSON.parse(localStorage.getItem('sherisesCartItem'));
+      } catch (e) {
+        item = null;
+      }
+
+      const submitBtn = document.querySelector('#orderForm button[type="submit"]');
+
+      if (!item || !item.title) {
+        document.getElementById('emptyCartNote').style.display = 'block';
+        document.getElementById('summaryShipping').textContent = 'R 0';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Select a product first';
+          submitBtn.style.opacity = '0.6';
+          submitBtn.style.cursor = 'not-allowed';
+        }
+        return;
+      }
+
+      const total = item.price + SHIPPING_FEE;
+      document.getElementById('summaryTitle').textContent = item.title;
+      document.getElementById('summaryPrice').textContent = 'R ' + item.price;
+      document.getElementById('summaryShipping').textContent = 'R ' + SHIPPING_FEE;
+      document.getElementById('summaryTotal').textContent = 'R ' + total;
+      document.getElementById('productField').value = item.title + ' (R ' + item.price + ')';
+      document.getElementById('amountField').value = 'R ' + total;
+    })();
+
+    // Submit via Netlify Forms (auto-detected at deploy time because the form
+    // above has data-netlify="true"). Submissions appear in Site configuration
+    // > Forms in the Netlify dashboard, and you can turn on an email
+    // notification there so every order also lands in your inbox.
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const statusEl = document.getElementById('orderStatus');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalLabel = submitBtn.textContent;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Placing order...';
+      statusEl.textContent = '';
+      statusEl.style.color = '';
+
+      const data = new URLSearchParams(new FormData(form)).toString();
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data
+      }).then(response => {
+        if (response.ok) {
+          statusEl.textContent = 'Thank you! Your order has been received — we\'ll be in touch to confirm payment.';
+          statusEl.style.color = 'var(--primary)';
+          form.reset();
+          try { localStorage.removeItem('sherisesCartItem'); } catch (e) {}
+          submitBtn.textContent = 'Order Placed ✓';
+        } else {
+          statusEl.textContent = 'Something went wrong sending your order — please try again or contact us directly.';
+          statusEl.style.color = '#B00020';
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+      }).catch(() => {
+        statusEl.textContent = 'Something went wrong sending your order — please try again or contact us directly.';
+        statusEl.style.color = '#B00020';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
+    });
+  </script>
+</body>
+</html>

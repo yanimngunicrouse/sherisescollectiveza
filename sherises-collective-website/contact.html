@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .contact-hero { min-height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); position: relative; }
+    .contact-hero h1 { font-size: 3.5rem; margin-bottom: 16px; }
+    .contact-hero p { font-size: 1.1rem; color: var(--text-light); }
+    .contact-section { padding: 80px 40px 100px; background: var(--white); }
+    .contact-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-info { padding: 40px; }
+    .contact-info h2 { font-size: 2rem; margin-bottom: 20px; }
+    .contact-info p { color: var(--text-light); margin-bottom: 30px; line-height: 1.8; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; padding: 20px; background: var(--light); border-radius: 12px; transition: var(--transition); }
+    .contact-detail:hover { transform: translateX(6px); box-shadow: 0 4px 15px var(--shadow); }
+    .contact-detail-icon { width: 48px; height: 48px; background: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .contact-detail-text h4 { font-size: 1rem; margin-bottom: 4px; }
+    .contact-detail-text p, .contact-detail-text a { font-size: 0.9rem; color: var(--text-light); }
+    .contact-detail-text a:hover { color: var(--primary); }
+    .contact-form-wrapper { background: var(--light); border-radius: 20px; padding: 48px; border: 1px solid var(--border); }
+    .contact-form-wrapper h2 { font-size: 1.8rem; margin-bottom: 28px; }
+    .form-group { margin-bottom: 22px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text); margin-bottom: 8px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px 18px; border: 2px solid var(--border); border-radius: 12px; font-family: var(--font-body); font-size: 0.95rem; color: var(--text); background: var(--white); transition: var(--transition); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.2); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .social-connect { margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border); }
+    .social-connect h4 { font-size: 1rem; margin-bottom: 16px; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a { width: 48px; height: 48px; border-radius: 12px; background: var(--primary); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.2rem; transition: var(--transition); }
+    .social-links a:hover { background: var(--accent); color: var(--dark); transform: translateY(-4px); }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } .contact-hero h1 { font-size: 2.5rem; } }
+
+    .map-section { padding: 0 40px 100px; background: var(--white); }
+    .map-wrapper { max-width: 1200px; margin: 0 auto; }
+    .map-wrapper .section-header { margin-bottom: 30px; }
+    .map-frame-container { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 10px 30px var(--shadow); }
+    .map-frame-container iframe { width: 100%; height: 420px; border: 0; display: block; }
+    .map-cta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding: 24px 28px; background: var(--tint); }
+    .map-cta p { margin: 0; color: var(--text-light); font-size: 0.95rem; }
+    .map-cta p strong { color: var(--dark); }
+  </style>
+</head>
+<body class="page-transition">
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html" class="active">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="contact-hero"><div class="contact-hero-content"><span class="hero-badge">Let's Connect</span><h1>Get In <em>Touch</em></h1><p>We'd love to hear from you. Whether you have a question, want to partner, or are ready to rise — reach out.</p></div></section>
+
+  <section class="contact-section"><div class="contact-grid"><div class="contact-info animate-on-scroll"><h2>Contact <em>Information</em></h2><p>Reach out through any of the channels below. We typically respond within 24–48 hours.</p><div class="contact-detail"><div class="contact-detail-icon">📍</div><div class="contact-detail-text"><h4>Address</h4><p>50 Manors Road, Manors New Germany<br>Pinetown, KwaZulu-Natal, 3610<br>South Africa</p></div></div><div class="contact-detail"><div class="contact-detail-icon">📧</div><div class="contact-detail-text"><h4>Email</h4><a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></div></div><div class="contact-detail"><div class="contact-detail-icon">📱</div><div class="contact-detail-text"><h4>Phone / WhatsApp</h4><a href="tel:+27622993966">062 299 3966</a></div></div><div class="contact-detail"><div class="contact-detail-icon">🕒</div><div class="contact-detail-text"><h4>Office Hours</h4><p>Monday – Friday<br>08:00 – 15:30</p></div></div><div class="contact-detail"><div class="contact-detail-icon">📷</div><div class="contact-detail-text"><h4>Instagram</h4><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank">@sherises._collective</a></div></div><div class="social-connect"><h4>Follow Our Journey</h4><div class="social-links"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:24px;height:24px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:24px;height:24px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:24px;height:24px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div>
+
+  <div class="contact-form-wrapper animate-on-scroll"><h2>Send a <em>Message</em></h2><form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="contact"><p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p><div class="form-group"><label>Your Name</label><input type="text" name="Name" placeholder="Full name" required></div><div class="form-group"><label>Email Address</label><input type="email" name="Email" placeholder="you@example.com" required></div><div class="form-group"><label>Subject</label><select name="Subject" required><option value="">Select a topic</option><option>General Enquiry</option><option>Programme Registration</option><option>Speaking Engagement</option><option>Partnership</option><option>Store Order</option><option>Volunteer</option></select></div><div class="form-group"><label>Message</label><textarea name="Message" placeholder="Tell us how we can help you rise..." required></textarea></div><button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button><p id="contactStatus" style="margin-top:16px;text-align:center;font-size:0.9rem;"></p></form></div></div></section>
+
+  <section class="map-section">
+    <div class="map-wrapper">
+      <div class="section-header animate-on-scroll">
+        <h2>Where to <em>Find Us</em></h2>
+        <p>50 Manors Road, Manors New Germany, Pinetown, KwaZulu-Natal, 3610, South Africa</p>
+      </div>
+      <div class="map-frame-container animate-on-scroll">
+        <iframe src="https://maps.google.com/maps?q=50%20Manors%20Road%2C%20Manors%20New%20Germany%2C%20Pinetown%2C%203610&output=embed" loading="lazy" allowfullscreen title="SheRises Collective location"></iframe>
+        <div class="map-cta">
+          <p><strong>50 Manors Road, Manors New Germany, Pinetown, 3610</strong></p>
+          <a href="https://www.google.com/maps/search/?api=1&query=50+Manors+Road%2C+Manors+New+Germany%2C+Pinetown%2C+3610" target="_blank" rel="noopener" class="btn btn-primary">Open in Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+  <script src="script.js"></script>
+  <script>
+    // Submit via Netlify Forms (auto-detected at deploy time because the form
+    // above has data-netlify="true"). Submissions appear in Site configuration
+    // > Forms in the Netlify dashboard, and you can turn on an email
+    // notification there so every submission also lands in your inbox.
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const statusEl = document.getElementById('contactStatus');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalLabel = submitBtn.textContent;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      statusEl.textContent = '';
+      statusEl.style.color = '';
+
+      const data = new URLSearchParams(new FormData(form)).toString();
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data
+      }).then(response => {
+        if (response.ok) {
+          statusEl.textContent = 'Thank you — your message has been sent. We\'ll respond within 24–48 hours.';
+          statusEl.style.color = 'var(--primary)';
+          form.reset();
+          submitBtn.textContent = 'Message Sent ✓';
+        } else {
+          statusEl.textContent = 'Something went wrong sending your message — please try again or email us directly.';
+          statusEl.style.color = '#B00020';
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+      }).catch(() => {
+        statusEl.textContent = 'Something went wrong sending your message — please try again or email us directly.';
+        statusEl.style.color = '#B00020';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
+    });
+  </script>
+</body>
+</html>
