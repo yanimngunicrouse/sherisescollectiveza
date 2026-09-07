@@ -42,6 +42,21 @@
     .kls-speaker-card .kls-speaker-title { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
     .kls-speaker-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
 
+    .kls-director-section { padding: 100px 40px; background: var(--white); }
+    .kls-director-grid { max-width: 1000px; margin: 40px auto 0; display: grid; grid-template-columns: 280px 1fr; gap: 50px; align-items: center; }
+    .kls-director-photo { border-radius: 20px; overflow: hidden; background: var(--tint); box-shadow: 0 20px 40px var(--shadow-lg); }
+    .kls-director-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .kls-director-info h3 { font-size: 1.7rem; margin-bottom: 4px; color: var(--dark); }
+    .kls-director-info .kls-director-title { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .kls-director-list { list-style: none; margin-bottom: 24px; }
+    .kls-director-list li { display: flex; gap: 14px; padding: 10px 0; font-size: 0.92rem; color: var(--text-light); line-height: 1.6; }
+    .kls-director-list li .kls-dir-icon { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--primary); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; }
+    .kls-director-quote { font-family: var(--font-heading); font-style: italic; font-size: 1.15rem; color: var(--primary); border-left: 3px solid var(--accent); padding-left: 18px; margin-bottom: 16px; }
+    .kls-director-quote cite { display: block; font-style: normal; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-light); margin-top: 6px; }
+    .kls-director-contact { font-size: 0.9rem; color: var(--text-light); }
+    .kls-director-contact a { color: var(--primary); font-weight: 600; }
+    @media (max-width: 768px) { .kls-director-grid { grid-template-columns: 1fr; } .kls-director-photo { max-width: 280px; margin: 0 auto; } }
+
     .kls-scripture-section { padding: 90px 40px; background: var(--dark); color: var(--white); text-align: center; }
     .kls-scripture-section blockquote { font-family: var(--font-heading); font-size: 1.5rem; font-style: italic; max-width: 700px; margin: 0 auto 14px; }
     .kls-scripture-section cite { font-style: normal; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
@@ -121,6 +136,32 @@
           <h4>Pastor Simphiwe Majola</h4>
           <span class="kls-speaker-title">Founder & Senior Pastor, Light of Life</span>
           <p>Over 20 years of ministry experience as a youth leader, pastor, mentor, and teacher, complemented by more than a decade of corporate management experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kls-director-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Meet Our Programme <em>Director</em></h2>
+      </div>
+      <div class="kls-director-grid">
+        <div class="kls-director-photo animate-on-scroll">
+          <img src="images/speaker-jabu-nxasana.png" alt="Pastor Jabu Nxasana">
+        </div>
+        <div class="kls-director-info animate-on-scroll">
+          <h3>Pastor Jabu Nxasana</h3>
+          <span class="kls-director-title">Programme Director</span>
+          <ul class="kls-director-list">
+            <li><span class="kls-dir-icon">✝️</span><span>Ordained Pastor and Assistant Pastor at Grace Life Ministries, Wentworth.</span></li>
+            <li><span class="kls-dir-icon">🎓</span><span>Graduate of DCCBI holding a Diploma and a Certificate in Systemic Theology.</span></li>
+            <li><span class="kls-dir-icon">👤</span><span>Founder of Emanate Jesus Ministries, empowering women in becoming who God has called them to be.</span></li>
+            <li><span class="kls-dir-icon">💼</span><span>Entrepreneur in the printing and creative business.</span></li>
+            <li><span class="kls-dir-icon">❤️</span><span>Wife and mother of 2 daughters. Diploma in Theology.</span></li>
+          </ul>
+          <div class="kls-director-quote">"Arise, shine, for your light has come."<cite>Isaiah 60:1</cite></div>
+          <p class="kls-director-contact">Let's Connect: <a href="tel:+27847996130">+27 84 799 6130</a></p>
         </div>
       </div>
     </div>
