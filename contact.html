@@ -90,7 +90,7 @@
 
       const data = new URLSearchParams(new FormData(form)).toString();
 
-      fetch('/', {
+      fetch(window.location.pathname, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: data
@@ -101,13 +101,13 @@
           form.reset();
           submitBtn.textContent = 'Message Sent ✓';
         } else {
-          statusEl.textContent = 'Something went wrong sending your message — please try again or email us directly.';
+          statusEl.textContent = 'Something went wrong sending your message (error ' + response.status + ') — please try again or email us directly.';
           statusEl.style.color = '#B00020';
           submitBtn.disabled = false;
           submitBtn.textContent = originalLabel;
         }
-      }).catch(() => {
-        statusEl.textContent = 'Something went wrong sending your message — please try again or email us directly.';
+      }).catch(err => {
+        statusEl.textContent = 'Something went wrong sending your message (' + err.message + ') — please try again or email us directly.';
         statusEl.style.color = '#B00020';
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;

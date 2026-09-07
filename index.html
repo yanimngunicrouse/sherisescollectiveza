@@ -26,6 +26,14 @@
     .home-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(244,249,249,0.75) 0%, rgba(244,249,249,0.5) 40%, rgba(244,249,249,0.3) 100%); z-index: 1; }
 
     /* Mission Section */
+    .event-spotlight-banner { background: linear-gradient(135deg, #1B2A4A 0%, #2C3438 100%); padding: 26px 40px; display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; text-align: center; }
+    .event-spotlight-banner a.spotlight-link { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; text-decoration: none; }
+    .event-spotlight-banner .spotlight-tag { display: inline-block; padding: 5px 14px; background: var(--accent); color: var(--white); border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+    .event-spotlight-banner .spotlight-text { color: var(--white); font-size: 0.95rem; }
+    .event-spotlight-banner .spotlight-text strong { color: var(--accent); }
+    .event-spotlight-banner .spotlight-cta { display: inline-block; padding: 10px 24px; border: 1px solid rgba(255,255,255,0.4); border-radius: 30px; color: var(--white); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; transition: var(--transition); white-space: nowrap; }
+    .event-spotlight-banner a.spotlight-link:hover .spotlight-cta { background: var(--accent); border-color: var(--accent); }
+
     .mission-section { background: var(--white); padding: 120px 40px; }
     .mission-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .mission-text h2 { font-size: 2.8rem; margin-bottom: 24px; }
@@ -109,6 +117,14 @@
         <a href="about.html" class="btn btn-outline">Our Story</a>
       </div>
     </div>
+  </section>
+
+  <section class="event-spotlight-banner">
+    <a href="kingdom-leadership-summit.html" class="spotlight-link">
+      <span class="spotlight-tag">Upcoming Event</span>
+      <span class="spotlight-text">Kingdom Leadership Summit — <strong>10 October 2026</strong> · Durban Jewish Club</span>
+      <span class="spotlight-cta">Learn More & Register →</span>
+    </a>
   </section>
 
   <section class="mission-section">
