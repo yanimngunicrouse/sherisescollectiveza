@@ -278,6 +278,15 @@
   box-shadow: 0 8px 30px var(--shadow-lg);
 }
 
+.events-subsection-header { margin: 0 0 24px; }
+.events-subsection-header:not(:first-child) { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+.events-subsection-header h3 { font-size: 1.4rem; color: var(--dark); }
+.events-subsection-header p { font-size: 0.9rem; color: var(--text-light); margin-top: 4px; }
+
+.event-card.past { opacity: 0.7; border-left-color: var(--muted) !important; }
+.event-card.past:hover { opacity: 0.9; }
+.event-card.past .event-date-range.primary { background: var(--muted); }
+
 .event-card:nth-child(2) { border-left-color: var(--primary); }
 .event-card:nth-child(3) { border-left-color: var(--secondary); }
 .event-card:nth-child(4) { border-left-color: var(--primary-light); }
@@ -671,7 +680,7 @@
         <span class="date-cell prev-month">30</span>
         <span class="date-cell">1</span>
         <span class="date-cell">2</span>
-        <span class="date-cell">3</span>
+        <span class="date-cell event-day multi">3</span>
         <span class="date-cell">4</span>
         <span class="date-cell">5</span>
         <span class="date-cell">6</span>
@@ -710,124 +719,9 @@
         <p>Mark your calendar and join us at these transformative gatherings.</p>
       </div>
 
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range primary">24–25 July</span>
-          <span class="event-day-label">Friday – Saturday</span>
-        </div>
-        <h3>His Church Conference</h3>
-        <p class="event-venue">His Church, 13 Drake Road, Cowies Hill, Pinetown</p>
-        <p class="event-time">Fri: 17:30 • Sat: 18:30</p>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range">25 July</span>
-          <span class="event-day-label">Saturday</span>
-        </div>
-        <h3>Speaking Engagements</h3>
-        <p class="event-venue">Presbyterian Church, Underwood Road, Pinetown</p>
-        <p class="event-time">09:00</p>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range primary">6–10 August</span>
-          <span class="event-day-label">Thursday – Monday</span>
-        </div>
-        <h3>Durban International Book Fair</h3>
-        <p class="event-venue">Apart-Hotel Umhlanga, 60 Meridian Drive, Umhlanga</p>
-        <div class="event-time-detail">
-          <strong>Schedule</strong>
-          Set-up: 09:00 daily • Trading: 10:00 – 22:00
-        </div>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range">8 August</span>
-          <span class="event-day-label">Saturday</span>
-        </div>
-        <h3>Highway Christian Community Women's Conference</h3>
-        <p class="event-venue">10 Harvey Road, Pinetown</p>
-        <p class="event-time">Time: TBC</p>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range">10 August</span>
-          <span class="event-day-label">Monday</span>
-        </div>
-        <h3>Women's Conference</h3>
-        <p class="event-venue">Jesus Worship Centre, Ulundi</p>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range primary">15 August</span>
-          <span class="event-day-label">Saturday</span>
-        </div>
-        <h3>Writing Workshop</h3>
-        <p class="event-venue">House of Harvest Family Church, 50 Manors Road, Manors, Pinetown</p>
-        <div class="event-time-detail">
-          <strong>Schedule</strong>
-          Set-up: 09:00 – 11:30 • Prayer: 11:30 – 11:45 • Workshop: 12:00 – 15:00
-        </div>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range">20 August</span>
-          <span class="event-day-label">Thursday</span>
-        </div>
-        <h3>Siyagcinwa Women's Ministry</h3>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range">21–22 August</span>
-          <span class="event-day-label">Friday – Saturday, Evenings</span>
-        </div>
-        <h3>Still Elegant Women's Conference</h3>
-        <p class="event-venue">Mount Zion Church</p>
-        <p class="event-time">Time: 18:00</p>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range">22 August</span>
-          <span class="event-day-label">Saturday</span>
-        </div>
-        <h3>Broken Vases Still Hold Beautiful Flowers</h3>
-        <p class="event-venue">The Kariki Experience, 148 Old Main Road, Bothas Hill, 3660</p>
-        <div class="event-time-detail">
-          <strong>Woman to Woman Conversations</strong>
-          13h00 – 16h00
-        </div>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range primary">19–22 August</span>
-          <span class="event-day-label">Wednesday – Saturday</span>
-        </div>
-        <h3>Flourish Expo</h3>
-        <p class="event-venue">City Hill Church, Inanda Road, Hillcrest</p>
-        <div class="event-time-detail">
-          <strong>Full Schedule</strong>
-          Wed: Set-up 15:00–17:00; Trading 20:30–21:00<br>
-          Thu: 08:15–09:00, 10:30–11:15, 12:45–13:45, 15:00–16:00<br>
-          Fri: 17:00–18:30, 20:30–21:00<br>
-          Sat: 08:15–09:00, 10:30–11:15, 12:45–13:45, 15:00–16:00
-        </div>
-      </div>
-
-      <div class="event-card animate-on-scroll">
-        <div class="event-date-badge">
-          <span class="event-date-range primary">5 September</span>
-          <span class="event-day-label">Saturday</span>
-        </div>
-        <h3>The Journey Trail</h3>
+      <div class="events-subsection-header animate-on-scroll">
+        <h3>Upcoming Events</h3>
+        <p>What's coming up next.</p>
       </div>
 
       <div class="event-card animate-on-scroll">
@@ -837,6 +731,19 @@
         </div>
         <h3>Women of Africa</h3>
         <p class="event-venue">Restoration Covenant Ministries, Wentworth</p>
+      </div>
+
+      <div class="event-card animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range primary">3 October</span>
+          <span class="event-day-label">Saturday</span>
+        </div>
+        <h3>Market — Vendors Wanted!</h3>
+        <p class="event-venue">Hillcrest Collegiate Private School, 35 Mill Road, Hillcrest</p>
+        <div class="event-time-detail">
+          <strong>Our First Market</strong>
+          11:00 AM – 4:00 PM • Limited vendor spaces available — enquire via WhatsApp or email to join us
+        </div>
       </div>
 
       <div class="event-card animate-on-scroll">
@@ -860,6 +767,131 @@
           <strong>Schedule</strong>
           08:00 – 12:00 • R550 per module • Graduation: 17 July 2027
         </div>
+      </div>
+
+      <div class="events-subsection-header animate-on-scroll">
+        <h3>Past Events</h3>
+        <p>A look back at where we've been.</p>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range primary">5 September</span>
+          <span class="event-day-label">Saturday</span>
+        </div>
+        <h3>The Journey Trail</h3>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range primary">19–22 August</span>
+          <span class="event-day-label">Wednesday – Saturday</span>
+        </div>
+        <h3>Flourish Expo</h3>
+        <p class="event-venue">City Hill Church, Inanda Road, Hillcrest</p>
+        <div class="event-time-detail">
+          <strong>Full Schedule</strong>
+          Wed: Set-up 15:00–17:00; Trading 20:30–21:00<br>
+          Thu: 08:15–09:00, 10:30–11:15, 12:45–13:45, 15:00–16:00<br>
+          Fri: 17:00–18:30, 20:30–21:00<br>
+          Sat: 08:15–09:00, 10:30–11:15, 12:45–13:45, 15:00–16:00
+        </div>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range">22 August</span>
+          <span class="event-day-label">Saturday</span>
+        </div>
+        <h3>Broken Vases Still Hold Beautiful Flowers</h3>
+        <p class="event-venue">The Kariki Experience, 148 Old Main Road, Bothas Hill, 3660</p>
+        <div class="event-time-detail">
+          <strong>Woman to Woman Conversations</strong>
+          13h00 – 16h00
+        </div>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range">21–22 August</span>
+          <span class="event-day-label">Friday – Saturday, Evenings</span>
+        </div>
+        <h3>Still Elegant Women's Conference</h3>
+        <p class="event-venue">Mount Zion Church</p>
+        <p class="event-time">Time: 18:00</p>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range">20 August</span>
+          <span class="event-day-label">Thursday</span>
+        </div>
+        <h3>Siyagcinwa Women's Ministry</h3>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range primary">15 August</span>
+          <span class="event-day-label">Saturday</span>
+        </div>
+        <h3>Writing Workshop</h3>
+        <p class="event-venue">House of Harvest Family Church, 50 Manors Road, Manors, Pinetown</p>
+        <div class="event-time-detail">
+          <strong>Schedule</strong>
+          Set-up: 09:00 – 11:30 • Prayer: 11:30 – 11:45 • Workshop: 12:00 – 15:00
+        </div>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range">10 August</span>
+          <span class="event-day-label">Monday</span>
+        </div>
+        <h3>Women's Conference</h3>
+        <p class="event-venue">Jesus Worship Centre, Ulundi</p>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range">8 August</span>
+          <span class="event-day-label">Saturday</span>
+        </div>
+        <h3>Highway Christian Community Women's Conference</h3>
+        <p class="event-venue">10 Harvey Road, Pinetown</p>
+        <p class="event-time">Time: TBC</p>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range primary">6–10 August</span>
+          <span class="event-day-label">Thursday – Monday</span>
+        </div>
+        <h3>Durban International Book Fair</h3>
+        <p class="event-venue">Apart-Hotel Umhlanga, 60 Meridian Drive, Umhlanga</p>
+        <div class="event-time-detail">
+          <strong>Schedule</strong>
+          Set-up: 09:00 daily • Trading: 10:00 – 22:00
+        </div>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range">25 July</span>
+          <span class="event-day-label">Saturday</span>
+        </div>
+        <h3>Speaking Engagements</h3>
+        <p class="event-venue">Presbyterian Church, Underwood Road, Pinetown</p>
+        <p class="event-time">09:00</p>
+      </div>
+
+      <div class="event-card past animate-on-scroll">
+        <div class="event-date-badge">
+          <span class="event-date-range primary">24–25 July</span>
+          <span class="event-day-label">Friday – Saturday</span>
+        </div>
+        <h3>His Church Conference</h3>
+        <p class="event-venue">His Church, 13 Drake Road, Cowies Hill, Pinetown</p>
+        <p class="event-time">Fri: 17:30 • Sat: 18:30</p>
       </div>
     </div>
   </section>

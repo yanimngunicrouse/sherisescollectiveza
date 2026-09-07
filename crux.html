@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUX | Conversations at the Heart of Christian Leadership | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --crux-wine: #B23A2E;
+      --crux-wine-light: #C65648;
+      --crux-charcoal: #2B2622;
+      --crux-gold: #C6952E;
+    }
+
+    .crux-hero { min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 150px 40px 70px; background: url('images/crux-logo-full.png') center center / min(560px, 85vw) auto no-repeat, linear-gradient(135deg, #FAF4EE 0%, #F3E7DB 100%); color: var(--crux-charcoal); position: relative; overflow: hidden; }
+    .crux-hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+    .crux-intro-section { padding: 90px 40px; background: var(--white); }
+    .crux-intro-text { max-width: 780px; margin: 0 auto; text-align: center; }
+    .crux-intro-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.9; margin-bottom: 22px; }
+    .crux-intro-text p:last-child { margin-bottom: 0; }
+
+    .crux-purpose-section { padding: 90px 40px; background: #FAF4EE; }
+    .crux-purpose-text { max-width: 780px; margin: 40px auto 0; text-align: center; }
+    .crux-purpose-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.9; margin-bottom: 20px; }
+    .crux-purpose-text p:last-child { margin-bottom: 0; font-family: var(--font-heading); font-style: italic; font-size: 1.2rem; color: var(--crux-wine); }
+
+    .crux-audience-section { padding: 90px 40px; background: var(--white); }
+    .crux-audience-intro { max-width: 700px; margin: 0 auto 36px; text-align: center; color: var(--text-light); font-size: 1rem; }
+    .crux-audience-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .crux-audience-grid div { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-radius: 12px; background: #FDFBF9; border: 1px solid var(--border); font-size: 0.92rem; color: var(--dark); }
+    .crux-audience-grid div::before { content: '✦'; color: var(--crux-gold); font-weight: 700; flex-shrink: 0; }
+    .crux-audience-note { max-width: 700px; margin: 30px auto 0; text-align: center; color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
+
+    .crux-explore-themes { padding: 20px 40px 90px; background: var(--white); }
+    .crux-themes-wrap { max-width: 780px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .crux-themes-wrap span { padding: 8px 18px; border-radius: 30px; background: #F7EFE8; color: var(--crux-wine); font-size: 0.85rem; font-weight: 600; }
+
+    .crux-latest-section { padding: 90px 40px; background: #FAF4EE; }
+    .crux-latest-card { max-width: 800px; margin: 40px auto 0; background: var(--white); border-radius: 20px; padding: 48px; text-align: center; border: 1px solid var(--border); box-shadow: 0 10px 30px var(--shadow); }
+    .crux-latest-card .crux-icon { font-size: 2.2rem; margin-bottom: 18px; }
+    .crux-latest-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--crux-wine); }
+    .crux-latest-card p { color: var(--text-light); line-height: 1.8; }
+
+    .crux-grid-section { padding: 90px 40px; background: var(--white); }
+    .crux-content-grid { max-width: 1100px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px; }
+    .crux-content-card { padding: 34px 28px; border-radius: 16px; border: 1px solid var(--border); background: #FDFBF9; transition: var(--transition); }
+    .crux-content-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px var(--shadow); }
+    .crux-content-card .crux-card-icon { width: 50px; height: 50px; border-radius: 50%; background: var(--crux-wine); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 16px; }
+    .crux-content-card h4 { font-size: 1.05rem; margin-bottom: 10px; color: var(--dark); }
+    .crux-content-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
+    .crux-guest-section { padding: 90px 40px; background: var(--crux-wine); color: var(--white); text-align: center; }
+    .crux-guest-section .section-header h2 { color: var(--white); }
+    .crux-guest-section .section-header p { color: rgba(255,255,255,0.75); }
+    .crux-guest-box { max-width: 700px; margin: 40px auto 0; padding: 36px; border-radius: 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); }
+    .crux-guest-box p { color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 20px; }
+
+    .crux-suggest-section { padding: 100px 40px; text-align: center; background: linear-gradient(135deg, var(--light) 0%, #F7EFE8 100%); }
+    .crux-suggest-section .btn { margin-top: 24px; }
+
+    @media (max-width: 768px) {
+      .crux-wordmark { font-size: 3rem; letter-spacing: 3px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html" class="active">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="crux-hero">
+    <div class="crux-hero-content">
+      <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">CRUX — Conversations at the Heart of Christian Leadership — A SheRises Collective Programme</h1>
+    </div>
+  </section>
+
+  <section class="crux-intro-section">
+    <div class="container">
+      <div class="crux-intro-text animate-on-scroll">
+        <p>CRUX is a Christian leadership conversation programme of SheRises Collective that brings Christian leaders into meaningful conversations about the issues at the heart of Christian leadership.</p>
+        <p>Through conversations with leaders from different backgrounds, generations and areas of influence, CRUX explores calling, character, servant leadership, integrity, influence, authority, responsibility, relationships, succession, legacy and the realities of leading in faith and service.</p>
+        <p>CRUX provides a space for leaders to share their experiences, insights and lessons learned, while inviting audiences to reflect more deeply on what it means to lead as a Christian.</p>
+        <p>The programme is built around thoughtful questions, honest conversations and practical wisdom, with each conversation offering something leaders can carry into their own calling.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="crux-purpose-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Programme <em>Purpose</em></h2>
+      </div>
+      <div class="crux-purpose-text animate-on-scroll">
+        <p>CRUX creates a space for meaningful conversations with Christian leaders about the realities of leadership. The programme explores calling, character, service, influence, responsibility, relationships, integrity, growth and legacy, while giving leaders an opportunity to share the wisdom they have gained through experience.</p>
+        <p>CRUX is intended to help leaders think, reflect, learn and grow.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="crux-audience-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Who CRUX Is <em>For</em></h2>
+      </div>
+      <p class="crux-audience-intro animate-on-scroll">CRUX is for:</p>
+      <div class="crux-audience-grid animate-on-scroll">
+        <div>Christian leaders currently serving in ministry</div>
+        <div>Emerging and aspiring Christian leaders</div>
+        <div>Church leaders</div>
+        <div>Ministry workers</div>
+        <div>Christian professionals and entrepreneurs</div>
+        <div>Young leaders</div>
+        <div>People interested in Christian leadership and leadership development</div>
+      </div>
+      <p class="crux-audience-note animate-on-scroll">It should be accessible to someone who is leading a church, a ministry, a business, an organisation, a community, or simply beginning to understand.</p>
+    </div>
+  </section>
+
+  <section class="crux-explore-themes">
+    <div class="crux-themes-wrap animate-on-scroll">
+      <span>Calling</span>
+      <span>Character</span>
+      <span>Servant Leadership</span>
+      <span>Integrity</span>
+      <span>Influence</span>
+      <span>Authority</span>
+      <span>Responsibility</span>
+      <span>Relationships</span>
+      <span>Succession</span>
+      <span>Legacy</span>
+    </div>
+  </section>
+
+  <section class="crux-latest-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Latest <em>Conversation</em></h2>
+      </div>
+      <div class="crux-latest-card animate-on-scroll">
+        <div class="crux-icon">🎙️</div>
+        <h3>Our First Conversation Is Coming Soon</h3>
+        <p>CRUX is preparing to launch its first conversation. Follow SheRises Collective on social media or check back here to be the first to know when it goes live.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="crux-grid-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Explore <em>CRUX</em></h2>
+        <p>Everything CRUX will grow to hold, all in one place.</p>
+      </div>
+      <div class="crux-content-grid">
+        <div class="crux-content-card animate-on-scroll">
+          <div class="crux-card-icon">👥</div>
+          <h4>Featured Leaders</h4>
+          <p>Christian leaders from different backgrounds, generations and areas of influence will be featured here as conversations are published.</p>
+        </div>
+        <div class="crux-content-card animate-on-scroll">
+          <div class="crux-card-icon">📚</div>
+          <h4>All Episodes</h4>
+          <p>A growing archive of every CRUX conversation, searchable and browsable once episodes begin releasing.</p>
+        </div>
+        <div class="crux-content-card animate-on-scroll">
+          <div class="crux-card-icon">✍️</div>
+          <h4>CRUX Articles</h4>
+          <p>Written reflections and companion pieces exploring the themes raised in each conversation.</p>
+        </div>
+        <div class="crux-content-card animate-on-scroll">
+          <div class="crux-card-icon">🎬</div>
+          <h4>Video Recordings</h4>
+          <p>Full video recordings of CRUX conversations, published here and shared across SheRises Collective's platforms.</p>
+        </div>
+        <div class="crux-content-card animate-on-scroll">
+          <div class="crux-card-icon">🎧</div>
+          <h4>Podcast &amp; Audio</h4>
+          <p>Audio versions of every conversation, for listening on the go — links will be added here once CRUX is live on podcast platforms.</p>
+        </div>
+        <div class="crux-content-card animate-on-scroll">
+          <div class="crux-card-icon">📅</div>
+          <h4>Upcoming Conversations</h4>
+          <p>A look ahead at who's joining CRUX next and what themes are coming up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="crux-guest-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Guest <em>Information</em></h2>
+        <p>For leaders invited to join a CRUX conversation.</p>
+      </div>
+      <div class="crux-guest-box animate-on-scroll">
+        <p>If you've been invited to take part in a CRUX conversation, thank you for saying yes. Details on format, preparation, and what to expect will be shared with you directly by the SheRises Collective team ahead of your conversation.</p>
+        <p style="margin-bottom:0;">Have questions in the meantime? Reach out via the Contact page and we'll be in touch.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="crux-suggest-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Suggest a <em>Topic or Leader</em></h2>
+        <p>Know a leader whose story or wisdom belongs in a CRUX conversation? Or a theme at the heart of Christian leadership you'd love to see explored? We'd love to hear it.</p>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Make a Suggestion</a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
