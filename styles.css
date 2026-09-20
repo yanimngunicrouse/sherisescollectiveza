@@ -2,7 +2,7 @@
    SheRises Collective — Global Styles
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap');
 
 :root {
   --primary: #1FBDBE;
@@ -24,6 +24,7 @@
   --tint: #EFFAFA;
   --font-heading: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Montserrat', 'Segoe UI', sans-serif;
+  --font-cursive: 'Caveat', cursive;
   --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 

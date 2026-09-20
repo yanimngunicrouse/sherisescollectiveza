@@ -6,12 +6,26 @@
   <title>Store | SheRises Collective</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    .store-hero { min-height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); position: relative; overflow: hidden; }
+    .store-hero { min-height: 68vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 60px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); position: relative; overflow: hidden; }
     .store-hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); object-fit: cover; opacity: 0.22; z-index: 0; }
-    .store-hero-content { position: relative; z-index: 1; }
+    .store-hero-content { position: relative; z-index: 2; }
     .store-hero h1 { font-size: 3.5rem; margin-bottom: 16px; }
     .store-hero h1 em { font-style: italic; color: var(--primary); }
     .store-hero p { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+    .store-hero .testimonials-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; padding: 12px 28px; border-radius: 50px; background: var(--primary); color: var(--white); font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: var(--transition); box-shadow: 0 10px 28px rgba(31,189,190,0.28); }
+    .store-hero .testimonials-link:hover { background: var(--dark); transform: translateY(-2px); }
+
+    /* Scattered cursive quote decorations */
+    .hero-quotes { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .hero-quote { position: absolute; font-family: var(--font-cursive); font-weight: 700; color: var(--primary); line-height: 1.25; max-width: 320px; transform: rotate(var(--rot, -4deg)); white-space: normal; text-shadow: 0 1px 14px rgba(255,255,255,0.85), 0 1px 3px rgba(255,255,255,0.7); }
+    .hero-quote.accent { color: var(--accent); }
+    .hero-quote::before, .hero-quote::after { content: '"'; }
+    .hq-1 { top: 18%; left: 4%;  font-size: 2.3rem;  --rot: -6deg; }
+    .hq-2 { top: 22%; right: 3%; font-size: 1.6rem; --rot: 4deg; text-align: right; max-width: 300px; }
+    .hq-3 { bottom: 15%; left: 3%; font-size: 1.9rem; --rot: 3deg; }
+    .hq-4 { bottom: 4%; right: 3%; font-size: 1.35rem; --rot: -2deg; text-align: right; max-width: 400px; }
+    @media (max-width: 900px) { .hq-4 { max-width: 260px; font-size: 1.1rem; } }
+    @media (max-width: 700px) { .hero-quote { max-width: 190px; font-size: 1.1rem !important; } .hq-1 { top: 15%; } .hq-2, .hq-4 { display: none; } .hq-3 { bottom: 2%; } }
 
     .store-tabs { display: flex; justify-content: center; gap: 16px; padding: 40px 40px 0; background: var(--white); }
     .store-tab { padding: 14px 32px; font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-radius: 50px; border: 2px solid var(--border); background: var(--white); color: var(--text); cursor: pointer; transition: var(--transition); }
@@ -95,10 +109,17 @@
     <video class="store-hero-video" autoplay muted loop playsinline aria-hidden="true">
       <source src="videos/books-on-table.mp4" type="video/mp4">
     </video>
+    <div class="hero-quotes" aria-hidden="true">
+      <span class="hero-quote hq-1">i could not put it down</span>
+      <span class="hero-quote accent hq-2">A message that took me 2 steps further in my faith</span>
+      <span class="hero-quote accent hq-3">Perhaps the next reader it captures will be you.</span>
+      <span class="hero-quote hq-4">If you've ever wondered whether grace can be found in life's twists, disappointments, victories, and unexpected turns, this book is for you.</span>
+    </div>
     <div class="store-hero-content">
       <span class="hero-badge">Resources & Merch</span>
       <h1>The <em>Store</em></h1>
       <p>Faith-inspired books, isiZulu literature, and exercise materials to support your journey of growth and empowerment.</p>
+      <a href="testimonials.html" class="testimonials-link">💬 Read Reader Testimonials</a>
     </div>
   </section>
 
