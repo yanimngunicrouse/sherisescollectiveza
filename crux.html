@@ -16,6 +16,17 @@
     .crux-hero { min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 150px 40px 70px; background: url('images/crux-logo-full.png') center center / min(560px, 85vw) auto no-repeat, linear-gradient(135deg, #FAF4EE 0%, #F3E7DB 100%); color: var(--crux-charcoal); position: relative; overflow: hidden; }
     .crux-hero-content { position: relative; z-index: 1; max-width: 780px; }
 
+    .crux-market-section { padding: 90px 40px; background: linear-gradient(135deg, #FAF4EE 0%, #F7EFE8 100%); text-align: center; }
+    .crux-market-card { max-width: 800px; margin: 40px auto 0; background: var(--white); border-radius: 20px; padding: 48px; border: 1px solid var(--border); box-shadow: 0 10px 30px var(--shadow); }
+    .crux-market-card .crux-icon { font-size: 2.2rem; margin-bottom: 18px; }
+    .crux-market-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--crux-wine); }
+    .crux-market-card p { color: var(--text-light); line-height: 1.8; margin-bottom: 26px; }
+    .crux-market-btn { display: inline-block; padding: 16px 38px; border-radius: 50px; background: var(--crux-wine); color: var(--white); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: var(--transition); box-shadow: 0 10px 24px rgba(178,58,46,0.25); }
+    .crux-market-qr { margin-top: 30px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .crux-market-qr span { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); margin-bottom: 14px; }
+    .crux-market-qr img { width: 100%; max-width: 200px; height: auto; border: 1px solid var(--border); border-radius: 12px; padding: 8px; background: var(--white); }
+    .crux-market-btn:hover { background: var(--crux-charcoal); transform: translateY(-2px); }
+
     .crux-intro-section { padding: 90px 40px; background: var(--white); }
     .crux-intro-text { max-width: 780px; margin: 0 auto; text-align: center; }
     .crux-intro-text p { font-size: 1.05rem; color: var(--text-light); line-height: 1.9; margin-bottom: 22px; }
@@ -71,6 +82,25 @@
   <section class="crux-hero">
     <div class="crux-hero-content">
       <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">CRUX — Conversations at the Heart of Christian Leadership — A SheRises Collective Programme</h1>
+    </div>
+  </section>
+
+  <section class="crux-market-section" id="marketplace">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>CRUX <em>Marketplace</em></h2>
+        <p>A marketplace for vendors, alongside the CRUX conversations.</p>
+      </div>
+      <div class="crux-market-card animate-on-scroll">
+        <div class="crux-icon">🛍️</div>
+        <h3>Vendor Registration</h3>
+        <p>Would you like to trade at the CRUX Marketplace? Register your vendor using the button below and our team will be in touch.</p>
+        <a href="https://form.jotform.com/262942247477568" target="_blank" rel="noopener" class="crux-market-btn">Register Your Vendor</a>
+        <div class="crux-market-qr">
+          <span>Or scan to register</span>
+          <a href="https://form.jotform.com/262942247477568" target="_blank" rel="noopener"><img src="https://www.jotform.com/uploads/yanimngunicrouse/form_files/262942247477568_1792658273_qrcode_muse.png" alt="QR code for the CRUX vendor registration form"></a>
+        </div>
+      </div>
     </div>
   </section>
 

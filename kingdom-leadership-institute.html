@@ -77,7 +77,31 @@
     .kli-cta-section { padding: 100px 40px; text-align: center; background: linear-gradient(135deg, var(--light) 0%, var(--tint) 100%); }
     .kli-cta-section .btn { margin: 10px; }
 
+    .kli-register-section { padding: 90px 40px; background: var(--tint); scroll-margin-top: 90px; }
+    .kli-register-grid { max-width: 1000px; margin: 40px auto 0; display: grid; grid-template-columns: 0.8fr 1.4fr; gap: 36px; align-items: start; }
+    .kli-register-summary { background: linear-gradient(135deg, #2C3438 0%, #4A555B 100%); color: var(--white); border-radius: 20px; padding: 34px 30px; }
+    .kli-register-summary h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 6px; }
+    .kli-register-summary .kli-reg-level { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .kli-register-summary ul { list-style: none; margin-bottom: 22px; }
+    .kli-register-summary li { padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: 0.9rem; color: rgba(255,255,255,0.85); display: flex; justify-content: space-between; gap: 12px; }
+    .kli-register-summary li strong { color: var(--accent); text-align: right; }
+    .kli-register-summary p { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.7; }
+    .kli-register-summary a { color: var(--accent); }
+    .kli-register-form { background: var(--white); border-radius: 20px; padding: 34px 32px; border: 1px solid var(--border); box-shadow: 0 16px 40px var(--shadow); }
+    .kli-register-form h3 { font-size: 1.4rem; margin-bottom: 20px; }
+    .kli-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .kli-form-group { margin-bottom: 16px; }
+    .kli-form-group label { display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; }
+    .kli-form-group input, .kli-form-group select, .kli-form-group textarea { width: 100%; padding: 13px 16px; border: 1px solid var(--border); border-radius: 10px; font-family: var(--font-body); font-size: 0.92rem; color: var(--text); background: var(--white); }
+    .kli-form-group textarea { min-height: 100px; resize: vertical; }
+    .kli-form-group input:focus, .kli-form-group select:focus, .kli-form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(31,189,190,0.15); }
+    .kli-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: var(--text-light); margin-bottom: 20px; }
+    .kli-consent input { margin-top: 3px; flex-shrink: 0; }
+    .kli-form-status { margin-top: 16px; text-align: center; font-size: 0.9rem; }
+
     @media (max-width: 768px) {
+      .kli-register-grid { grid-template-columns: 1fr; }
+      .kli-form-row { grid-template-columns: 1fr; }
       .kli-hero h1 { font-size: 2rem; }
       .kli-grad-grid { grid-template-columns: 1fr; }
       .kli-outcomes-grid { columns: 1; }
@@ -89,8 +113,8 @@
 
   <section class="kli-hero">
     <div class="kli-hero-content">
-      <span class="hero-badge">Kingdom Leadership Institute</span>
-      <h1>Certificate in Kingdom Leadership — <em>Level 1</em></h1>
+      <span class="hero-badge">Certificate in Kingdom Leadership · Level 1</span>
+      <h1>Kingdom Leadership <em>Institute</em></h1>
       <p class="kli-qualification">Foundations of Kingdom Leadership</p>
       <p class="kli-motto">"Equipping Leaders. Strengthening Churches. Transforming Communities."</p>
     </div>
@@ -115,7 +139,7 @@
       <div class="kli-invest-banner animate-on-scroll">
         <div class="kli-invest-amount">R658 / month</div>
         <p>for six months</p>
-        <a href="contact.html" class="btn btn-primary">Enquire About Enrolment</a>
+        <a href="#register" class="btn btn-primary">Register Now</a>
       </div>
     </div>
   </section>
@@ -300,13 +324,59 @@
     </div>
   </section>
 
+  <section class="kli-register-section" id="register">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Register for the <em>Institute</em></h2>
+        <p>Complete the form below to apply for the Certificate in Kingdom Leadership – Level 1. Our team will contact you to confirm your place and next steps.</p>
+      </div>
+      <div class="kli-register-grid">
+        <div class="kli-register-summary animate-on-scroll">
+          <h3>Kingdom Leadership Institute</h3>
+          <span class="kli-reg-level">Certificate in Kingdom Leadership · Level 1</span>
+          <ul>
+            <li>Duration <strong>6 Months</strong></li>
+            <li>Format <strong>One full-day session monthly</strong></li>
+            <li>Course fee <strong>R658 / month</strong></li>
+            <li>Summit admission <strong>Included</strong></li>
+          </ul>
+          <p>Questions before you register? Call <a href="tel:+27622993966">062 299 3966</a> or email <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a>.</p>
+        </div>
+        <div class="kli-register-form animate-on-scroll">
+          <h3>Registration Form</h3>
+          <form id="instituteForm" name="institute-registration" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="institute-registration">
+            <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="kli-form-row">
+              <div class="kli-form-group"><label for="kliName">Full Name</label><input type="text" id="kliName" name="Name" placeholder="Full name" required></div>
+              <div class="kli-form-group"><label for="kliEmail">Email Address</label><input type="email" id="kliEmail" name="Email" placeholder="you@example.com" required></div>
+            </div>
+            <div class="kli-form-row">
+              <div class="kli-form-group"><label for="kliPhone">Phone / WhatsApp</label><input type="tel" id="kliPhone" name="Phone" placeholder="e.g. 062 299 3966" required></div>
+              <div class="kli-form-group"><label for="kliCity">City / Town</label><input type="text" id="kliCity" name="City" placeholder="City or town" required></div>
+            </div>
+            <div class="kli-form-row">
+              <div class="kli-form-group"><label for="kliChurch">Church / Ministry / Organisation</label><input type="text" id="kliChurch" name="Church or Ministry" placeholder="Where you serve" required></div>
+              <div class="kli-form-group"><label for="kliRole">Your Role</label><select id="kliRole" name="Role" required><option value="">Select your role</option><option>Senior Pastor</option><option>Associate Pastor</option><option>Youth Pastor</option><option>Church Elder</option><option>Ministry Leader</option><option>Church Administrator</option><option>Christian Entrepreneur</option><option>Marketplace Leader</option><option>Emerging Leader</option><option>Seminary Graduate</option><option>Ministry Coordinator</option><option>Other</option></select></div>
+            </div>
+            <div class="kli-form-group"><label for="kliHear">How did you hear about the Institute?</label><select id="kliHear" name="How they heard"><option value="">Select (optional)</option><option>Kingdom Leadership Summit</option><option>Social media</option><option>Church / ministry</option><option>Friend or colleague</option><option>SheRises Collective website</option><option>Other</option></select></div>
+            <div class="kli-form-group"><label for="kliWhy">Why would you like to join? (optional)</label><textarea id="kliWhy" name="Motivation" placeholder="Tell us a little about your leadership journey..."></textarea></div>
+            <label class="kli-consent"><input type="checkbox" name="Consent" value="Yes" required><span>I confirm the details above are correct and agree to be contacted by SheRises Collective about my registration.</span></label>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Submit Registration</button>
+            <p id="instituteStatus" class="kli-form-status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="kli-cta-section">
     <div class="container">
       <div class="section-header animate-on-scroll">
         <h2>Begin Your <em>Leadership Journey</em></h2>
         <p>Bookings & enquiries: <a href="tel:+27622993966" style="color:var(--primary);">062 299 3966</a> or <a href="mailto:info@sherisescollectiveza.com" style="color:var(--primary);">info@sherisescollectiveza.com</a></p>
       </div>
-      <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+      <a href="#register" class="btn btn-primary">Register Now</a>
       <a href="kingdom-leadership-summit.html" class="btn btn-outline">See the Kingdom Leadership Summit</a>
     </div>
   </section>
@@ -314,5 +384,42 @@
   <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
 
   <script src="script.js"></script>
+  <script>
+    // Netlify Forms submission (same pattern as the contact form).
+    document.getElementById('instituteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const statusEl = document.getElementById('instituteStatus');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+      statusEl.textContent = '';
+      statusEl.style.color = '';
+      const data = new URLSearchParams(new FormData(form)).toString();
+      fetch(window.location.pathname, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data
+      }).then(response => {
+        if (response.ok) {
+          statusEl.textContent = 'Thank you — your registration has been received. We will contact you shortly to confirm your place.';
+          statusEl.style.color = 'var(--primary)';
+          form.reset();
+          submitBtn.textContent = 'Registration Sent ✓';
+        } else {
+          statusEl.textContent = 'Something went wrong submitting your registration (error ' + response.status + ') — please try again or call 062 299 3966.';
+          statusEl.style.color = '#B00020';
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+      }).catch(err => {
+        statusEl.textContent = 'Something went wrong submitting your registration (' + err.message + ') — please try again or call 062 299 3966.';
+        statusEl.style.color = '#B00020';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
+    });
+  </script>
 </body>
 </html>
