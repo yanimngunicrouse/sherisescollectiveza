@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christmas Market at the Phansi Museum | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mkt-hero { min-height: 45vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 50px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); }
+    .mkt-hero h1 { font-size: 3rem; margin-bottom: 10px; }
+    .mkt-hero h1 em { font-style: italic; color: var(--primary); }
+    .mkt-hero p { color: var(--text-light); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+    .mkt-main-section { padding: 20px 40px 100px; background: var(--white); }
+    .mkt-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 380px 1fr; gap: 50px; align-items: start; }
+    .mkt-poster { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px var(--shadow-lg); }
+    .mkt-poster img { width: 100%; display: block; }
+
+    .mkt-info-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+    .mkt-info-card { border-radius: 16px; padding: 26px 22px; display: flex; align-items: center; gap: 16px; color: var(--white); }
+    .mkt-info-card.date { background: linear-gradient(135deg, #1E5FA8 0%, #2E7BC9 100%); }
+    .mkt-info-card.time { background: linear-gradient(135deg, #C15F1F 0%, var(--accent) 100%); }
+    .mkt-info-card .mkt-info-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .mkt-info-card .mkt-info-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.85; margin-bottom: 4px; }
+    .mkt-info-card .mkt-info-value { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
+
+    .mkt-details p { color: var(--text-light); line-height: 1.8; margin-bottom: 18px; font-size: 1rem; }
+    .mkt-details strong { color: var(--dark); }
+
+    .mkt-badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .mkt-badge { padding: 8px 18px; border-radius: 30px; background: var(--tint); color: var(--primary); font-size: 0.82rem; font-weight: 600; }
+
+    .mkt-map-section { padding: 0 40px 100px; background: var(--white); }
+    .mkt-map-wrapper { max-width: 1100px; margin: 0 auto; }
+    .mkt-map-frame-container { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 10px 30px var(--shadow); }
+    .mkt-map-frame-container iframe { width: 100%; height: 400px; border: 0; display: block; }
+    .mkt-map-cta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding: 24px 28px; background: var(--tint); }
+    .mkt-map-cta p { margin: 0; color: var(--text-light); font-size: 0.95rem; }
+    .mkt-map-cta p strong { color: var(--dark); }
+
+    .mkt-cta-section { padding: 90px 40px; text-align: center; background: linear-gradient(135deg, var(--light) 0%, var(--tint) 100%); }
+    .mkt-cta-section .btn { margin: 10px; }
+
+    @media (max-width: 768px) {
+      .mkt-grid { grid-template-columns: 1fr; }
+      .mkt-poster { max-width: 340px; margin: 0 auto; }
+      .mkt-info-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html" class="active">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="mkt-hero">
+    <div>
+      <span class="hero-badge">Come Find Us</span>
+      <h1>Christmas <em>Market</em> at the Phansi Museum</h1>
+      <p>SheRises Collective will be attending the festive Christmas Market at the Phansi Museum — come find our stall for a day of community, connection, and Christmas cheer.</p>
+    </div>
+  </section>
+
+  <section class="mkt-main-section">
+    <div class="container">
+      <div class="mkt-grid">
+        <div class="mkt-poster animate-on-scroll">
+          <img src="images/christmas-market-poster.jpg" alt="Christmas Market at the Phansi Museum. Vendors wanted. Stall cost R150, table supplied. Saturday 5 December, 10am to 3pm, Phansi Museum, 500 Esther Roberts Road, Glenwood. Contact Nikki: 0735997240">
+        </div>
+        <div class="mkt-details animate-on-scroll">
+          <div class="mkt-info-cards">
+            <div class="mkt-info-card date">
+              <span class="mkt-info-icon">📅</span>
+              <div><span class="mkt-info-label">Date</span><span class="mkt-info-value">Saturday<br>5 December 2026</span></div>
+            </div>
+            <div class="mkt-info-card time">
+              <span class="mkt-info-icon">🕐</span>
+              <div><span class="mkt-info-label">Time</span><span class="mkt-info-value">10:00 AM<br>– 3:00 PM</span></div>
+            </div>
+          </div>
+
+          <div class="mkt-badge-row">
+            <span class="mkt-badge">📍 Phansi Museum, Glenwood</span>
+            <span class="mkt-badge">Vendors Wanted · Stall R150</span>
+          </div>
+
+          <p>SheRises Collective will be <strong>attending the Christmas Market at the Phansi Museum</strong> — come find our stall! We'd love to connect with you in person. Come along for a festive day out, browse the stalls, and support local vendors.</p>
+          <p>The market takes place at the <strong>Phansi Museum, 500 Esther Roberts Road, Glenwood</strong>, from <strong>10:00 AM to 3:00 PM</strong>.</p>
+          <p><strong>Would you like to trade?</strong> Vendors are wanted for the festive Christmas Market. Stall cost is <strong>R150</strong> (table supplied). For more information about the market itself, contact <strong>Nikki</strong>.</p>
+
+          <a href="tel:+27735997240" class="btn btn-primary">Call Nikki — 073 599 7240</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mkt-map-section">
+    <div class="mkt-map-wrapper">
+      <div class="section-header animate-on-scroll">
+        <h2>Market <em>Location</em></h2>
+        <p>Phansi Museum, 500 Esther Roberts Road, Glenwood</p>
+      </div>
+      <div class="mkt-map-frame-container animate-on-scroll">
+        <iframe src="https://maps.google.com/maps?q=Phansi%20Museum%2C%20500%20Esther%20Roberts%20Road%2C%20Glenwood&output=embed" loading="lazy" allowfullscreen title="Phansi Museum location"></iframe>
+        <div class="mkt-map-cta">
+          <p><strong>Phansi Museum, 500 Esther Roberts Road, Glenwood</strong></p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Phansi+Museum%2C+500+Esther+Roberts+Road%2C+Glenwood" target="_blank" rel="noopener" class="btn btn-primary">Open in Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mkt-cta-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Come Find <em>Our Stall</em></h2>
+        <p>We'd love to see you there. Browse amazing stalls and support local vendors — including us!</p>
+      </div>
+      <a href="mailto:info@sherisescollectiveza.com" class="btn btn-primary">Email Us</a>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

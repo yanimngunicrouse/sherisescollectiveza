@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Singles Conference 2026 | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .sc-hero { min-height: 52vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 70px; position: relative; overflow: hidden; background: #16302B; color: var(--white); }
+    .sc-hero::before { content: ''; position: absolute; inset: -30px; background: url('images/singles-conference-poster.jpg') center / cover no-repeat; filter: blur(7px); opacity: 0.55; }
+    .sc-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(14,40,34,0.82) 0%, rgba(44,52,56,0.7) 100%); }
+    .sc-hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .sc-hero .hero-badge { color: var(--accent); background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); }
+    .sc-hero h1 { font-size: 3.4rem; margin-bottom: 8px; color: var(--white); }
+    .sc-hero h1 em { font-style: italic; color: var(--accent); }
+    .sc-hero .sc-tagline { font-family: var(--font-heading); font-style: italic; font-size: 1.5rem; color: #F7C9A6; margin-bottom: 16px; }
+    .sc-hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 620px; margin: 0 auto; }
+
+    .sc-poster-section { padding: 70px 40px 30px; background: var(--white); }
+    .sc-poster-wrap { max-width: 980px; margin: 0 auto; text-align: center; }
+    .sc-poster-btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 20px; overflow: hidden; box-shadow: 0 24px 60px var(--shadow-lg); }
+    .sc-poster-btn img { width: 100%; height: auto; display: block; }
+    .sc-poster-hint { margin-top: 14px; font-size: 0.82rem; color: var(--text-light); letter-spacing: 0.5px; }
+
+    .sc-info-section { padding: 40px 40px 70px; background: var(--white); }
+    .sc-info-grid { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; }
+    .sc-info-card { border-radius: 16px; padding: 24px 22px; display: flex; align-items: center; gap: 16px; color: var(--white); }
+    .sc-info-card.teal { background: linear-gradient(135deg, #167F80 0%, var(--primary) 100%); }
+    .sc-info-card.orange { background: linear-gradient(135deg, #C15F1F 0%, var(--accent) 100%); }
+    .sc-info-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .sc-info-label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.85; margin-bottom: 4px; }
+    .sc-info-value { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
+
+    .sc-programme-section { padding: 80px 40px; background: var(--tint); }
+    .sc-programme-grid { max-width: 980px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+    .sc-programme-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 32px 30px; }
+    .sc-programme-card h3 { font-size: 1.3rem; margin-bottom: 18px; color: var(--primary); }
+    .sc-programme-card ul { list-style: none; }
+    .sc-programme-card li { padding: 10px 0 10px 28px; position: relative; font-size: 0.95rem; color: var(--text-light); line-height: 1.6; border-bottom: 1px solid var(--border); }
+    .sc-programme-card li:last-child { border-bottom: 0; }
+    .sc-programme-card li::before { content: '✦'; position: absolute; left: 0; color: var(--accent); }
+
+    .sc-register-section { padding: 90px 40px; background: linear-gradient(135deg, #16302B 0%, #2C3438 100%); color: var(--white); text-align: center; }
+    .sc-register-section .section-header h2 { color: var(--white); }
+    .sc-register-section .section-header p { color: rgba(255,255,255,0.75); }
+    .sc-register-box { max-width: 640px; margin: 36px auto 0; }
+    .sc-register-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-bottom: 26px; }
+    .sc-register-list { list-style: none; display: inline-block; text-align: left; }
+    .sc-register-list li { padding: 8px 0; font-size: 0.98rem; color: rgba(255,255,255,0.9); }
+    .sc-register-list a { color: var(--white); border-bottom: 1px solid rgba(255,255,255,0.35); }
+    .sc-dress { margin-top: 22px; font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+    .sc-dress strong { font-family: var(--font-heading); font-style: italic; color: #F7C9A6; font-size: 1.1rem; }
+
+    .sc-lightbox { position: fixed; inset: 0; background: rgba(14,20,22,0.92); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+    .sc-lightbox.active { display: flex; }
+    .sc-lightbox img { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+    .sc-lightbox-close { position: absolute; top: 18px; right: 22px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.15); color: var(--white); font-size: 1.3rem; cursor: pointer; }
+
+    @media (max-width: 768px) {
+      .sc-hero h1 { font-size: 2.3rem; }
+      .sc-poster-section { padding: 50px 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html" class="active">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="sc-hero">
+    <div class="sc-hero-content">
+      <span class="hero-badge">Rooted in Christ</span>
+      <h1>Singles <em>Conference</em> 2026</h1>
+      <p class="sc-tagline">Singles, it's your time!</p>
+      <p>Men and women, you are invited. Join us for a day of teaching, laughter, games and new connections.</p>
+    </div>
+  </section>
+
+  <section class="sc-poster-section">
+    <div class="sc-poster-wrap animate-on-scroll">
+      <button type="button" class="sc-poster-btn" id="scPosterBtn" aria-label="View the Singles Conference 2026 poster full size">
+        <img src="images/singles-conference-poster.jpg" alt="Singles Conference 2026 poster. Singles, it's your time! Saturday 28 November, 10:00 AM, Pilgrim's Rest, R350 per person. Dress code: Festive.">
+      </button>
+      <p class="sc-poster-hint">Click the poster to view it full size</p>
+    </div>
+  </section>
+
+  <section class="sc-info-section">
+    <div class="sc-info-grid">
+      <div class="sc-info-card teal animate-on-scroll"><span class="sc-info-icon">📅</span><div><span class="sc-info-label">Date</span><span class="sc-info-value">Saturday, 28 November 2026</span></div></div>
+      <div class="sc-info-card orange animate-on-scroll"><span class="sc-info-icon">🕐</span><div><span class="sc-info-label">Time</span><span class="sc-info-value">10:00 AM</span></div></div>
+      <div class="sc-info-card teal animate-on-scroll"><span class="sc-info-icon">📍</span><div><span class="sc-info-label">Venue</span><span class="sc-info-value">Pilgrim's Rest</span></div></div>
+      <div class="sc-info-card orange animate-on-scroll"><span class="sc-info-icon">🎟️</span><div><span class="sc-info-label">Entry</span><span class="sc-info-value">R350 per person</span></div></div>
+    </div>
+  </section>
+
+  <section class="sc-programme-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>What to <em>Expect</em></h2>
+        <p>A day of teaching, laughter, games and new connections.</p>
+      </div>
+      <div class="sc-programme-grid">
+        <div class="sc-programme-card animate-on-scroll">
+          <h3>Table Talks</h3>
+          <ul>
+            <li>Kingdom Identity</li>
+            <li>Building the Kingdom Economy</li>
+            <li>Foundations for Kingdom Families</li>
+            <li>Raising Kingdom Children</li>
+          </ul>
+        </div>
+        <div class="sc-programme-card animate-on-scroll">
+          <h3>Games &amp; Connections</h3>
+          <ul>
+            <li>Charades: Bible Characters, Events &amp; Kingdom Life</li>
+            <li>Mock Family Feud: mixed-team competitions</li>
+            <li>Networking &amp; selfie challenge</li>
+            <li>Lunch, dessert, tea, coffee &amp; juice</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-register-section" id="register">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Register &amp; <em>Enquire</em></h2>
+        <p>Entry is R350 per person. Contact our office to secure your place.</p>
+      </div>
+      <div class="sc-register-box animate-on-scroll">
+        <div class="sc-register-actions">
+          <a href="https://wa.me/27622993966?text=Hi%2C%20I%27d%20like%20to%20register%20for%20the%20Singles%20Conference%202026." target="_blank" rel="noopener" class="btn btn-primary">Register via WhatsApp</a>
+          <a href="mailto:info@sherisescollectiveza.com?subject=Singles%20Conference%202026%20Registration" class="btn btn-outline" style="color:var(--white);border-color:rgba(255,255,255,0.5);">Email Us</a>
+          <!-- When the Quicket link is ready, add: <a href="QUICKET_LINK" target="_blank" rel="noopener" class="btn btn-primary">Register Online via Quicket</a> -->
+        </div>
+        <ul class="sc-register-list">
+          <li>📱 Office WhatsApp: <a href="https://wa.me/27622993966" target="_blank" rel="noopener">+27 62 299 3966</a></li>
+          <li>✉️ <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></li>
+          <li>🌐 <a href="index.html">sherisescollectiveza.com</a></li>
+        </ul>
+        <p class="sc-dress">Dress code: <strong>Festive</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sc-lightbox" id="scLightbox" role="dialog" aria-label="Singles Conference 2026 poster">
+    <button type="button" class="sc-lightbox-close" id="scLightboxClose" aria-label="Close">✕</button>
+    <img src="images/singles-conference-poster.jpg" alt="Singles Conference 2026 poster, full size">
+  </div>
+
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      var box = document.getElementById('scLightbox');
+      document.getElementById('scPosterBtn').addEventListener('click', function () { box.classList.add('active'); });
+      box.addEventListener('click', function () { box.classList.remove('active'); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') box.classList.remove('active'); });
+    })();
+  </script>
+</body>
+</html>

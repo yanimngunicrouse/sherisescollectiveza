@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .gal-hero { min-height: 40vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 50px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); }
+    .gal-hero h1 { font-size: 3.2rem; margin-bottom: 16px; }
+    .gal-hero h1 em { font-style: italic; color: var(--primary); }
+    .gal-hero p { color: var(--text-light); max-width: 620px; margin: 0 auto; font-size: 1.05rem; }
+    .gal-wrap { max-width: 1240px; margin: 0 auto; padding: 40px 24px 90px; }
+    .gal-filters { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 44px; }
+    .gal-filter { padding: 9px 20px; border-radius: 30px; border: 1px solid var(--border); background: var(--white); color: var(--text); font: 600 0.8rem var(--font-body); cursor: pointer; transition: var(--transition); }
+    .gal-filter:hover { border-color: var(--primary); color: var(--primary); }
+    .gal-filter.active { background: var(--primary); border-color: var(--primary); color: var(--white); }
+    .gal-group { margin-bottom: 56px; }
+    .gal-group[hidden] { display: none; }
+    .gal-title { font-size: 1.8rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--tint); }
+    .gal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; }
+    .gal-item { position: relative; aspect-ratio: 4 / 5; padding: 0; border: 0; border-radius: 16px; overflow: hidden; cursor: zoom-in; background: var(--tint); box-shadow: 0 6px 20px var(--shadow); transition: var(--transition); }
+    .gal-item:hover, .gal-item:focus-visible { transform: translateY(-4px); box-shadow: 0 14px 34px var(--shadow-lg); }
+    .gal-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gal-item.gal-contain img { object-fit: contain; padding: 24px; background: var(--white); }
+    .gal-item.gal-fit img { object-fit: contain; background: var(--tint); }
+    .gal-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 12px; color: var(--white); font: 600 0.78rem var(--font-body); text-align: left; background: linear-gradient(transparent, rgba(20,28,30,0.78)); opacity: 0; transition: var(--transition); }
+    .gal-item:hover .gal-cap, .gal-item:focus-visible .gal-cap { opacity: 1; }
+    @media (hover: none) { .gal-cap { opacity: 1; } }
+    .gal-lightbox { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 14px; padding: 24px 70px; background: rgba(14,20,22,0.94); }
+    .gal-lightbox.active { display: flex; }
+    .gal-lightbox img { max-width: 100%; max-height: calc(100vh - 120px); border-radius: 10px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+    .gal-lightbox p { color: var(--white); font-size: 0.9rem; text-align: center; }
+    .gal-lb-btn { position: absolute; width: 46px; height: 46px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.16); color: var(--white); font-size: 1.3rem; cursor: pointer; }
+    .gal-lb-btn:hover { background: var(--accent); }
+    .gal-lb-close { top: 18px; right: 22px; } .gal-lb-prev { left: 14px; top: 50%; } .gal-lb-next { right: 14px; top: 50%; }
+    @media (max-width: 700px) { .gal-hero h1 { font-size: 2.3rem; } .gal-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } .gal-lightbox { padding: 24px 12px; } .gal-lb-prev { left: 6px; top: auto; bottom: 18px; } .gal-lb-next { right: 6px; top: auto; bottom: 18px; } }
+  </style>
+</head>
+<body class="page-transition">
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="gallery.html" class="active">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="gal-hero">
+    <div>
+      <span class="hero-badge">Gallery</span>
+      <h1>Moments &amp; <em>Memories</em></h1>
+      <p>Every image from across SheRises Collective — events, community, books, speakers and programmes — in one place. Tap any picture to view it larger.</p>
+    </div>
+  </section>
+
+  <section class="gal-wrap">
+    <div class="gal-filters" role="group" aria-label="Filter gallery"><button class="gal-filter active" data-filter="all">All</button><button class="gal-filter" data-filter="events-posters">Events & Posters</button><button class="gal-filter" data-filter="community">Community</button><button class="gal-filter" data-filter="books">Books</button><button class="gal-filter" data-filter="our-founder-team">Our Founder & Team</button><button class="gal-filter" data-filter="speakers">Speakers</button><button class="gal-filter" data-filter="programmes">Programmes</button><button class="gal-filter" data-filter="brand">Brand</button></div>
+    <div class="gal-group" data-cat="events-posters">
+      <h2 class="gal-title">Events &amp; Posters</h2>
+      <div class="gal-grid">
+        <button type="button" class="gal-item gal-fit" data-full="images/singles-conference-poster.jpg" data-alt="Singles Conference 2026 poster"><img src="images/singles-conference-poster.jpg" alt="Singles Conference 2026 poster" loading="lazy"><span class="gal-cap">Singles Conference 2026 poster</span></button>
+        <button type="button" class="gal-item gal-fit" data-full="images/christmas-market-poster.jpg" data-alt="Christmas Market at the Phansi Museum poster"><img src="images/christmas-market-poster.jpg" alt="Christmas Market at the Phansi Museum poster" loading="lazy"><span class="gal-cap">Christmas Market at the Phansi Museum poster</span></button>
+        <button type="button" class="gal-item gal-fit" data-full="images/market-3-october-poster.jpg" data-alt="Family Market Day poster"><img src="images/market-3-october-poster.jpg" alt="Family Market Day poster" loading="lazy"><span class="gal-cap">Family Market Day poster</span></button>
+        <button type="button" class="gal-item" data-full="images/conference-bg.jpg" data-alt="Conference gathering"><img src="images/conference-bg.jpg" alt="Conference gathering" loading="lazy"><span class="gal-cap">Conference gathering</span></button>
+        <button type="button" class="gal-item" data-full="images/workshop-1.jpg" data-alt="SheRises workshop"><img src="images/workshop-1.jpg" alt="SheRises workshop" loading="lazy"><span class="gal-cap">SheRises workshop</span></button>
+        <button type="button" class="gal-item" data-full="images/workshop-2.jpg" data-alt="SheRises workshop"><img src="images/workshop-2.jpg" alt="SheRises workshop" loading="lazy"><span class="gal-cap">SheRises workshop</span></button>
+        <button type="button" class="gal-item" data-full="images/spiritual-formation.jpg" data-alt="Spiritual formation session"><img src="images/spiritual-formation.jpg" alt="Spiritual formation session" loading="lazy"><span class="gal-cap">Spiritual formation session</span></button>
+      </div>
+    </div>
+    <div class="gal-group" data-cat="community">
+      <h2 class="gal-title">Community</h2>
+      <div class="gal-grid">
+        <button type="button" class="gal-item" data-full="images/community-1.jpg" data-alt="Community gathering"><img src="images/community-1.jpg" alt="Community gathering" loading="lazy"><span class="gal-cap">Community gathering</span></button>
+        <button type="button" class="gal-item" data-full="images/community-2.jpg" data-alt="Community gathering"><img src="images/community-2.jpg" alt="Community gathering" loading="lazy"><span class="gal-cap">Community gathering</span></button>
+        <button type="button" class="gal-item" data-full="images/community-3.jpg" data-alt="Community gathering"><img src="images/community-3.jpg" alt="Community gathering" loading="lazy"><span class="gal-cap">Community gathering</span></button>
+        <button type="button" class="gal-item" data-full="images/community-4.jpg" data-alt="Community gathering"><img src="images/community-4.jpg" alt="Community gathering" loading="lazy"><span class="gal-cap">Community gathering</span></button>
+      </div>
+    </div>
+    <div class="gal-group" data-cat="books">
+      <h2 class="gal-title">Books</h2>
+      <div class="gal-grid">
+        <button type="button" class="gal-item gal-fit" data-full="images/touched-by-grace-original.jpg" data-alt="Touched by Grace book cover"><img src="images/touched-by-grace-original.jpg" alt="Touched by Grace book cover" loading="lazy"><span class="gal-cap">Touched by Grace book cover</span></button>
+        <button type="button" class="gal-item gal-fit" data-full="images/weight-of-leadership-original.jpg" data-alt="The Weight of Leadership book cover"><img src="images/weight-of-leadership-original.jpg" alt="The Weight of Leadership book cover" loading="lazy"><span class="gal-cap">The Weight of Leadership book cover</span></button>
+        <button type="button" class="gal-item gal-fit" data-full="images/before-you-say-i-do-original.jpg" data-alt="Before You Say I Do book cover"><img src="images/before-you-say-i-do-original.jpg" alt="Before You Say I Do book cover" loading="lazy"><span class="gal-cap">Before You Say I Do book cover</span></button>
+        <button type="button" class="gal-item gal-fit" data-full="images/breaking-the-cycle-original.jpg" data-alt="Breaking the Cycle book cover"><img src="images/breaking-the-cycle-original.jpg" alt="Breaking the Cycle book cover" loading="lazy"><span class="gal-cap">Breaking the Cycle book cover</span></button>
+        <button type="button" class="gal-item gal-fit" data-full="images/covenant-alignment-original.jpg" data-alt="Covenant Alignment book cover"><img src="images/covenant-alignment-original.jpg" alt="Covenant Alignment book cover" loading="lazy"><span class="gal-cap">Covenant Alignment book cover</span></button>
+        <button type="button" class="gal-item gal-fit" data-full="images/fingerprints-of-god-original.jpg" data-alt="Fingerprints of God book cover"><img src="images/fingerprints-of-god-original.jpg" alt="Fingerprints of God book cover" loading="lazy"><span class="gal-cap">Fingerprints of God book cover</span></button>
+        <button type="button" class="gal-item gal-fit" data-full="images/healing-of-memories-original.jpg" data-alt="Healing of Memories book cover"><img src="images/healing-of-memories-original.jpg" alt="Healing of Memories book cover" loading="lazy"><span class="gal-cap">Healing of Memories book cover</span></button>
+        <button type="button" class="gal-item" data-full="images/testimonial-reader-touched-by-grace.jpg" data-alt="A reader with her copy of Touched by Grace"><img src="images/testimonial-reader-touched-by-grace.jpg" alt="A reader with her copy of Touched by Grace" loading="lazy"><span class="gal-cap">A reader with her copy of Touched by Grace</span></button>
+      </div>
+    </div>
+    <div class="gal-group" data-cat="our-founder-team">
+      <h2 class="gal-title">Our Founder &amp; Team</h2>
+      <div class="gal-grid">
+        <button type="button" class="gal-item" data-full="images/founder-fikile.jpg" data-alt="Fikile Mnguni, founder"><img src="images/founder-fikile.jpg" alt="Fikile Mnguni, founder" loading="lazy"><span class="gal-cap">Fikile Mnguni, founder</span></button>
+        <button type="button" class="gal-item" data-full="images/founder-1.jpg" data-alt="Fikile Mnguni, founder"><img src="images/founder-1.jpg" alt="Fikile Mnguni, founder" loading="lazy"><span class="gal-cap">Fikile Mnguni, founder</span></button>
+        <button type="button" class="gal-item" data-full="images/team-wesleigh.jpg" data-alt="Wesleigh, SheRises Collective team"><img src="images/team-wesleigh.jpg" alt="Wesleigh, SheRises Collective team" loading="lazy"><span class="gal-cap">Wesleigh, SheRises Collective team</span></button>
+        <button type="button" class="gal-item" data-full="images/team-yani.jpg" data-alt="Yani, SheRises Collective team"><img src="images/team-yani.jpg" alt="Yani, SheRises Collective team" loading="lazy"><span class="gal-cap">Yani, SheRises Collective team</span></button>
+      </div>
+    </div>
+    <div class="gal-group" data-cat="speakers">
+      <h2 class="gal-title">Speakers</h2>
+      <div class="gal-grid">
+        <button type="button" class="gal-item" data-full="images/speaker-fikile-mnguni.jpg" data-alt="Fikile Mnguni"><img src="images/speaker-fikile-mnguni.jpg" alt="Fikile Mnguni" loading="lazy"><span class="gal-cap">Fikile Mnguni</span></button>
+        <button type="button" class="gal-item" data-full="images/speaker-felicite-lucas.jpg" data-alt="Felicité Lucas"><img src="images/speaker-felicite-lucas.jpg" alt="Felicité Lucas" loading="lazy"><span class="gal-cap">Felicité Lucas</span></button>
+        <button type="button" class="gal-item" data-full="images/speaker-gn-mbuli.jpg" data-alt="GN Mbuli"><img src="images/speaker-gn-mbuli.jpg" alt="GN Mbuli" loading="lazy"><span class="gal-cap">GN Mbuli</span></button>
+        <button type="button" class="gal-item" data-full="images/speaker-jabu-nxasana.png" data-alt="Jabu Nxasana"><img src="images/speaker-jabu-nxasana.png" alt="Jabu Nxasana" loading="lazy"><span class="gal-cap">Jabu Nxasana</span></button>
+        <button type="button" class="gal-item" data-full="images/speaker-simphiwe-majola.jpg" data-alt="Simphiwe Majola"><img src="images/speaker-simphiwe-majola.jpg" alt="Simphiwe Majola" loading="lazy"><span class="gal-cap">Simphiwe Majola</span></button>
+      </div>
+    </div>
+    <div class="gal-group" data-cat="programmes">
+      <h2 class="gal-title">Programmes</h2>
+      <div class="gal-grid">
+        <button type="button" class="gal-item" data-full="images/program-bg-altars.jpg" data-alt="Altars of Hope programme"><img src="images/program-bg-altars.jpg" alt="Altars of Hope programme" loading="lazy"><span class="gal-cap">Altars of Hope programme</span></button>
+        <button type="button" class="gal-item" data-full="images/program-bg-pilgrimage.jpg" data-alt="Hearts on Pilgrimage programme"><img src="images/program-bg-pilgrimage.jpg" alt="Hearts on Pilgrimage programme" loading="lazy"><span class="gal-cap">Hearts on Pilgrimage programme</span></button>
+        <button type="button" class="gal-item" data-full="images/program-bg-wealth.jpg" data-alt="Building Wealth with Wisdom programme"><img src="images/program-bg-wealth.jpg" alt="Building Wealth with Wisdom programme" loading="lazy"><span class="gal-cap">Building Wealth with Wisdom programme</span></button>
+      </div>
+    </div>
+    <div class="gal-group" data-cat="brand">
+      <h2 class="gal-title">Brand</h2>
+      <div class="gal-grid">
+        <button type="button" class="gal-item gal-contain" data-full="images/sherises-logo.png" data-alt="SheRises Collective logo"><img src="images/sherises-logo.png" alt="SheRises Collective logo" loading="lazy"><span class="gal-cap">SheRises Collective logo</span></button>
+        <button type="button" class="gal-item gal-contain" data-full="images/crux-logo-full.png" data-alt="CRUX logo"><img src="images/crux-logo-full.png" alt="CRUX logo" loading="lazy"><span class="gal-cap">CRUX logo</span></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="gal-lightbox" id="galLightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button type="button" class="gal-lb-btn gal-lb-close" id="galClose" aria-label="Close">✕</button>
+    <button type="button" class="gal-lb-btn gal-lb-prev" id="galPrev" aria-label="Previous image">‹</button>
+    <button type="button" class="gal-lb-btn gal-lb-next" id="galNext" aria-label="Next image">›</button>
+    <img id="galImg" src="" alt="">
+    <p id="galCap"></p>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>She<span>Rises</span> Collective</h3>
+        <p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li>
+          <li><a href="store.html">Store</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="founder.html">The Founder</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Partner With Us</a></li>
+          <li><a href="#">Volunteer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Get In Touch</h4>
+        <p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p>
+        <p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p>
+        <p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram">📷</a>
+          <a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a>
+          <a href="tel:+27622993966" title="Phone">📞</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  (function () {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.gal-item'));
+    var lb = document.getElementById('galLightbox'), img = document.getElementById('galImg'), cap = document.getElementById('galCap');
+    var idx = 0;
+    function visible() { return items.filter(function (i) { return !i.closest('.gal-group').hidden; }); }
+    function show(list, k) { idx = (k + list.length) % list.length; var it = list[idx]; img.src = it.dataset.full; img.alt = it.dataset.alt; cap.textContent = it.dataset.alt; lb.classList.add('active'); lb._list = list; }
+    items.forEach(function (it) { it.addEventListener('click', function () { var l = visible(); show(l, l.indexOf(it)); }); });
+    function close() { lb.classList.remove('active'); img.src = ''; }
+    document.getElementById('galClose').onclick = close;
+    document.getElementById('galPrev').onclick = function (e) { e.stopPropagation(); show(lb._list, idx - 1); };
+    document.getElementById('galNext').onclick = function (e) { e.stopPropagation(); show(lb._list, idx + 1); };
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(lb._list, idx - 1); else if (e.key === 'ArrowRight') show(lb._list, idx + 1);
+    });
+    var filters = document.querySelectorAll('.gal-filter');
+    filters.forEach(function (b) { b.addEventListener('click', function () {
+      filters.forEach(function (x) { x.classList.toggle('active', x === b); });
+      document.querySelectorAll('.gal-group').forEach(function (g) { g.hidden = b.dataset.filter !== 'all' && g.dataset.cat !== b.dataset.filter; });
+    }); });
+  })();
+  </script>
+</body>
+</html>
