@@ -77,6 +77,60 @@
     .kli-cta-section { padding: 100px 40px; text-align: center; background: linear-gradient(135deg, var(--light) 0%, var(--tint) 100%); }
     .kli-cta-section .btn { margin: 10px; }
 
+    .kli-block { max-width: 1000px; margin: 50px auto 0; }
+    .kli-block-title { text-align: center; font-size: 1.7rem; margin-bottom: 24px; color: var(--dark); }
+    .kli-block-title em { font-style: italic; color: var(--primary); }
+    .kli-block-note { text-align: center; font-size: 0.92rem; color: var(--text-light); margin-top: 18px; }
+    .kli-fee-grid, .kli-meet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .kli-fee-card { background: linear-gradient(135deg, #2C3438 0%, #4A555B 100%); color: var(--white); border-radius: 18px; padding: 32px 28px; text-align: center; }
+    .kli-fee-tag { display: inline-block; padding: 5px 16px; border-radius: 20px; background: var(--accent); color: var(--white); font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+    .kli-fee-amount { font-family: var(--font-heading); font-size: 2.6rem; font-weight: 700; color: var(--accent); line-height: 1.1; }
+    .kli-fee-per { font-size: 0.95rem; margin: 6px 0 12px; color: rgba(255,255,255,0.9); }
+    .kli-fee-card p { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin: 0; }
+    .kli-meet-card { background: var(--tint); border: 1px solid var(--border); border-radius: 18px; padding: 28px; text-align: center; }
+    .kli-meet-course { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; }
+    .kli-meet-when { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+    .kli-meet-time { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+    .kli-grad-fee { max-width: 480px; margin: 50px auto 0; background: linear-gradient(135deg, #2C3438 0%, #4A555B 100%); color: var(--white); border-radius: 18px; padding: 32px 28px; text-align: center; }
+    .kli-grad-fee p { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin: 0; }
+
+    .kli-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin: 34px 0 10px; }
+    .kli-tab { padding: 13px 28px; border-radius: 50px; border: 2px solid var(--border); background: var(--white); color: var(--text); font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: var(--transition); }
+    .kli-tab:hover { border-color: var(--accent); color: var(--primary); }
+    .kli-tab.active { background: var(--primary); border-color: var(--primary); color: var(--white); }
+    .kli-level-panel { display: none; }
+    .kli-level-panel.active { display: block; }
+    .kli-level-head { max-width: 900px; margin: 30px auto 0; text-align: center; }
+    .kli-level-head h3 { font-size: 1.5rem; color: var(--dark); margin-bottom: 14px; }
+    .kli-level-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .kli-level-meta span { padding: 8px 18px; border-radius: 30px; background: var(--white); border: 1px solid var(--border); font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+    .kli-level-panel .kli-modules-list { margin-top: 30px; }
+
+    .kli-about-section { padding: 80px 40px; background: var(--tint); }
+    .kli-about-text { max-width: 800px; margin: 36px auto 0; text-align: center; }
+    .kli-about-text p { font-size: 1.02rem; color: var(--text-light); line-height: 1.9; margin-bottom: 20px; }
+    .kli-who-grid { max-width: 960px; margin: 36px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+    .kli-who-grid div { background: var(--tint); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px 16px 46px; position: relative; font-size: 0.92rem; color: var(--dark); line-height: 1.5; }
+    .kli-who-grid div::before { content: '✓'; position: absolute; left: 20px; color: var(--accent); font-weight: 700; }
+    .kli-level-blurb { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; margin: 0 auto 16px; max-width: 760px; }
+    .kli-module-desc { font-size: 0.92rem; color: var(--text-light); line-height: 1.7; margin-bottom: 12px; font-style: italic; }
+    .kli-topic-list { list-style: none; margin: 0 0 12px; }
+    .kli-topic-list li { position: relative; padding: 4px 0 4px 20px; font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+    .kli-topic-list li::before { content: '•'; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
+    .kli-scripture { font-size: 0.82rem; color: var(--primary); font-weight: 600; }
+    .kli-learning-section { padding: 90px 40px; background: var(--tint); }
+    .kli-learning-grid { max-width: 1000px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .kli-learning-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; }
+    .kli-learning-card h4 { font-size: 1.05rem; color: var(--primary); margin-bottom: 10px; }
+    .kli-learning-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+    .kli-recognition-section { padding: 70px 40px 20px; background: var(--white); }
+    .kli-recognition-box { max-width: 800px; margin: 0 auto; border-left: 4px solid var(--accent); background: var(--tint); border-radius: 0 16px 16px 0; padding: 30px 34px; }
+    .kli-recognition-box h3 { font-size: 1.3rem; margin-bottom: 12px; color: var(--dark); }
+    .kli-recognition-box p { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; margin-bottom: 12px; }
+    .kli-recognition-box p:last-child { margin-bottom: 0; }
+    .kli-outcome-section { padding: 80px 40px 20px; background: var(--white); }
+    .kli-outcome-call { font-family: var(--font-heading); font-style: italic; font-size: 1.25rem; color: var(--primary) !important; }
+
     .kli-register-section { padding: 90px 40px; background: var(--tint); scroll-margin-top: 90px; }
     .kli-register-grid { max-width: 1000px; margin: 40px auto 0; display: grid; grid-template-columns: 0.8fr 1.4fr; gap: 36px; align-items: start; }
     .kli-register-summary { background: linear-gradient(135deg, #2C3438 0%, #4A555B 100%); color: var(--white); border-radius: 20px; padding: 34px 30px; }
@@ -109,13 +163,13 @@
   </style>
 </head>
 <body>
-  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html" class="active">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html" class="active">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
 
   <section class="kli-hero">
     <div class="kli-hero-content">
-      <span class="hero-badge">Certificate in Kingdom Leadership · Level 1</span>
+      <span class="hero-badge">Certificate in Kingdom Leadership</span>
       <h1>Kingdom Leadership <em>Institute</em></h1>
-      <p class="kli-qualification">Foundations of Kingdom Leadership</p>
+      <p class="kli-qualification">Foundations, Development and Practice of Kingdom Leadership</p>
       <p class="kli-motto">"Equipping Leaders. Strengthening Churches. Transforming Communities."</p>
     </div>
   </section>
@@ -124,7 +178,21 @@
     <div class="container">
       <div class="kli-welcome-text animate-on-scroll">
         <p>The Kingdom Leadership Institute exists to equip pastors, church leaders, Christian professionals and emerging leaders with biblical, strategic and practical leadership skills to lead healthy churches, develop effective leaders and transform communities for the Kingdom of God.</p>
-        <p>This six-month leadership journey combines biblical teaching, practical leadership development, mentoring and strategic ministry planning to prepare leaders for greater Kingdom impact.</p>
+        <p>This leadership journey, offered over six or twelve months, combines biblical teaching, practical leadership development, mentoring and strategic ministry planning to prepare leaders for greater Kingdom impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-about-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>About the <em>Institute</em></h2>
+        <p>Equipping Kingdom leaders to faithfully steward the leadership entrusted to them by Christ.</p>
+      </div>
+      <div class="kli-about-text animate-on-scroll">
+        <p>The Kingdom Leadership Institute is an initiative of SheRises Collective, established to equip, develop and mentor Kingdom leaders for faithful and effective service in the Church and society.</p>
+        <p>The Institute recognises that God calls people to leadership in different contexts. Some lead established churches, while others serve in emerging ministries, rural communities, missionary work, workplaces, schools, businesses and community organisations. Many have a clear calling and practical experience but need structured biblical teaching, leadership development and mentorship to strengthen their service.</p>
+        <p>Our programme provides a structured learning journey grounded in Scripture and focused on Christ-centred leadership, spiritual maturity, accountability, effective ministry, mentorship and practical community impact.</p>
       </div>
     </div>
   </section>
@@ -132,13 +200,47 @@
   <section class="kli-info-section">
     <div class="container">
       <div class="kli-info-grid">
-        <div class="kli-info-card animate-on-scroll"><span class="kli-info-label">Duration</span><span class="kli-info-value">6 Months</span></div>
-        <div class="kli-info-card animate-on-scroll"><span class="kli-info-label">Format</span><span class="kli-info-value">One Full-Day Session Monthly</span></div>
-        <div class="kli-info-card animate-on-scroll"><span class="kli-info-label">Qualification</span><span class="kli-info-value">Certificate in Kingdom Leadership</span></div>
+        <div class="kli-info-card animate-on-scroll"><span class="kli-info-label">Duration</span><span class="kli-info-value">6 or 12 Months</span></div>
+        <div class="kli-info-card animate-on-scroll"><span class="kli-info-label">Format</span><span class="kli-info-value">Online · First Saturday Monthly</span></div>
+        <div class="kli-info-card animate-on-scroll"><span class="kli-info-label">Recognition</span><span class="kli-info-value">Certificate (non-accredited)</span></div>
       </div>
+      <div class="kli-block animate-on-scroll">
+        <h3 class="kli-block-title">Fee <em>Options</em></h3>
+        <div class="kli-fee-grid">
+          <div class="kli-fee-card">
+            <span class="kli-fee-tag">Level 1 · 6 Months</span>
+            <div class="kli-fee-amount">R658</div>
+            <div class="kli-fee-per">per month for 6 months</div>
+            <p>Total: R3,948 · course materials included</p>
+          </div>
+          <div class="kli-fee-card">
+            <span class="kli-fee-tag">Level 2 · 12 Months</span>
+            <div class="kli-fee-amount">R350</div>
+            <div class="kli-fee-per">per month for 12 months</div>
+            <p>Total: R4,200 per annum · course materials included</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="kli-block animate-on-scroll">
+        <h3 class="kli-block-title">Online <em>Meetings</em></h3>
+        <div class="kli-meet-grid">
+          <div class="kli-meet-card">
+            <span class="kli-meet-course">Level 1 · 6-Month Course</span>
+            <div class="kli-meet-when">First Saturday of every month</div>
+            <div class="kli-meet-time">9:00 am – 12:00 pm</div>
+          </div>
+          <div class="kli-meet-card">
+            <span class="kli-meet-course">Level 2 · 12-Month Course</span>
+            <div class="kli-meet-when">First Saturday of every month</div>
+            <div class="kli-meet-time">2:00 pm – 5:00 pm</div>
+          </div>
+        </div>
+        <p class="kli-block-note">All meetings take place online.</p>
+      </div>
+
       <div class="kli-invest-banner animate-on-scroll">
-        <div class="kli-invest-amount">R658 / month</div>
-        <p>for six months</p>
+        <p style="margin-top:0;">Choose your option and secure your place.</p>
         <a href="#register" class="btn btn-primary">Register Now</a>
       </div>
     </div>
@@ -150,86 +252,172 @@
         <h2>Your Course Fee <em>Includes</em></h2>
       </div>
       <div class="kli-includes-grid">
-        <div class="animate-on-scroll">Six months of Kingdom leadership training</div>
-        <div class="animate-on-scroll">Six facilitated leadership development workshops</div>
-        <div class="animate-on-scroll">Comprehensive participant manual</div>
+        <div class="animate-on-scroll">Kingdom leadership training over 6 or 12 months</div>
+        <div class="animate-on-scroll">Facilitated online leadership development workshops</div>
+        <div class="animate-on-scroll">Comprehensive participant manual and course materials</div>
         <div class="animate-on-scroll">Leadership journal</div>
         <div class="animate-on-scroll">Practical ministry assignments</div>
         <div class="animate-on-scroll">Monthly mentoring and facilitated discussions</div>
         <div class="animate-on-scroll">Networking with experienced Kingdom leaders</div>
         <div class="animate-on-scroll">Admission to the annual Kingdom Leadership Summit</div>
-        <div class="animate-on-scroll">Graduation ceremony</div>
-        <div class="animate-on-scroll">Certificate in Kingdom Leadership</div>
-        <div class="animate-on-scroll">Light refreshments during contact sessions</div>
         <div class="animate-on-scroll">Membership of the Kingdom Leadership Institute Alumni Network</div>
       </div>
+      <p class="kli-block-note animate-on-scroll" style="margin-top:24px;">Both fee options include course materials. Graduation is covered by the once-off Graduation Fee below.</p>
     </div>
   </section>
 
   <section class="kli-audience-section">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <h2>Who Should <em>Attend?</em></h2>
+        <h2>Who Should <em>Register?</em></h2>
+        <p>The programme is suitable for:</p>
       </div>
-      <div class="kli-audience-tags">
-        <span>Senior Pastors</span>
-        <span>Associate Pastors</span>
-        <span>Youth Pastors</span>
-        <span>Church Elders</span>
-        <span>Ministry Leaders</span>
-        <span>Church Administrators</span>
-        <span>Christian Entrepreneurs</span>
-        <span>Marketplace Leaders</span>
-        <span>Emerging Leaders</span>
-        <span>Seminary Graduates</span>
-        <span>Ministry Coordinators</span>
+      <div class="kli-who-grid">
+        <div class="animate-on-scroll">Pastors, assistant pastors and church planters</div>
+        <div class="animate-on-scroll">Apostles, prophets, evangelists, teachers and missionaries</div>
+        <div class="animate-on-scroll">Elders, deacons and ministry team leaders</div>
+        <div class="animate-on-scroll">Worship, prayer, youth, children's, men's and women's ministry leaders</div>
+        <div class="animate-on-scroll">Home fellowship and discipleship group leaders</div>
+        <div class="animate-on-scroll">Emerging Kingdom leaders preparing for greater responsibility</div>
+        <div class="animate-on-scroll">Christian leaders serving in business, education, community development and other spheres of society</div>
+        <div class="animate-on-scroll">Leaders of faith-based organisations and community initiatives</div>
+      </div>
+      <p class="kli-block-note animate-on-scroll" style="max-width:700px;margin:30px auto 0;">You do not need to lead a large church or hold a formal title to benefit from the programme. A willingness to learn, grow and serve faithfully is essential.</p>
+    </div>
+  </section>
+
+  <section class="kli-modules-section" id="programme">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>Programme <em>Structure</em></h2>
+        <p>Two levels of study — choose the one that fits your leadership journey.</p>
+      </div>
+      <div class="kli-tabs animate-on-scroll" role="tablist">
+        <button type="button" class="kli-tab active" role="tab" aria-selected="true" data-level="1">Level 1 · 6 Months</button>
+        <button type="button" class="kli-tab" role="tab" aria-selected="false" data-level="2">Level 2 · 12 Months</button>
+      </div>
+
+      <div class="kli-level-panel active" id="kliLevel1" role="tabpanel">
+        <div class="kli-level-head">
+          <h3>Level 1: Foundations of Kingdom Leadership</h3>
+          <p class="kli-level-blurb">This level establishes the biblical foundations of leadership. Participants explore Christ's example, the character of a Kingdom leader, the stewardship of calling and gifts, spiritual authority, accountability, healthy ministry structures and service.</p>
+          <div class="kli-level-meta"><span>Duration: 6 months</span><span>Fee: R658 per month</span><span>Total: R3,948</span></div>
+        </div>
+        <div class="kli-modules-list">
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 1</span>
+          <h4>Biblical Foundations of Kingdom Leadership</h4>
+          <p class="kli-module-desc">Participants explore Christ's authority over His Church and the biblical meaning of leadership as service and stewardship.</p>
+          <ul class="kli-topic-list"><li>Christ as Head of the Church</li><li>Jesus Christ as the Servant King</li><li>Leadership, calling and position</li><li>Leadership as stewardship rather than ownership</li><li>The difference between Kingdom leadership and worldly models of leadership</li></ul>
+          <p class="kli-scripture">Key Scriptures: Colossians 1:15–20; Matthew 20:25–28; John 13:1–17</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 2</span>
+          <h4>Biblical Models of Kingdom Leadership</h4>
+          <p class="kli-module-desc">This module examines the character and values that shape a faithful Kingdom leader.</p>
+          <ul class="kli-topic-list"><li>Biblical examples of leadership</li><li>Character before competence</li><li>Humility, integrity and obedience</li><li>Spiritual maturity and the fruit of a leader's life</li><li>Servant-hearted leadership in practice</li></ul>
+          <p class="kli-scripture">Key Scriptures: 1 Timothy 3:1–13; Titus 1:5–9; Philippians 2:1–11</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 3</span>
+          <h4>The Weight of Leadership — Calling, Anointing and Stewardship</h4>
+          <p class="kli-module-desc">Participants examine the sacred responsibility associated with leadership entrusted by God.</p>
+          <ul class="kli-topic-list"><li>Understanding calling and spiritual gifts</li><li>The anointing and the responsibility to serve faithfully</li><li>Exercising spiritual authority under Christ</li><li>Stewarding God's people, gifts and opportunities</li><li>Remaining dependent on the Holy Spirit</li><li>Accountability before God</li></ul>
+          <p class="kli-scripture">Key Scriptures: Romans 11:29; 1 Corinthians 4:1–2; 2 Corinthians 4:1–7; Hebrews 13:17</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 4</span>
+          <h4>Spiritual Authority, Accountability and Ethical Leadership</h4>
+          <p class="kli-module-desc">This module explores how authority should be exercised with integrity, humility and accountability.</p>
+          <ul class="kli-topic-list"><li>Biblical principles of authority and submission</li><li>Leadership structures and accountability</li><li>Ethical conduct and transparency</li><li>Recognising and preventing the misuse of spiritual authority</li><li>Appropriate leadership boundaries and responsible decision-making</li></ul>
+          <p class="kli-scripture">Key Scriptures: Mark 10:42–45; 1 Peter 5:1–4; 2 Corinthians 8:20–21</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 5</span>
+          <h4>Building Healthy Churches and Ministry Teams</h4>
+          <p class="kli-module-desc">Participants consider the structures, relationships and practices that support healthy churches and effective ministry.</p>
+          <ul class="kli-topic-list"><li>Biblical governance and ministry responsibilities</li><li>The roles of pastors, elders, deacons and ministry teams</li><li>Delegation and teamwork</li><li>Conflict resolution</li><li>Financial stewardship and accountability</li><li>Developing healthy, collaborative leadership teams</li></ul>
+          <p class="kli-scripture">Key Scriptures: Acts 6:1–7; Acts 14:21–23; 1 Corinthians 14:40</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 6</span>
+          <h4>Leadership in Action — Service, Mentorship and Community Impact</h4>
+          <p class="kli-module-desc">This module connects biblical leadership principles with practical service.</p>
+          <ul class="kli-topic-list"><li>Discipleship and serving others</li><li>Identifying and developing emerging leaders</li><li>Mentorship and leadership multiplication</li><li>Understanding community needs</li><li>Collaboration across churches and organisations</li><li>Preparing a practical leadership action plan</li></ul>
+          <p class="kli-scripture">Key Scriptures: Matthew 28:18–20; Ephesians 4:11–16; Jeremiah 29:7</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="kli-level-panel" id="kliLevel2" role="tabpanel">
+        <div class="kli-level-head">
+          <h3>Level 2: Developing Kingdom Leaders</h3>
+          <p class="kli-level-blurb">This level builds on the foundations established in Level 1. Participants develop skills in vision and strategic planning, mentorship, leadership multiplication, community collaboration, financial stewardship, sustainable service and succession planning. Progression to Level 2 is subject to the Institute's programme requirements.</p>
+          <div class="kli-level-meta"><span>Duration: 12 months</span><span>Fee: R350 per month</span><span>Total: R4,200 per annum</span></div>
+        </div>
+        <div class="kli-modules-list">
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 1</span>
+          <h4>Strategic Leadership and Vision Stewardship</h4>
+          <p class="kli-module-desc">Participants learn to translate vision into purposeful and responsible action.</p>
+          <ul class="kli-topic-list"><li>Discerning and communicating vision</li><li>Aligning ministry activities with the vision</li><li>Strategic planning and setting priorities</li><li>Managing resources responsibly</li><li>Monitoring progress and evaluating outcomes</li></ul>
+          <p class="kli-scripture">Key Scriptures: Habakkuk 2:2–3; Proverbs 16:3; Nehemiah 2:11–18</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 2</span>
+          <h4>Mentorship, Discipleship and Leadership Multiplication</h4>
+          <p class="kli-module-desc">This module focuses on equipping others and preparing leaders for the future.</p>
+          <ul class="kli-topic-list"><li>Recognising gifts and potential in others</li><li>Building effective mentoring relationships</li><li>Discipleship and spiritual formation</li><li>Delegating responsibility and developing confidence</li><li>Preparing emerging leaders to carry responsibility faithfully</li></ul>
+          <p class="kli-scripture">Key Scriptures: 2 Timothy 2:1–2; Ephesians 4:11–16; Numbers 11:16–17</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 3</span>
+          <h4>Leadership in Action — Church and Community Collaboration</h4>
+          <p class="kli-module-desc">Participants explore how churches and Kingdom leaders can contribute to stronger communities.</p>
+          <ul class="kli-topic-list"><li>The role of the Church in community transformation</li><li>Building partnerships with businesses, NGOs and public institutions</li><li>Responding to family, youth and community needs</li><li>Encouraging collaborative initiatives across churches</li><li>Planning practical community development projects</li></ul>
+          <p class="kli-scripture">Key Scriptures: Jeremiah 29:7; Matthew 5:13–16; Galatians 6:9–10</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 4</span>
+          <h4>Enterprise, Financial Stewardship and Economic Empowerment</h4>
+          <p class="kli-module-desc">This module considers the responsible management of resources and the contribution Kingdom leaders can make to economic development.</p>
+          <ul class="kli-topic-list"><li>Biblical principles of stewardship</li><li>Financial integrity and responsible resource management</li><li>Entrepreneurship and sustainable enterprise</li><li>Skills development and economic empowerment</li><li>Supporting initiatives that create opportunities for young people and communities</li></ul>
+          <p class="kli-scripture">Key Scriptures: Proverbs 11:1; Proverbs 22:29; Luke 16:10–12</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 5</span>
+          <h4>Resilient Leadership, Healthy Boundaries and Sustainable Service</h4>
+          <p class="kli-module-desc">Participants consider how leaders can sustain faithful service while caring responsibly for themselves and others.</p>
+          <ul class="kli-topic-list"><li>Recognising the pressures associated with leadership</li><li>Healthy boundaries and sustainable ministry practices</li><li>Rest, prayer and dependence on God</li><li>Responding constructively to conflict and difficult seasons</li><li>Understanding when specialist support or referral may be needed</li><li>Building supportive leadership relationships</li></ul>
+          <p class="kli-scripture">Key Scriptures: Mark 6:30–32; Galatians 6:2–5; 1 Kings 19:1–18</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Month 6</span>
+          <h4>Legacy, Succession and the Faithful Steward</h4>
+          <p class="kli-module-desc">The final module brings together the learning journey and prepares participants to apply what they have learned.</p>
+          <ul class="kli-topic-list"><li>Faithfulness in fulfilling God's purposes</li><li>Leadership legacy and succession planning</li><li>Developing others to carry responsibility</li><li>Reviewing personal growth and leadership practice</li><li>Presenting a practical leadership impact project</li><li>Preparing for continued mentorship and leadership development</li></ul>
+          <p class="kli-scripture">Key Scriptures: 2 Timothy 4:6–8; 1 Peter 4:10–11; 1 Corinthians 3:10–15</p>
+        </div>
+        <div class="kli-module-item animate-on-scroll">
+          <span class="kli-module-num">Months 7–12</span>
+          <h4>Practical Leadership Development and Application</h4>
+          <p class="kli-topics">Applying biblical leadership principles in ministry and community settings • Implementing and reviewing a leadership action plan • Mentorship and peer learning • Strengthening governance and accountability practices • Developing and evaluating a community impact initiative • Preparing a final leadership development portfolio and presentation</p>
+        </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="kli-modules-section">
+  <section class="kli-learning-section">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <h2>Programme <em>Structure</em></h2>
-        <p>Six modules, one per month, each with a practical assignment.</p>
+        <h2>How Learning <em>Takes Place</em></h2>
       </div>
-      <div class="kli-modules-list">
-        <div class="kli-module-item animate-on-scroll">
-          <span class="kli-module-num">Module 1</span>
-          <h4>Biblical Foundations of Kingdom Leadership</h4>
-          <p class="kli-topics">Jesus the Servant King • Leadership versus position • Calling and purpose • Kingdom values • Spiritual authority • Character before competence</p>
-          <p class="kli-assignment">Assignment: Develop your personal Kingdom Leadership Philosophy.</p>
-        </div>
-        <div class="kli-module-item animate-on-scroll">
-          <span class="kli-module-num">Module 2</span>
-          <h4>Vision, Mission and Strategic Thinking</h4>
-          <p class="kli-topics">Vision • Mission • Values • Strategic planning • Decision-making • Ministry priorities</p>
-          <p class="kli-assignment">Assignment: Develop a three-year Strategic Ministry Framework.</p>
-        </div>
-        <div class="kli-module-item animate-on-scroll">
-          <span class="kli-module-num">Module 3</span>
-          <h4>Building Healthy Churches</h4>
-          <p class="kli-topics">Governance • Organisational culture • Policies • Accountability • Team development • Succession planning</p>
-          <p class="kli-assignment">Assignment: Conduct a Church Health Assessment.</p>
-        </div>
-        <div class="kli-module-item animate-on-scroll">
-          <span class="kli-module-num">Module 4</span>
-          <h4>Leadership Development and Discipleship</h4>
-          <p class="kli-topics">Mentoring • Coaching • Internship programmes • Fellowship programmes • Leadership pipelines • Volunteer development</p>
-          <p class="kli-assignment">Assignment: Develop a Leadership Development Plan.</p>
-        </div>
-        <div class="kli-module-item animate-on-scroll">
-          <span class="kli-module-num">Module 5</span>
-          <h4>Kingdom Partnerships and Community Transformation</h4>
-          <p class="kli-topics">Stakeholder engagement • Government partnerships • Schools • Business partnerships • Faith networks • Social impact</p>
-          <p class="kli-assignment">Assignment: Develop a Community Partnership Strategy.</p>
-        </div>
-        <div class="kli-module-item animate-on-scroll">
-          <span class="kli-module-num">Module 6</span>
-          <h4>Sustainable Ministry</h4>
-          <p class="kli-topics">Stewardship • Resource mobilisation • Ministry planning • Conferences and events • Innovation • Organisational sustainability</p>
-          <p class="kli-assignment">Final Project: Develop a comprehensive Strategic Ministry Development Plan for your church or ministry.</p>
-        </div>
+      <div class="kli-learning-grid">
+        <div class="kli-learning-card animate-on-scroll"><h4>Delivery</h4><p>Online facilitated learning, one session on the first Saturday of each month.</p></div>
+        <div class="kli-learning-card animate-on-scroll"><h4>Learning Approach</h4><p>Biblical teaching, guided discussion, reflection, practical exercises and application to participants' leadership contexts.</p></div>
+        <div class="kli-learning-card animate-on-scroll"><h4>Practical Application</h4><p>Participants will work towards applying their learning in their churches, ministries, workplaces or communities.</p></div>
+        <div class="kli-learning-card animate-on-scroll"><h4>What You Will Need</h4><p>An internet-connected device, and provision for data. Further information about learning materials, participation requirements and any assessments will be provided during registration.</p></div>
       </div>
     </div>
   </section>
@@ -290,6 +478,12 @@
           <p style="color:var(--text-light);font-size:0.95rem;line-height:1.8;">Successful graduates receive the Certificate in Kingdom Leadership – Level 1 during the annual <a href="kingdom-leadership-summit.html" style="color:var(--primary);font-weight:600;">Kingdom Leadership Summit</a>, alongside membership in the Kingdom Leadership Institute Alumni Network.</p>
         </div>
       </div>
+      <div class="kli-grad-fee animate-on-scroll">
+        <span class="kli-fee-tag">Graduation Fee</span>
+        <div class="kli-fee-amount">R450</div>
+        <div class="kli-fee-per">once-off</div>
+        <p>Includes your graduation certificate, lunch and a gift.</p>
+      </div>
     </div>
   </section>
 
@@ -328,16 +522,18 @@
     <div class="container">
       <div class="section-header animate-on-scroll">
         <h2>Register for the <em>Institute</em></h2>
-        <p>Complete the form below to apply for the Certificate in Kingdom Leadership – Level 1. Our team will contact you to confirm your place and next steps.</p>
+        <p>Complete the form below to apply for Level 1 or Level 2 of the Certificate in Kingdom Leadership. Our team will contact you to confirm your place and next steps.</p>
       </div>
       <div class="kli-register-grid">
         <div class="kli-register-summary animate-on-scroll">
           <h3>Kingdom Leadership Institute</h3>
-          <span class="kli-reg-level">Certificate in Kingdom Leadership · Level 1</span>
+          <span class="kli-reg-level">Certificate in Kingdom Leadership</span>
           <ul>
-            <li>Duration <strong>6 Months</strong></li>
-            <li>Format <strong>One full-day session monthly</strong></li>
-            <li>Course fee <strong>R658 / month</strong></li>
+            <li>Duration <strong>6 or 12 months</strong></li>
+            <li>Meetings <strong>Online · 1st Saturday monthly</strong></li>
+            <li>Level 1 <strong>R658 × 6 months</strong></li>
+            <li>Level 2 <strong>R350 × 12 months</strong></li>
+            <li>Graduation fee <strong>R450 once-off</strong></li>
             <li>Summit admission <strong>Included</strong></li>
           </ul>
           <p>Questions before you register? Call <a href="tel:+27622993966">062 299 3966</a> or email <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a>.</p>
@@ -359,6 +555,7 @@
               <div class="kli-form-group"><label for="kliChurch">Church / Ministry / Organisation</label><input type="text" id="kliChurch" name="Church or Ministry" placeholder="Where you serve" required></div>
               <div class="kli-form-group"><label for="kliRole">Your Role</label><select id="kliRole" name="Role" required><option value="">Select your role</option><option>Senior Pastor</option><option>Associate Pastor</option><option>Youth Pastor</option><option>Church Elder</option><option>Ministry Leader</option><option>Church Administrator</option><option>Christian Entrepreneur</option><option>Marketplace Leader</option><option>Emerging Leader</option><option>Seminary Graduate</option><option>Ministry Coordinator</option><option>Other</option></select></div>
             </div>
+            <div class="kli-form-group"><label for="kliOption">Level &amp; Fee Option</label><select id="kliOption" name="Level and Fee Option" required><option value="">Select a level</option><option>Level 1 – 6 months – R658 per month (Saturdays 9:00 am – 12:00 pm, online)</option><option>Level 2 – 12 months – R350 per month (Saturdays 2:00 pm – 5:00 pm, online)</option></select></div>
             <div class="kli-form-group"><label for="kliHear">How did you hear about the Institute?</label><select id="kliHear" name="How they heard"><option value="">Select (optional)</option><option>Kingdom Leadership Summit</option><option>Social media</option><option>Church / ministry</option><option>Friend or colleague</option><option>SheRises Collective website</option><option>Other</option></select></div>
             <div class="kli-form-group"><label for="kliWhy">Why would you like to join? (optional)</label><textarea id="kliWhy" name="Motivation" placeholder="Tell us a little about your leadership journey..."></textarea></div>
             <label class="kli-consent"><input type="checkbox" name="Consent" value="Yes" required><span>I confirm the details above are correct and agree to be contacted by SheRises Collective about my registration.</span></label>
@@ -370,10 +567,33 @@
     </div>
   </section>
 
+  <section class="kli-recognition-section">
+    <div class="container">
+      <div class="kli-recognition-box animate-on-scroll">
+        <h3>Completion &amp; Recognition</h3>
+        <p>Participants who meet the Institute's stated participation and completion requirements will be eligible for the relevant programme completion certificate and graduation arrangements.</p>
+        <p>The Kingdom Leadership Institute is being developed as a <strong>non-accredited</strong> leadership development programme. Its certificates recognise completion of the Institute's programme and are not presented as nationally accredited qualifications.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="kli-outcome-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2>The <em>Outcome</em></h2>
+      </div>
+      <div class="kli-about-text animate-on-scroll">
+        <p>Our desire is to see Kingdom leaders grow in biblical understanding, character, accountability and practical leadership ability. We want participants to serve faithfully under the authority of Christ, strengthen the people entrusted to their care, develop emerging leaders and contribute meaningfully to the communities in which God has placed them.</p>
+        <p class="kli-outcome-call">The call is to lead under Christ's authority, serve with humility, steward faithfully and advance the purposes of God's Kingdom.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="kli-cta-section">
     <div class="container">
       <div class="section-header animate-on-scroll">
-        <h2>Begin Your <em>Leadership Journey</em></h2>
+        <h2>Register Your <em>Interest</em></h2>
+        <p style="max-width:680px;margin:0 auto 14px;">If you desire to grow in your understanding and practice of Kingdom leadership, register your interest in the Kingdom Leadership Institute. Join a learning community committed to biblical foundations, leadership development, mentorship, collaboration and faithful service.</p>
         <p>Bookings & enquiries: <a href="tel:+27622993966" style="color:var(--primary);">062 299 3966</a> or <a href="mailto:info@sherisescollectiveza.com" style="color:var(--primary);">info@sherisescollectiveza.com</a></p>
       </div>
       <a href="#register" class="btn btn-primary">Register Now</a>
@@ -381,10 +601,20 @@
     </div>
   </section>
 
-  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
+  <footer class="footer"><div class="footer-grid"><div class="footer-brand"><h3>She<span>Rises</span> Collective</h3><p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p></div><div class="footer-col"><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li><li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="store.html">Store</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Partner With Us</a></li></ul></div><div class="footer-col footer-contact"><h4>Get In Touch</h4><p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p><p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p><p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p><div class="footer-social"><a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram"><img src="images/icon-instagram.png" alt="Instagram" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.tiktok.com/@sherisescollective.za?_r=1&_t=ZS-97zwSGrmKzY" target="_blank" title="TikTok"><img src="images/icon-tiktok.png" alt="TikTok" style="width:22px;height:22px;vertical-align:middle;"></a><a href="https://www.facebook.com/share/1F9TVHgrYy/?mibextid=wwXIfr" target="_blank" title="Facebook"><img src="images/icon-facebook.png" alt="Facebook" style="width:22px;height:22px;vertical-align:middle;"></a><a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a><a href="tel:+27622993966" title="Phone">📞</a></div></div></div><div class="footer-bottom"><p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p></div></footer>
 
   <script src="script.js"></script>
   <script>
+    // Level tabs (Programme Structure)
+    document.querySelectorAll('.kli-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.kli-tab').forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        document.querySelectorAll('.kli-level-panel').forEach(function (p) { p.classList.remove('active'); });
+        tab.classList.add('active'); tab.setAttribute('aria-selected', 'true');
+        document.getElementById('kliLevel' + tab.dataset.level).classList.add('active');
+      });
+    });
+
     // Netlify Forms submission (same pattern as the contact form).
     document.getElementById('instituteForm').addEventListener('submit', function(e) {
       e.preventDefault();
