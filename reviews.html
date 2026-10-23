@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews | SheRises Collective</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .rv-hero { min-height: 40vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 40px 50px; background: linear-gradient(135deg, var(--light) 0%, var(--calendar-bg) 100%); }
+    .rv-hero h1 { font-size: 3.2rem; margin-bottom: 16px; }
+    .rv-hero h1 em { font-style: italic; color: var(--primary); }
+    .rv-hero p { color: var(--text-light); max-width: 640px; margin: 0 auto; font-size: 1.05rem; }
+    .rv-section { padding: 70px 40px; background: var(--white); }
+    .rv-inner { max-width: 1000px; margin: 0 auto; }
+    .rv-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; margin-top: 34px; }
+    .rv-card { background: var(--tint); border-radius: 18px; padding: 26px; }
+    .rv-card .rv-stars { color: var(--accent); letter-spacing: 3px; margin-bottom: 8px; }
+    .rv-card .rv-service { display: inline-block; padding: 4px 12px; border-radius: 20px; background: var(--primary); color: var(--white); font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .rv-card blockquote { font-family: var(--font-heading); font-style: italic; font-size: 1.15rem; line-height: 1.6; margin-bottom: 12px; }
+    .rv-card cite { font-style: normal; font-weight: 600; font-size: 0.85rem; color: var(--primary); }
+    .rv-empty { margin-top: 30px; padding: 30px; border-radius: 18px; background: var(--tint); text-align: center; color: var(--text-light); }
+    .rv-empty a { color: var(--primary); font-weight: 600; }
+    .rv-form-section { padding: 80px 40px; background: var(--tint); scroll-margin-top: 90px; }
+    .rv-form { max-width: 720px; margin: 36px auto 0; background: var(--white); border-radius: 20px; padding: 34px 32px; border: 1px solid var(--border); box-shadow: 0 16px 40px var(--shadow); }
+    .rv-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .rv-group { margin-bottom: 16px; }
+    .rv-group > label { display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px; }
+    .rv-group input[type=text], .rv-group input[type=email], .rv-group select, .rv-group textarea { width: 100%; padding: 13px 16px; border: 1px solid var(--border); border-radius: 10px; font-family: var(--font-body); font-size: 0.92rem; color: var(--text); background: var(--white); }
+    .rv-group textarea { min-height: 130px; resize: vertical; }
+    .rv-group input:focus, .rv-group select:focus, .rv-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(31,189,190,0.15); }
+    .rv-rating { display: inline-flex; flex-direction: row-reverse; gap: 4px; }
+    .rv-rating input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .rv-rating label { font-size: 2rem; line-height: 1; color: var(--border); cursor: pointer; transition: color .15s; }
+    .rv-rating input:checked ~ label, .rv-rating label:hover, .rv-rating label:hover ~ label { color: var(--accent); }
+    .rv-rating input:focus-visible + label { outline: 2px solid var(--primary); border-radius: 4px; }
+    .rv-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: var(--text-light); margin-bottom: 18px; }
+    .rv-consent input { margin-top: 4px; }
+    .rv-status { margin-top: 16px; text-align: center; font-size: 0.9rem; }
+    @media (max-width: 700px) { .rv-hero h1 { font-size: 2.3rem; } .rv-row { grid-template-columns: 1fr; } .rv-section, .rv-form-section { padding: 50px 20px; } .rv-form { padding: 26px 20px; } }
+  </style>
+</head>
+<body class="page-transition">
+  <nav class="navbar"><div class="nav-container"><a href="index.html" class="nav-logo">She<span>Rises</span> Collective</a><ul class="nav-links"><li><a href="index.html">Home</a></li><li class="dropdown"><a href="about.html">About <span style="font-size:0.7em;">▼</span></a><ul class="dropdown-menu"><li><a href="about.html">Our Story</a></li><li><a href="founder.html">The Founder</a></li><li><a href="team.html">Meet the Team</a></li></ul></li><li><a href="programs.html">Programs</a></li><li><a href="store.html">Store</a></li><li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul><div class="mobile-toggle"><span></span><span></span><span></span></div></div></nav>
+
+  <section class="rv-hero">
+    <div>
+      <span class="hero-badge">Your Voice</span>
+      <h1>Reviews &amp; <em>Reflections</em></h1>
+      <p>Attended a workshop, seminar, conference, summit or dialogue? Received counselling or read one of our books? Tell us and future guests what the experience meant to you.</p>
+      <p style="margin-top:22px;"><a href="#share" class="btn btn-primary">Share Your Review</a></p>
+    </div>
+  </section>
+
+  <section class="rv-section">
+    <div class="rv-inner">
+      <div class="section-header"><h2>What People <em>Are Saying</em></h2><p>Reviews are read by our team before they are published.</p></div>
+      <div class="rv-list" id="reviewList">
+        <!-- Approved reviews go here. Copy this block for each one:
+        <article class="rv-card"><span class="rv-service">Writing Workshop</span><div class="rv-stars">★★★★★</div><blockquote>"Review text"</blockquote><cite>— Name</cite></article>
+        -->
+      </div>
+      <div class="rv-empty" id="reviewEmpty">
+        <p>Our first reviews are on their way. In the meantime, read a reader's story on our <a href="testimonials.html">Testimonials page</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="rv-form-section" id="share">
+    <div class="rv-inner">
+      <div class="section-header"><h2>Share Your <em>Review</em></h2><p>It only takes a minute. Your email is never published.</p></div>
+      <form class="rv-form" id="reviewForm" name="review" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="review">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="rv-row">
+          <div class="rv-group"><label for="rvName">Your Name</label><input type="text" id="rvName" name="Name" placeholder="Full name or first name" required></div>
+          <div class="rv-group"><label for="rvEmail">Email (not published)</label><input type="email" id="rvEmail" name="Email" placeholder="you@example.com" required></div>
+        </div>
+        <div class="rv-group"><label for="rvService">What are you reviewing?</label><select id="rvService" name="Service" required><option value="">Select one</option><option>Writing Workshop</option><option>Seminar</option><option>Conference</option><option>Summit</option><option>Dialogue / Woman to Woman Conversation</option><option>Counselling</option><option>Book Read</option><option>Altars of Hope</option><option>Kingdom Leadership Institute</option><option>Market / Expo</option><option>Speaking Engagement</option><option>Other</option></select></div>
+        <div class="rv-group"><label for="rvEvent">Event or title (optional)</label><input type="text" id="rvEvent" name="Event or Title" placeholder="e.g. Writing Workshop, 15 August"></div>
+        <div class="rv-group"><label>Your Rating</label><div class="rv-rating"><input type="radio" id="st5" name="Rating" value="5" required><label for="st5" title="5 stars">★</label><input type="radio" id="st4" name="Rating" value="4" required><label for="st4" title="4 stars">★</label><input type="radio" id="st3" name="Rating" value="3" required><label for="st3" title="3 stars">★</label><input type="radio" id="st2" name="Rating" value="2" required><label for="st2" title="2 stars">★</label><input type="radio" id="st1" name="Rating" value="1" required><label for="st1" title="1 star">★</label></div></div>
+        <div class="rv-group"><label for="rvText">Your Review</label><textarea id="rvText" name="Review" placeholder="What stood out? How did it help you?" required></textarea></div>
+        <label class="rv-consent"><input type="checkbox" name="Consent to publish" value="Yes" required><span>I agree that SheRises Collective may publish my review and first name on this website.</span></label>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Submit Review</button>
+        <p class="rv-status" id="reviewStatus"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>She<span>Rises</span> Collective</h3>
+        <p>A faith-inspired leadership development, empowerment, and capacity-building organisation dedicated to helping individuals rise into their God-given purpose.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="reviews.html">Reviews</a></li>
+          <li><a href="store.html">Store</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="founder.html">The Founder</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Partner With Us</a></li>
+          <li><a href="#">Volunteer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Get In Touch</h4>
+        <p>📍 50 Manors Road, Manors New Germany, Pinetown, 3610</p>
+        <p>📧 <a href="mailto:info@sherisescollectiveza.com">info@sherisescollectiveza.com</a></p>
+        <p>📱 <a href="tel:+27622993966">062 299 3966</a></p><p>🕒 Mon–Fri, 08:00–15:30</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/sherises._collective?utm_source=qr" target="_blank" title="Instagram">📷</a>
+          <a href="mailto:info@sherisescollectiveza.com" title="Email">✉️</a>
+          <a href="tel:+27622993966" title="Phone">📞</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 SheRises Collective. All rights reserved. | Rise. Lead. Inspire.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      var list = document.getElementById('reviewList');
+      if (list.querySelector('.rv-card')) document.getElementById('reviewEmpty').style.display = 'none';
+      document.getElementById('reviewForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var form = e.target, st = document.getElementById('reviewStatus'), btn = form.querySelector('button[type="submit"]'), label = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Submitting...'; st.textContent = ''; st.style.color = '';
+        fetch(window.location.pathname, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+          .then(function (r) {
+            if (r.ok) { st.textContent = 'Thank you! Your review has been received and will appear once our team has read it.'; st.style.color = 'var(--primary)'; form.reset(); btn.textContent = 'Review Sent ✓'; }
+            else { st.textContent = 'Something went wrong (error ' + r.status + ') — please try again or email info@sherisescollectiveza.com.'; st.style.color = '#B00020'; btn.disabled = false; btn.textContent = label; }
+          }).catch(function (err) { st.textContent = 'Something went wrong (' + err.message + ') — please try again.'; st.style.color = '#B00020'; btn.disabled = false; btn.textContent = label; });
+      });
+    })();
+  </script>
+</body>
+</html>
