@@ -18,6 +18,7 @@
     .gal-group { margin-bottom: 56px; }
     .gal-group[hidden] { display: none; }
     .gal-title { font-size: 1.8rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--tint); }
+    .gal-soon { color: var(--text-light); font-style: italic; }
     .gal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; }
     .gal-item { position: relative; aspect-ratio: 4 / 5; padding: 0; border: 0; border-radius: 16px; overflow: hidden; cursor: zoom-in; background: var(--tint); box-shadow: 0 6px 20px var(--shadow); transition: var(--transition); }
     .gal-item:hover, .gal-item:focus-visible { transform: translateY(-4px); box-shadow: 0 14px 34px var(--shadow-lg); }
@@ -44,78 +45,37 @@
     <div>
       <span class="hero-badge">Gallery</span>
       <h1>Moments &amp; <em>Memories</em></h1>
-      <p>Every image from across SheRises Collective — events, community, books, speakers and programmes — in one place. Tap any picture to view it larger.</p>
+      <p>Photos from SheRises Collective's past events — in one place. Tap any picture to view it larger.</p>
     </div>
   </section>
 
   <section class="gal-wrap">
-    <div class="gal-filters" role="group" aria-label="Filter gallery"><button class="gal-filter active" data-filter="all">All</button><button class="gal-filter" data-filter="events-posters">Events & Posters</button><button class="gal-filter" data-filter="community">Community</button><button class="gal-filter" data-filter="books">Books</button><button class="gal-filter" data-filter="our-founder-team">Our Founder & Team</button><button class="gal-filter" data-filter="speakers">Speakers</button><button class="gal-filter" data-filter="programmes">Programmes</button><button class="gal-filter" data-filter="brand">Brand</button></div>
-    <div class="gal-group" data-cat="events-posters">
-      <h2 class="gal-title">Events &amp; Posters</h2>
+    <div class="gal-filters" role="group" aria-label="Filter gallery"><button class="gal-filter active" data-filter="all">All</button><button class="gal-filter" data-filter="writing-workshop">Writing Workshop</button><button class="gal-filter" data-filter="flourish-expo">Flourish Expo</button><button class="gal-filter" data-filter="kls">Kingdom Leadership Summit</button><button class="gal-filter" data-filter="workshops">Workshops</button></div>
+    <div class="gal-group" data-cat="writing-workshop">
+      <h2 class="gal-title">Writing Workshop</h2>
+      <p class="gal-soon">Photos coming soon.</p>
+    </div>
+    <div class="gal-group" data-cat="flourish-expo">
+      <h2 class="gal-title">Flourish Expo</h2>
+      <p class="gal-soon">Photos coming soon.</p>
+    </div>
+    <div class="gal-group" data-cat="kls">
+      <h2 class="gal-title">Kingdom Leadership Summit</h2>
       <div class="gal-grid">
-        <button type="button" class="gal-item gal-fit" data-full="images/singles-conference-poster.jpg" data-alt="Singles Conference 2026 poster"><img src="images/singles-conference-poster.jpg" alt="Singles Conference 2026 poster" loading="lazy"><span class="gal-cap">Singles Conference 2026 poster</span></button>
-        <button type="button" class="gal-item gal-fit" data-full="images/christmas-market-poster.jpg" data-alt="Christmas Market at the Phansi Museum poster"><img src="images/christmas-market-poster.jpg" alt="Christmas Market at the Phansi Museum poster" loading="lazy"><span class="gal-cap">Christmas Market at the Phansi Museum poster</span></button>
-        <button type="button" class="gal-item gal-fit" data-full="images/market-3-october-poster.jpg" data-alt="Family Market Day poster"><img src="images/market-3-october-poster.jpg" alt="Family Market Day poster" loading="lazy"><span class="gal-cap">Family Market Day poster</span></button>
-        <button type="button" class="gal-item" data-full="images/conference-bg.jpg" data-alt="Conference gathering"><img src="images/conference-bg.jpg" alt="Conference gathering" loading="lazy"><span class="gal-cap">Conference gathering</span></button>
+        <button type="button" class="gal-item" data-full="images/kls-prophetic-dance.webp" data-alt="Prophetic dance, Kingdom Leadership Summit"><img src="images/kls-prophetic-dance.webp" alt="Prophetic dance, Kingdom Leadership Summit" loading="lazy"><span class="gal-cap">Prophetic dance, Kingdom Leadership Summit</span></button>
+        <button type="button" class="gal-item" data-full="images/speaker-fikile-mnguni.jpg" data-alt="Fikile Mnguni, Kingdom Leadership Summit"><img src="images/speaker-fikile-mnguni.jpg" alt="Fikile Mnguni, Kingdom Leadership Summit" loading="lazy"><span class="gal-cap">Fikile Mnguni, Kingdom Leadership Summit</span></button>
+        <button type="button" class="gal-item" data-full="images/speaker-felicite-lucas.jpg" data-alt="Felicité Lucas, Kingdom Leadership Summit"><img src="images/speaker-felicite-lucas.jpg" alt="Felicité Lucas, Kingdom Leadership Summit" loading="lazy"><span class="gal-cap">Felicité Lucas, Kingdom Leadership Summit</span></button>
+        <button type="button" class="gal-item" data-full="images/speaker-gn-mbuli.jpg" data-alt="GN Mbuli, Kingdom Leadership Summit"><img src="images/speaker-gn-mbuli.jpg" alt="GN Mbuli, Kingdom Leadership Summit" loading="lazy"><span class="gal-cap">GN Mbuli, Kingdom Leadership Summit</span></button>
+        <button type="button" class="gal-item" data-full="images/speaker-jabu-nxasana.png" data-alt="Jabu Nxasana, Kingdom Leadership Summit"><img src="images/speaker-jabu-nxasana.png" alt="Jabu Nxasana, Kingdom Leadership Summit" loading="lazy"><span class="gal-cap">Jabu Nxasana, Kingdom Leadership Summit</span></button>
+        <button type="button" class="gal-item" data-full="images/speaker-simphiwe-majola.jpg" data-alt="Simphiwe Majola, Kingdom Leadership Summit"><img src="images/speaker-simphiwe-majola.jpg" alt="Simphiwe Majola, Kingdom Leadership Summit" loading="lazy"><span class="gal-cap">Simphiwe Majola, Kingdom Leadership Summit</span></button>
+      </div>
+    </div>
+    <div class="gal-group" data-cat="workshops">
+      <h2 class="gal-title">Workshops</h2>
+      <div class="gal-grid">
         <button type="button" class="gal-item" data-full="images/workshop-1.jpg" data-alt="SheRises workshop"><img src="images/workshop-1.jpg" alt="SheRises workshop" loading="lazy"><span class="gal-cap">SheRises workshop</span></button>
         <button type="button" class="gal-item" data-full="images/workshop-2.jpg" data-alt="SheRises workshop"><img src="images/workshop-2.jpg" alt="SheRises workshop" loading="lazy"><span class="gal-cap">SheRises workshop</span></button>
         <button type="button" class="gal-item" data-full="images/spiritual-formation.jpg" data-alt="Spiritual formation session"><img src="images/spiritual-formation.jpg" alt="Spiritual formation session" loading="lazy"><span class="gal-cap">Spiritual formation session</span></button>
-      </div>
-    </div>
-    <div class="gal-group" data-cat="community">
-      <h2 class="gal-title">Community</h2>
-      <div class="gal-grid">
-        <button type="button" class="gal-item" data-full="images/community-1.jpg" data-alt="Community gathering"><img src="images/community-1.jpg" alt="Community gathering" loading="lazy"><span class="gal-cap">Community gathering</span></button>
-        <button type="button" class="gal-item" data-full="images/community-2.jpg" data-alt="Community gathering"><img src="images/community-2.jpg" alt="Community gathering" loading="lazy"><span class="gal-cap">Community gathering</span></button>
-        <button type="button" class="gal-item" data-full="images/community-3.jpg" data-alt="Community gathering"><img src="images/community-3.jpg" alt="Community gathering" loading="lazy"><span class="gal-cap">Community gathering</span></button>
-        <button type="button" class="gal-item" data-full="images/community-4.jpg" data-alt="Community gathering"><img src="images/community-4.jpg" alt="Community gathering" loading="lazy"><span class="gal-cap">Community gathering</span></button>
-      </div>
-    </div>
-    <div class="gal-group" data-cat="books">
-      <h2 class="gal-title">Books</h2>
-      <div class="gal-grid">
-        <button type="button" class="gal-item gal-fit" data-full="images/touched-by-grace-original.jpg" data-alt="Touched by Grace book cover"><img src="images/touched-by-grace-original.jpg" alt="Touched by Grace book cover" loading="lazy"><span class="gal-cap">Touched by Grace book cover</span></button>
-        <button type="button" class="gal-item gal-fit" data-full="images/weight-of-leadership-original.jpg" data-alt="The Weight of Leadership book cover"><img src="images/weight-of-leadership-original.jpg" alt="The Weight of Leadership book cover" loading="lazy"><span class="gal-cap">The Weight of Leadership book cover</span></button>
-        <button type="button" class="gal-item gal-fit" data-full="images/before-you-say-i-do-original.jpg" data-alt="Before You Say I Do book cover"><img src="images/before-you-say-i-do-original.jpg" alt="Before You Say I Do book cover" loading="lazy"><span class="gal-cap">Before You Say I Do book cover</span></button>
-        <button type="button" class="gal-item gal-fit" data-full="images/breaking-the-cycle-original.jpg" data-alt="Breaking the Cycle book cover"><img src="images/breaking-the-cycle-original.jpg" alt="Breaking the Cycle book cover" loading="lazy"><span class="gal-cap">Breaking the Cycle book cover</span></button>
-        <button type="button" class="gal-item gal-fit" data-full="images/covenant-alignment-original.jpg" data-alt="Covenant Alignment book cover"><img src="images/covenant-alignment-original.jpg" alt="Covenant Alignment book cover" loading="lazy"><span class="gal-cap">Covenant Alignment book cover</span></button>
-        <button type="button" class="gal-item gal-fit" data-full="images/fingerprints-of-god-original.jpg" data-alt="Fingerprints of God book cover"><img src="images/fingerprints-of-god-original.jpg" alt="Fingerprints of God book cover" loading="lazy"><span class="gal-cap">Fingerprints of God book cover</span></button>
-        <button type="button" class="gal-item gal-fit" data-full="images/healing-of-memories-original.jpg" data-alt="Healing of Memories book cover"><img src="images/healing-of-memories-original.jpg" alt="Healing of Memories book cover" loading="lazy"><span class="gal-cap">Healing of Memories book cover</span></button>
-        <button type="button" class="gal-item" data-full="images/testimonial-reader-touched-by-grace.jpg" data-alt="A reader with her copy of Touched by Grace"><img src="images/testimonial-reader-touched-by-grace.jpg" alt="A reader with her copy of Touched by Grace" loading="lazy"><span class="gal-cap">A reader with her copy of Touched by Grace</span></button>
-      </div>
-    </div>
-    <div class="gal-group" data-cat="our-founder-team">
-      <h2 class="gal-title">Our Founder &amp; Team</h2>
-      <div class="gal-grid">
-        <button type="button" class="gal-item" data-full="images/founder-fikile.jpg" data-alt="Fikile Mnguni, founder"><img src="images/founder-fikile.jpg" alt="Fikile Mnguni, founder" loading="lazy"><span class="gal-cap">Fikile Mnguni, founder</span></button>
-        <button type="button" class="gal-item" data-full="images/founder-1.jpg" data-alt="Fikile Mnguni, founder"><img src="images/founder-1.jpg" alt="Fikile Mnguni, founder" loading="lazy"><span class="gal-cap">Fikile Mnguni, founder</span></button>
-        <button type="button" class="gal-item" data-full="images/team-wesleigh.jpg" data-alt="Wesleigh, SheRises Collective team"><img src="images/team-wesleigh.jpg" alt="Wesleigh, SheRises Collective team" loading="lazy"><span class="gal-cap">Wesleigh, SheRises Collective team</span></button>
-        <button type="button" class="gal-item" data-full="images/team-yani.jpg" data-alt="Yani, SheRises Collective team"><img src="images/team-yani.jpg" alt="Yani, SheRises Collective team" loading="lazy"><span class="gal-cap">Yani, SheRises Collective team</span></button>
-      </div>
-    </div>
-    <div class="gal-group" data-cat="speakers">
-      <h2 class="gal-title">Speakers</h2>
-      <div class="gal-grid">
-        <button type="button" class="gal-item" data-full="images/speaker-fikile-mnguni.jpg" data-alt="Fikile Mnguni"><img src="images/speaker-fikile-mnguni.jpg" alt="Fikile Mnguni" loading="lazy"><span class="gal-cap">Fikile Mnguni</span></button>
-        <button type="button" class="gal-item" data-full="images/speaker-felicite-lucas.jpg" data-alt="Felicité Lucas"><img src="images/speaker-felicite-lucas.jpg" alt="Felicité Lucas" loading="lazy"><span class="gal-cap">Felicité Lucas</span></button>
-        <button type="button" class="gal-item" data-full="images/speaker-gn-mbuli.jpg" data-alt="GN Mbuli"><img src="images/speaker-gn-mbuli.jpg" alt="GN Mbuli" loading="lazy"><span class="gal-cap">GN Mbuli</span></button>
-        <button type="button" class="gal-item" data-full="images/speaker-jabu-nxasana.png" data-alt="Jabu Nxasana"><img src="images/speaker-jabu-nxasana.png" alt="Jabu Nxasana" loading="lazy"><span class="gal-cap">Jabu Nxasana</span></button>
-        <button type="button" class="gal-item" data-full="images/speaker-simphiwe-majola.jpg" data-alt="Simphiwe Majola"><img src="images/speaker-simphiwe-majola.jpg" alt="Simphiwe Majola" loading="lazy"><span class="gal-cap">Simphiwe Majola</span></button>
-      </div>
-    </div>
-    <div class="gal-group" data-cat="programmes">
-      <h2 class="gal-title">Programmes</h2>
-      <div class="gal-grid">
-        <button type="button" class="gal-item" data-full="images/program-bg-altars.jpg" data-alt="Altars of Hope programme"><img src="images/program-bg-altars.jpg" alt="Altars of Hope programme" loading="lazy"><span class="gal-cap">Altars of Hope programme</span></button>
-        <button type="button" class="gal-item" data-full="images/program-bg-pilgrimage.jpg" data-alt="Hearts on Pilgrimage programme"><img src="images/program-bg-pilgrimage.jpg" alt="Hearts on Pilgrimage programme" loading="lazy"><span class="gal-cap">Hearts on Pilgrimage programme</span></button>
-        <button type="button" class="gal-item" data-full="images/program-bg-wealth.jpg" data-alt="Building Wealth with Wisdom programme"><img src="images/program-bg-wealth.jpg" alt="Building Wealth with Wisdom programme" loading="lazy"><span class="gal-cap">Building Wealth with Wisdom programme</span></button>
-      </div>
-    </div>
-    <div class="gal-group" data-cat="brand">
-      <h2 class="gal-title">Brand</h2>
-      <div class="gal-grid">
-        <button type="button" class="gal-item gal-contain" data-full="images/sherises-logo.png" data-alt="SheRises Collective logo"><img src="images/sherises-logo.png" alt="SheRises Collective logo" loading="lazy"><span class="gal-cap">SheRises Collective logo</span></button>
-        <button type="button" class="gal-item gal-contain" data-full="images/crux-logo-full.png" data-alt="CRUX logo"><img src="images/crux-logo-full.png" alt="CRUX logo" loading="lazy"><span class="gal-cap">CRUX logo</span></button>
       </div>
     </div>
   </section>
