@@ -30,6 +30,25 @@
     .gal-sub { font-size: 1.25rem; margin: 30px 0 14px; color: var(--primary); }
     .gal-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 62px; height: 62px; border-radius: 50%; background: rgba(0,0,0,0.55); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; padding-left: 4px; border: 2px solid rgba(255,255,255,0.8); }
     .gal-lightbox video { max-width: 100%; max-height: calc(100vh - 120px); border-radius: 10px; display: none; background: #000; }
+    /* Stacked albums: photos with the same label overlap like a deck and fan out when clicked */
+    .gal-stack { position: relative; aspect-ratio: 4 / 5; margin: 22px 22px 0 0; cursor: pointer; }
+    .gal-stack .gal-item { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; transform-origin: 50% 100%; transform: translate(calc(var(--i) * 7px), calc(var(--i) * -7px)) rotate(calc(var(--i) * 1.6deg)); z-index: calc(20 - var(--i)); box-shadow: 0 6px 18px rgba(0,0,0,0.22); border: 3px solid #fff; }
+    .gal-stack .gal-item:nth-child(n+5) { opacity: 0; }
+    .gal-stack:not(.open) .gal-item:hover { transform: translate(calc(var(--i) * 7px), calc(var(--i) * -7px)) rotate(calc(var(--i) * 1.6deg)); }
+    .gal-stack:not(.open):hover .gal-item:nth-child(1) { transform: translate(-3px, -6px) rotate(-2deg); }
+    .gal-stack:not(.open) .gal-cap { opacity: 1; }
+    .gal-stack:not(.open) .gal-item:nth-child(n+2) .gal-cap, .gal-stack:not(.open) .gal-item .gal-play { opacity: 0; }
+    .gal-stack:not(.open) .gal-item:first-child .gal-play { opacity: 1; }
+    .gal-count { position: absolute; top: -12px; right: -12px; z-index: 40; background: var(--accent); color: #fff; font: 700 0.78rem var(--font-body); padding: 6px 12px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.25); pointer-events: none; }
+    .gal-stack.open { grid-column: 1 / -1; aspect-ratio: auto; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; cursor: default; padding: 18px; border-radius: 20px; background: var(--tint); }
+    .gal-stack.open .gal-item { position: relative; inset: auto; aspect-ratio: 4 / 5; transform: none; z-index: auto; border: 0; opacity: 1; box-shadow: 0 6px 20px var(--shadow); cursor: zoom-in; }
+    .gal-stack.open .gal-item:hover { transform: translateY(-4px); }
+    .gal-stack.open .gal-count { display: none; }
+    .gal-stack-head { display: none; grid-column: 1 / -1; align-items: center; justify-content: space-between; gap: 12px; font-weight: 600; color: var(--primary); }
+    .gal-stack.open .gal-stack-head { display: flex; }
+    .gal-collapse { border: 1px solid var(--primary); background: #fff; color: var(--primary); border-radius: 20px; padding: 6px 16px; font: 600 0.78rem var(--font-body); cursor: pointer; }
+    .gal-collapse:hover { background: var(--primary); color: #fff; }
+    @media (max-width: 700px) { .gal-stack.open { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 12px; } }
     .gal-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 12px; color: var(--white); font: 600 0.78rem var(--font-body); text-align: left; background: linear-gradient(transparent, rgba(20,28,30,0.78)); opacity: 0; transition: var(--transition); }
     .gal-item:hover .gal-cap, .gal-item:focus-visible .gal-cap { opacity: 1; }
     @media (hover: none) { .gal-cap { opacity: 1; } }
@@ -58,10 +77,11 @@
     <div class="gal-filters" role="group" aria-label="Filter gallery"><button class="gal-filter active" data-filter="all">All</button><button class="gal-filter" data-filter="speaking-engagements">Speaking Engagements</button><button class="gal-filter" data-filter="workshops">Workshops</button><button class="gal-filter" data-filter="media-engagement">Media Engagement</button><button class="gal-filter" data-filter="markets">Markets</button><button class="gal-filter" data-filter="summits">Summits</button><button class="gal-filter" data-filter="institute">Institute</button><button class="gal-filter" data-filter="crux-marketplace">Crux Marketplace</button><button class="gal-filter" data-filter="miscellaneous">Miscellaneous</button></div>
     <div class="gal-group" data-cat="speaking-engagements">
       <h2 class="gal-title">Speaking Engagements</h2>
-      <p class="gal-soon"><strong>Photo albums coming soon:</strong> Touched by Grace – Crossroads Family Church, Pinetown · Listening to God – Pinehaven, Pinetown · Touched by Grace – Presbyterian Church · Precious Stones – Mt Zion Worship Assembly, KwaDabeka · Single Mothers – Jesus Worship Centre, Ulundi · Broken Vases Still Hold Beautiful Flowers – Botha's Hill</p>
+      <p class="gal-soon"><strong>Photo albums coming soon:</strong> Touched by Grace – Crossroads Family Church, Pinetown · Touched by Grace – Presbyterian Church · Precious Stones – Mt Zion Worship Assembly, KwaDabeka · Single Mothers – Jesus Worship Centre, Ulundi · Broken Vases Still Hold Beautiful Flowers – Botha's Hill</p>
+      <h3 class="gal-sub">Listening to God – Pinehaven, Pinetown</h3>
       <div class="gal-grid">
-        <button type="button" class="gal-item" data-full="images/speaking-engagement-1.jpg" data-alt="Speaking engagement"><img src="images/speaking-engagement-1.jpg" alt="Speaking engagement" loading="lazy"><span class="gal-cap">Speaking engagement</span></button>
-        <button type="button" class="gal-item" data-full="images/speaking-engagement-2.jpg" data-alt="Speaking engagement"><img src="images/speaking-engagement-2.jpg" alt="Speaking engagement" loading="lazy"><span class="gal-cap">Speaking engagement</span></button>
+        <button type="button" class="gal-item gal-label" data-full="images/speaking-engagement-1.jpg" data-alt="Pinehaven, Pinetown"><img src="images/speaking-engagement-1.jpg" alt="Pinehaven, Pinetown" loading="lazy"><span class="gal-cap">Pinehaven, Pinetown</span></button>
+        <button type="button" class="gal-item gal-label" data-full="images/speaking-engagement-2.jpg" data-alt="Pinehaven, Pinetown"><img src="images/speaking-engagement-2.jpg" alt="Pinehaven, Pinetown" loading="lazy"><span class="gal-cap">Pinehaven, Pinetown</span></button>
       </div>
     </div>
     <div class="gal-group" data-cat="workshops">
@@ -206,6 +226,46 @@
   <script src="script.js"></script>
   <script>
   (function () {
+    /* Group photos that share a label into stacks */
+    document.querySelectorAll('.gal-grid').forEach(function (grid) {
+      var groups = {}, order = [];
+      Array.prototype.slice.call(grid.children).forEach(function (el) {
+        var key = (el.dataset.alt || '').replace(/ \(video\)$/, '');
+        if (!groups[key]) { groups[key] = []; order.push(key); }
+        groups[key].push(el);
+      });
+      order.forEach(function (key) {
+        var els = groups[key];
+        if (els.length < 2) return;
+        var stack = document.createElement('div'); stack.className = 'gal-stack';
+        grid.insertBefore(stack, els[0]);
+        var head = document.createElement('div'); head.className = 'gal-stack-head';
+        head.innerHTML = '<span></span><button type="button" class="gal-collapse">Collapse ✕</button>';
+        head.firstChild.textContent = key + ' · ' + els.length + ' photos';
+        stack.appendChild(head);
+        els.forEach(function (el, i) { el.style.setProperty('--i', Math.min(i, 4)); stack.appendChild(el); });
+        var badge = document.createElement('span'); badge.className = 'gal-count'; badge.textContent = els.length + ' photos'; stack.appendChild(badge);
+        function flip(toggle) {
+          var before = els.map(function (e) { return e.getBoundingClientRect(); });
+          toggle();
+          els.forEach(function (e, i) {
+            var a = e.getBoundingClientRect(), b = before[i];
+            var dx = b.left - a.left, dy = b.top - a.top, sx = b.width / a.width, sy = b.height / a.height;
+            if (!e.animate) return;
+            e.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ')' }, { transform: 'none' }], { duration: 380, easing: 'cubic-bezier(.2,.8,.2,1)' });
+          });
+        }
+        stack.addEventListener('click', function (e) {
+          if (stack.classList.contains('open')) return;
+          e.stopPropagation(); e.preventDefault();
+          flip(function () { stack.classList.add('open'); });
+          stack.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, true);
+        stack.querySelector('.gal-collapse').addEventListener('click', function (e) {
+          e.stopPropagation(); flip(function () { stack.classList.remove('open'); });
+        });
+      });
+    });
     var items = Array.prototype.slice.call(document.querySelectorAll('.gal-item'));
     var lb = document.getElementById('galLightbox'), img = document.getElementById('galImg'), cap = document.getElementById('galCap');
     var idx = 0;
@@ -219,7 +279,7 @@
       else { vid.style.display = 'none'; img.style.display = ''; img.src = it.dataset.full; img.alt = it.dataset.alt; }
       cap.textContent = it.dataset.alt; lb.classList.add('active'); lb._list = list;
     }
-    items.forEach(function (it) { it.addEventListener('click', function () { var l = visible(); show(l, l.indexOf(it)); }); });
+    items.forEach(function (it) { it.addEventListener('click', function () { var st = it.closest('.gal-stack'); var l = st ? Array.prototype.slice.call(st.querySelectorAll('.gal-item')) : visible().filter(function (x) { return !x.closest('.gal-stack'); }); show(l, l.indexOf(it)); }); });
     function close() { lb.classList.remove('active'); img.src = ''; stopVid(); }
     document.getElementById('galClose').onclick = close;
     document.getElementById('galPrev').onclick = function (e) { e.stopPropagation(); show(lb._list, idx - 1); };
